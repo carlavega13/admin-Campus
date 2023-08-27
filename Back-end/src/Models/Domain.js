@@ -9,12 +9,10 @@ module.exports = (sequelize) => {
           primaryKey: true,
           autoIncrement: true
         },
-      name: {
-        type: DataTypes.STRING,
-      },
       url: {
         type: DataTypes.STRING,
-        allowNull: false,
+         allowNull: false,
+         unique: true
       }
     },
     { timestamps: false }
