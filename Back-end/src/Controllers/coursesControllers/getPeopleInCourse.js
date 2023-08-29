@@ -12,7 +12,7 @@ const getPeopleInCourse=async (payload)=>{
             }
         })
     
-        return people.data
+        return [courseId,...people.data]
         
     } catch (error) {
         console.log(error.message);
