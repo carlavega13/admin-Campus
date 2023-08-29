@@ -6,8 +6,8 @@ const createUser = require("./dbRoutes/createUser");
 
 const router=Router()
 
-router.post("/login",login)
 router.post("/postDomain",createDomain)
 router.post("/postUser",createUser)
+router.post("/login",login)
 // router.post("/getCourses",courses)
 module.exports=router

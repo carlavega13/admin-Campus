@@ -7,7 +7,7 @@ try {
  const findUrl= await Domain.findOne({where:{isActive:true}})
  const token=await axios.get(`${findUrl.url}login/token.php?username=${user?.username}&password=${user?.password}&service=moodle_mobile_app`)
 if(token.data.error){
-    return "este usuario no coincide con la url dada"
+    throw new Error("no fue posible iniciar sesion por favor revise su informacion y vuelva a intentarlo")
 }
 if(!find){
 
@@ -33,7 +33,7 @@ if(!find){
 }
 } catch (error) {
     console.log(error.message);
-    return error.message
+throw new Error(error.message)
 }
 }
 module.exports=loginController
