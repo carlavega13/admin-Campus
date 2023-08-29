@@ -4,7 +4,8 @@ const initialState={
     user:{
         username:"",
         domain:"",
-        token:""
+        token:"",
+        rol:""
     },
     courses:[]
 }
@@ -18,6 +19,7 @@ switch (action.type) {
              username:action.payload.username,
              domain:action.payload.domain,
              token:action.payload.token,
+             rol:action.payload.rol
             }
         }
     case GET_COURSES:

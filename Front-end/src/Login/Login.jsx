@@ -1,9 +1,13 @@
-import { useState } from "react"
-import { useDispatch } from "react-redux"
+import { useEffect, useState } from "react"
+import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux/actions"
+import { useNavigate } from "react-router-dom"
 
 const Login=()=>{
+    const navigate=useNavigate()
     const dispatch=useDispatch()
+    const {rol}=useSelector(state=>state.user)
+
     const[user,setUser]=useState(
         {
              username:"",
@@ -21,7 +25,11 @@ const Login=()=>{
                 dispatch(login(user))
                 
                     }
-                    
+                 
+                        if(rol==="administrador"){
+                            navigate("/adminHome")
+                        }
+                 
               
 return(
     <>
