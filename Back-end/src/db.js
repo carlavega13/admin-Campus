@@ -40,8 +40,8 @@ sequelize.models = Object.fromEntries(capsEntries);
 
 const { User, Domain } = sequelize.models;
 //!                 RELACION DE UNO A MUCHOS
-User.belongsTo(Domain, { foreignKey: 'domainId' });
-Domain.hasMany(User, { foreignKey: 'domainId' });
+// User.belongsTo(Domain, { foreignKey: 'domainId' });
+// Domain.hasMany(User, { foreignKey: 'domainId' });
 
 module.exports = {
   ...sequelize.models, // para poder importar los modelos así: const { Product, User } = require('./db.js');

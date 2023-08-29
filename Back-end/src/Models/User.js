@@ -18,6 +18,9 @@ module.exports = (sequelize) => {
         type: DataTypes.STRING,
         allowNull: false,
       },
+      token:{
+        type: DataTypes.STRING,
+      },
       rol:{
         type: DataTypes.STRING,
         defaultValue: 'user'

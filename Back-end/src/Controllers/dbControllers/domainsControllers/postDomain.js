@@ -5,12 +5,23 @@ const postDomain=async({domain})=>{
         const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
         if(typeof domain==="string"){
             if(urlRegex.test(domain)){
-            const response= await Domain.create({url:domain})
+                const find = await Domain.findOne({where:{isActive:true}})
+                if(find){
+
+                    find.update({isActive:false})
+                }
+                const findCopy=await Domain.findOne({where:{url:domain}})
+                if(findCopy){
+                    findCopy.update({isActive:true})
+                    return findCopy
+                }
+               
+            const response= await Domain.create({url:domain,isActive:true})
             return response
         }
     }
 } catch (error) {
-    return "esta url ya existe!"
+    return error.message
 }
 }
 module.exports=postDomain
