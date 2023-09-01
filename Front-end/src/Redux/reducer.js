@@ -1,11 +1,14 @@
-import { GET_COURSES, LOGIN } from "./actionTypes"
+import { GET_COURSES, LOGIN, PUT_USER } from "./actionTypes"
 
 const initialState={
     user:{
+        id:0,
         username:"",
         domain:"",
         token:"",
-        rol:""
+        rol:"",
+        phone:"",
+        email:""
     },
     courses:[]
 }
@@ -16,10 +19,12 @@ switch (action.type) {
         return {
             ...state,
             user:{
-             username:action.payload.username,
-             domain:action.payload.domain,
-             token:action.payload.token,
-             rol:action.payload.rol
+                ...action.payload
+            //     id:action.payload.id,
+            //  username:action.payload.username,
+            //  domain:action.payload.domain,
+            //  token:action.payload.token,
+            //  rol:action.payload.rol
             }
         }
     case GET_COURSES:
@@ -28,6 +33,13 @@ switch (action.type) {
          courses:action.payload
         }
 
+    case PUT_USER:
+        return {
+            ...state,
+         user:{
+            ...action.payload
+         }
+        }
     default:
         return {...state}
 }

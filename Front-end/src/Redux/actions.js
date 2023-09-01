@@ -1,5 +1,5 @@
 
-import { GET_COURSES, LOGIN } from "./actionTypes";
+import { GET_COURSES, LOGIN, PUT_USER } from "./actionTypes";
 import axios from "axios"
 import {HOST}from"../../HOST"
 
@@ -23,5 +23,17 @@ try {
 } catch (error) {
    console.log(error);
 }
+}
+}
+
+export const putUser=(profile)=>{
+
+return async(dispatch)=>{
+   try {
+      const response=await axios.put(`${HOST}putUser`,profile)
+      return dispatch({type:PUT_USER,payload:response.data})
+   } catch (error) {
+      console.log(error);
+   }
 }
 }

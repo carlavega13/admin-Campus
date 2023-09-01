@@ -1,0 +1,13 @@
+.row{
+    display: flex;
+ justify-content: space-around;    
+ /* background-color: brown; */
+ padding: 1em;
+ border: 1px solid black;
+
+ 
+}
+.box{
+    background-color: aqua;
+    width: 70%;
+}

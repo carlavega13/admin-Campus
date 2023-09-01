@@ -2,11 +2,12 @@ import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { login } from "../Redux/actions"
 import { useNavigate } from "react-router-dom"
+import s from "./Login.module.css"
 
 const Login=()=>{
     const navigate=useNavigate()
     const dispatch=useDispatch()
-    const {rol}=useSelector(state=>state.user)
+    const userLogged=useSelector(state=>state.user)
 
     const[user,setUser]=useState(
         {
@@ -24,21 +25,27 @@ const Login=()=>{
             const handlerLogin=()=>{
                 dispatch(login(user))
                 
-                    }
-                 
-                        if(rol==="administrador"){
+            }
+            useEffect(()=>{
+
+            },[userLogged])
+            if(userLogged?.username&&userLogged?.phone===null){
+                navigate("firstEditProfile")
+              return
+            }
+                        if(userLogged?.username&&userLogged?.rol==="administrador"){
                             navigate("/adminHome")
                         }
                  
               
 return(
-    <>
-    <label htmlFor="username">Nombre de usuario:</label>
-    <input onChange={handlerChange} name="username" value={user.username} type="text" placeholder="Nombre de usuario" />
-    <label htmlFor="password">Contraseña:</label>
-    <input onChange={handlerChange} name="password" value={user.password} type="text" placeholder="Contraseña"/>
+    <div className={s.box}>
+    <label htmlFor="username">Nombre de usuario: <input onChange={handlerChange} name="username" value={user.username} type="text" placeholder="Nombre de usuario" /></label>
+    
+    <label htmlFor="password">Contraseña: <input onChange={handlerChange} name="password" value={user.password} type="text" placeholder="Contraseña"/></label>
+    
     <button onClick={handlerLogin}>Entrar</button>
-    </>
+    </div>
 )
 }
 export default Login
