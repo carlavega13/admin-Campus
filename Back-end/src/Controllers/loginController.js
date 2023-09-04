@@ -4,7 +4,7 @@ const postUser = require("./dbControllers/postUser")
 const loginController=async(user)=>{
     try {
         const find=await User.findOne({where:{username:user.username}})
-        console.log(find);
+      
  const findUrl= await Domain.findOne({where:{isActive:true}})
  const token=await axios.get(`${findUrl.url}login/token.php?username=${user?.username}&password=${user?.password}&service=moodle_mobile_app`)
 if(token.data.error){

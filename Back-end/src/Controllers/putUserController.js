@@ -22,7 +22,7 @@ try {
             email:email,
             fullname:`${firstName} ${lastName}`,
         })
-        console.log(res1);
+        
                return res1
     }
 } catch (error) {

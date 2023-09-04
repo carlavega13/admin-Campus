@@ -44,7 +44,7 @@ for (let i = 0; i < promisesUsers.length; i++) {
     
 }
 
-console.log(courses);
+
     return courses
  
 } catch (error) {
