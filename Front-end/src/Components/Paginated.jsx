@@ -3,19 +3,12 @@ import s from "../css/Paginated.module.css"
 const Paginated=(props)=>{
     let{allUsersCopiaAmount,page,setPage}=props
 
-let numbers=[]
 let aux=1
 
-while(allUsersCopiaAmount>0){
-    allUsersCopiaAmount=allUsersCopiaAmount-15
-    
-    if(allUsersCopiaAmount>0){
-        
-        numbers.push(aux)
-        aux++
-        
-    }
-    }
+const totalPages = Math.ceil(allUsersCopiaAmount / 15);
+
+  const numbers = Array.from({ length: totalPages }, (_, index) => index + 1);
+
 
  //! este handlres cuando apretemos cualquier numero setea el page en el numero que apretemos 
  const handlerPaginater=(numero)=>{
@@ -24,7 +17,7 @@ while(allUsersCopiaAmount>0){
     }
     //! este handler maneja la flechita de adelante 
     const handlerAdelante=()=>{
-        if(page<aux-1){
+        if(page<totalPages){
             setPage(page+1)
         }
     }

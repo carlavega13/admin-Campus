@@ -1,7 +1,7 @@
 .box{
 display: flex;
 flex-direction: column;
-height: 100vh;
+
 }
 .cell{
     display: flex;
@@ -15,4 +15,12 @@ height: 100vh;
     width: 100%;
     display: flex;
     justify-content: center;
+}
+.names{
+    display: flex;
+    justify-content: space-around;
+}
+.blur{
+    color: transparent; /* Hace que el texto sea transparente */
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
 }

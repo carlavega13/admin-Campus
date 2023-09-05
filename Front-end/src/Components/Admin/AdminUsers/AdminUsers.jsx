@@ -15,19 +15,13 @@ const AdminUsers=()=>{
     })
     const dispatch=useDispatch()
     let {user,allUsers,allUsersCopia}=useSelector(state=>state)
-   let sliceUsers=allUsersCopia
-    if(sliceUsers.length>16){
-        if(page===1){
-      
-          sliceUsers=allUsersCopia?.slice(0*15,page*15)
-      
-        }else{
-      
-          sliceUsers=allUsersCopia?.slice(page*15,page*15+15)
-      
-        }
-        
-      }
+
+    const usuariosPorPagina = 15; // Cantidad de usuarios por página
+    const inicio = (page - 1) * usuariosPorPagina;
+    const fin = inicio + usuariosPorPagina;
+    
+    let sliceUsers = allUsersCopia.slice(inicio, fin);
+ 
     if(allUsers?.length===0){
         dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
         return( 
@@ -71,6 +65,7 @@ alert("Debes selecionar al menos un usuario")
     })
 }
 }
+console.log(sliceUsers?.length);
 return(
     <div>
        <div className={s.box}>
