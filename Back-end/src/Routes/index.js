@@ -7,6 +7,7 @@ const putUser= require("./putUser");
 const getUser = require("./getUser");
 const getGrades = require("./getGrades");
 const postMail = require("./dbRoutes/postMail");
+const getAllUsers = require("./getAllUsers");
 
 const router=Router()
 
@@ -18,4 +19,5 @@ router.put("/putUser", putUser)
 router.post("/getUSer",getUser)
 router.post("/getGrades",getGrades)
 router.post("/postMail",postMail)
+router.post("/getAllUsers",getAllUsers)
 module.exports=router

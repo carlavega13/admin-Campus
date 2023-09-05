@@ -1,9 +1,9 @@
 const postMailController = require("../../Controllers/sendGridControllers/postMailController")
 
-const postMail=(req,res)=>{
+const postMail=async(req,res)=>{
 try {
-     const response=postMailController(req.body)
-    res.status(200).json("si")
+     const response=await postMailController(req.body)
+    res.status(200).json(response)
 } catch (error) {
     res.status(200).json(error.message)
 }

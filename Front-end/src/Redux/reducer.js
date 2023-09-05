@@ -1,4 +1,4 @@
-import { GET_COURSES, LOGIN, PUT_USER } from "./actionTypes"
+import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER } from "./actionTypes"
 
 const initialState={
     user:{
@@ -10,7 +10,8 @@ const initialState={
         phone:"",
         email:""
     },
-    courses:[]
+    courses:[],
+    allUsers:[]
 }
 
 const reducer=(state=initialState,action)=>{
@@ -20,11 +21,7 @@ switch (action.type) {
             ...state,
             user:{
                 ...action.payload
-            //     id:action.payload.id,
-            //  username:action.payload.username,
-            //  domain:action.payload.domain,
-            //  token:action.payload.token,
-            //  rol:action.payload.rol
+
             }
         }
     case GET_COURSES:
@@ -40,6 +37,11 @@ switch (action.type) {
             ...action.payload
          }
         }
+        case GET_ALL_USERS:
+            return{
+                ...state,
+                allUsers:[...action.payload]
+            }
     default:
         return {...state}
 }

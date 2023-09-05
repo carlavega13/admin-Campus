@@ -22,11 +22,18 @@ return(
     {
         courses?.map((course)=>{
           return (
-            <div onClick={()=>navigate(`courseDetail/${course.id}`)} className={s.row}>
-            <div>{course?.name}</div>
+            <div  className={s.row}>
+            <div onClick={()=>navigate(`courseDetail/${course.id}`)}>{course?.name}</div>
             <div>{course?.enrolledPeople.length}</div>
             <div>
-                {course?.teacher.map(tea=><div>{tea.fullname}<a href={`https://wa.me/${tea.phone1}`}><BsWhatsapp/></a><GrMailOption/></div>)}
+                {course?.teacher.map(tea=>{
+                    if(!tea.phone1){
+
+                       return(<div>{tea.fullname}<GrMailOption/></div>)
+                    }else{
+                        return(<div>{tea.fullname}<a href={`https://wa.me/${tea.phone1}`}><BsWhatsapp/></a><GrMailOption/></div>)
+                    }
+                })}
             </div>
             </div>
           )

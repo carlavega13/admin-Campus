@@ -1,5 +1,5 @@
 
-import { GET_COURSES, LOGIN, PUT_USER } from "./actionTypes";
+import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER } from "./actionTypes";
 import axios from "axios"
 import {HOST}from"../../HOST"
 
@@ -36,4 +36,14 @@ return async(dispatch)=>{
       console.log(error);
    }
 }
+}
+export const getAllUsers=(info)=>{
+   return async(dispatch)=>{
+      try {
+         const response=await axios.post(`${HOST}getAllUsers`,info)
+         return dispatch({type:GET_ALL_USERS,payload:response.data})
+      } catch (error) {
+         console.log(error.message);
+      }
+   }
 }

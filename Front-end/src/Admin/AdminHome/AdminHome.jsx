@@ -6,13 +6,12 @@ const AdminHome=()=>{
     // const dispatch=useDispatch()
     const user=useSelector(state =>state.user)
     if(!user?.phone||!user?.email){
-        console.log(user);
         navigate("/firstEditProfile")
         
     }
     return(
     <>
-    <button>USUARIOS</button>
+    <button onClick={()=>navigate("/adminHome/users")}>USUARIOS</button>
     <button onClick={()=>navigate("/adminHome/courses")}>CURSOS</button>
     <button>REPORTES</button>
     </>
