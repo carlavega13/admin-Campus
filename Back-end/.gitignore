@@ -22,5 +22,5 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-# .env
-# ENV-PF.txt
+.env
+ENV-PF.txt
