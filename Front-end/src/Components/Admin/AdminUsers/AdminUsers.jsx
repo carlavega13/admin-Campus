@@ -1,5 +1,5 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getAllUsers } from "../../Redux/actions";
+import { getAllUsers } from "../../../Redux/actions";
 
 const AdminUsers=()=>{
     const dispatch=useDispatch()

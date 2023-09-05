@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import {validator} from "../FirstLoginEditProfile/validator"
-import s from "./FirstLoginEditProfile.module.css"
+import s from "../../css/FirstLoginEditProfile.module.css"
 import { useDispatch, useSelector } from "react-redux"
-import { putUser } from "../Redux/actions"
+import { putUser } from "../../Redux/actions"
 import { useNavigate } from "react-router-dom"
 const FirstLoginEditProfile=()=>{
     const dispatch=useDispatch()

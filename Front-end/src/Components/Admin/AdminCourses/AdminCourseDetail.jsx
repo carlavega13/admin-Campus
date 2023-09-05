@@ -1,8 +1,8 @@
 import { useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
-import s from "./AdminCourseDetail.module.css"
+import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
-import downloadCsv from "../../downloadCsv";
+import downloadCsv from "../../../downloadCsv";
 
 
 const AdminCourseDetail=()=>{

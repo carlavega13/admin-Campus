@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react"
 import { useDispatch, useSelector } from "react-redux"
-import { login } from "../Redux/actions"
+import { login } from "../../Redux/actions"
 import { useNavigate } from "react-router-dom"
-import s from "./Login.module.css"
+import s from "../../css/Login.module.css"
 
 const Login=()=>{
     const navigate=useNavigate()

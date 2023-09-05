@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
-import { getCourses } from "../../Redux/actions";
-import s from "./AdminCourses.module.css"
+import { getCourses } from "../../../Redux/actions";
+import s from "../../../css/AdminCourses.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrMailOption } from 'react-icons/gr';
 import { useNavigate } from "react-router-dom";

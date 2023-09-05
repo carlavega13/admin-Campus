@@ -1,12 +1,12 @@
 import { useState } from 'react'
 import { Route, Routes } from 'react-router-dom'
-import Login from './login/login'
-import AdminHome from './Admin/AdminHome/AdminHome'
-import AdminCourses from './Admin/AdminCourses/AdminCourses'
-import FirstLoginEditProfile from './firstLoginEditProfile/FirstLoginEditProfile'
+import Login from './Components/Login/Login'
+import AdminHome from './Components/Admin/AdminHome/AdminHome'
+import AdminCourses from './Components/Admin/AdminCourses/AdminCourses'
+import FirstLoginEditProfile from './Components/FirstLoginEditProfile/FirstLoginEditProfile'
 import s from "./App.module.css"
-import AdminCourseDetail from './Admin/AdminCourses/AdminCourseDetail'
-import AdminUsers from './Admin/AdminUsers/AdminUsers'
+import AdminCourseDetail from './Components/Admin/AdminCourses/AdminCourseDetail'
+import AdminUsers from './Components/Admin/AdminUsers/AdminUsers'
 
 function App() {
 
@@ -20,7 +20,7 @@ function App() {
    <Route path="/firstEditProfile" element={<FirstLoginEditProfile />}/>
    <Route path="adminHome/courses/courseDetail/:id" element={<AdminCourseDetail/>}/>
    <Route path='/adminHome/users' element={<AdminUsers/>}/>
-   adminHome/courses/courseDetail/2
+
     </Routes>
     </div>
   )
