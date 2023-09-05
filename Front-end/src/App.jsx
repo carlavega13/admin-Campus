@@ -5,6 +5,7 @@ import AdminHome from './Admin/AdminHome/AdminHome'
 import AdminCourses from './Admin/AdminCourses/AdminCourses'
 import FirstLoginEditProfile from './firstLoginEditProfile/FirstLoginEditProfile'
 import s from "./App.module.css"
+import AdminCourseDetail from './Admin/AdminCourses/AdminCourseDetail'
 
 function App() {
 
@@ -16,6 +17,8 @@ function App() {
    <Route path="/adminHome" element={<AdminHome />}/>
    <Route path="/adminhome/courses" element={<AdminCourses />}/>
    <Route path="/firstEditProfile" element={<FirstLoginEditProfile />}/>
+   <Route path="adminHome/courses/courseDetail/:id" element={<AdminCourseDetail/>}/>
+   adminHome/courses/courseDetail/2
     </Routes>
     </div>
   )

@@ -3,8 +3,10 @@ import { getCourses } from "../../Redux/actions";
 import s from "./AdminCourses.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrMailOption } from 'react-icons/gr';
+import { useNavigate } from "react-router-dom";
 const AdminCourses=()=>{
     const dispatch=useDispatch()
+    const navigate=useNavigate()
     const {courses,user}=useSelector(res=>res)
     if(courses.length===0){
         dispatch(getCourses({domain:user.domain,token:user.token}))
@@ -20,7 +22,7 @@ return(
     {
         courses?.map((course)=>{
           return (
-            <div className={s.row}>
+            <div onClick={()=>navigate(`courseDetail/${course.id}`)} className={s.row}>
             <div>{course?.name}</div>
             <div>{course?.enrolledPeople.length}</div>
             <div>
