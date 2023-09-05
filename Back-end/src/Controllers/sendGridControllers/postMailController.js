@@ -1,9 +1,10 @@
 const sgMail=require("./sendGridSetApiKey")
 const postMailController=async(info)=>{
 try {
-    console.log(info);
+
     const msg={
-        ...info
+        ...info,
+        from:"ad.campus.13@gmail.com"
     }
  const response= await sgMail.send(msg)
     return response

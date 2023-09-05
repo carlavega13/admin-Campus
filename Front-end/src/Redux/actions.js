@@ -47,3 +47,14 @@ export const getAllUsers=(info)=>{
       }
    }
 }
+
+// export const sendEmail=(info)=>{
+// return async (dispatch)=>{
+// try {
+//    const response=await axios.post(`${HOST}postMail`,info)
+//    return dispatch({type:SEND_EMAIL,payload:response.data})
+// } catch (error) {
+//    console.log(error.message);
+// }
+// }
+// }

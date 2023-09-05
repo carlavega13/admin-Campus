@@ -9,3 +9,10 @@ height: 100vh;
     justify-content:space-around;
 
 }
+.name{
+    border: 1px solid rgb(135, 236, 135);
+    background-color: rgba(145, 131, 245, 0.581);
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}

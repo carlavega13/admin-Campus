@@ -27,12 +27,9 @@ return(
             <div>{course?.enrolledPeople.length}</div>
             <div>
                 {course?.teacher.map(tea=>{
-                    if(!tea.phone1){
 
-                       return(<div>{tea.fullname}<GrMailOption/></div>)
-                    }else{
-                        return(<div>{tea.fullname}<a href={`https://wa.me/${tea.phone1}`}><BsWhatsapp/></a><GrMailOption/></div>)
-                    }
+                       return(<div>{tea.fullname}<GrMailOption/>{tea.phone1?<a href={`https://wa.me/${tea.phone1}`}><BsWhatsapp/></a>:""}</div>)
+              
                 })}
             </div>
             </div>

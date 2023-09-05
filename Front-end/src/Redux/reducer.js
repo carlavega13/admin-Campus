@@ -11,7 +11,8 @@ const initialState={
         email:""
     },
     courses:[],
-    allUsers:[]
+    allUsers:[],
+    allUsersCopia:[]
 }
 
 const reducer=(state=initialState,action)=>{
@@ -40,7 +41,8 @@ switch (action.type) {
         case GET_ALL_USERS:
             return{
                 ...state,
-                allUsers:[...action.payload]
+                allUsers:[...action.payload],
+                allUsersCopia:[...action.payload]
             }
     default:
         return {...state}

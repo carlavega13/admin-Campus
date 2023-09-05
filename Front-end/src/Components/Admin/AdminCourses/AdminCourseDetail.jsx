@@ -3,6 +3,7 @@ import { useParams } from "react-router-dom"
 import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
 import downloadCsv from "../../../downloadCsv";
+import { BsWhatsapp } from 'react-icons/bs';
 
 
 const AdminCourseDetail=()=>{
@@ -18,7 +19,7 @@ let csvInfo=course.enrolledPeople.map(people=>{
     }
 })
 csvInfo=Papa.unparse(csvInfo)
-console.log(csvInfo);
+
 const handlerDownloadCsv=()=>{
 downloadCsv(csvInfo,`${course.name} alumnos.csv`)
 }
@@ -27,9 +28,9 @@ return(
     {course?.enrolledPeople?.map(student=>{
         return (
             <div className={s.cell}>
-                <div>{student.fullname}</div>
-                <div>{student.email}</div>
-                <div>{student.phone1}</div>
+                <div className={s.name}>{student.fullname}</div>
+                <div className={s.name}>{student.email}</div>
+                <div className={s.name}>{student.phone1}{student.phone1?<a href={`https://wa.me/${student.phone1}`}><BsWhatsapp/></a>:""}</div>
             </div>
         )
     })}
