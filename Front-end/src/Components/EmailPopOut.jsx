@@ -14,7 +14,6 @@ const handleSendEmail=async()=>{
    let confirm=window.confirm('¿Estás seguro de que deseas enviar este email?');
    if(confirm){
     const response=await axios.post(`${HOST}postMail`,{...info,to:props.to})
-    console.log(response.data);
     if(response.data[0].statusCode>=200&&response.data[0].statusCode<300){
         alert("su mensaje a sido enviado")
         props.setFlag(false)

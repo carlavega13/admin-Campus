@@ -65,7 +65,7 @@ alert("Debes selecionar al menos un usuario")
     })
 }
 }
-console.log(sliceUsers?.length);
+
 return(
     <div>
        <div className={s.box}>
