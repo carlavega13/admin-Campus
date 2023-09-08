@@ -1,4 +1,4 @@
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
 import { useParams } from "react-router-dom"
 import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
@@ -8,6 +8,7 @@ import { GrMailOption } from 'react-icons/gr';
 import { useState } from "react";
 import Paginated from "../../Paginated";
 import EmailPopOut from "../../EmailPopOut";
+import { getGrades } from "../../../Redux/actions";
 
 const AdminCourseDetail=()=>{
     const[flag,setFlag]=useState({
@@ -17,21 +18,22 @@ const AdminCourseDetail=()=>{
     const[checkbox,setCheckbox]=useState([])
     const {id}=useParams()
     const [page,setPage]=useState(1)
-    let courses=useSelector(state=>state.courses)
+    let {courses,user}=useSelector(state=>state)
     let course=courses?.find(co=>co.id==id)
     course.enrolledPeople=course.enrolledPeople.filter(student=>student.roles&&student.roles[0]?.shortname!=="teacher")
-
-let csvInfo=course.enrolledPeople.map(people=>{
-    return {
-        nombre:people.fullname,
-        email:people.email,
-        telefono:people.phone1
-    }
-})
-csvInfo=Papa.unparse(csvInfo)
-
-const handlerDownloadCsv=()=>{
-downloadCsv(csvInfo,`${course.name} alumnos.csv`)
+   const dispatch=useDispatch()
+   let csvInfo=course.enrolledPeople.map(people=>{
+       return {
+           nombre:people.fullname,
+           email:people.email,
+           telefono:people.phone1
+        }
+    })
+    csvInfo=Papa.unparse(csvInfo)
+    
+    const handlerDownloadCsv=()=>{
+        downloadCsv(csvInfo,`${course.name} alumnos.csv`)
+        dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
 }
 
 const usuariosPorPagina = 15; // Cantidad de usuarios por página

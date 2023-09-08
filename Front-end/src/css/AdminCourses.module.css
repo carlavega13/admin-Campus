@@ -4,8 +4,11 @@
  /* background-color: brown; */
  padding: 1em;
  border: 1px solid black;
-cursor: pointer;
  
+}
+.name{
+    cursor: pointer;
+
 }
 .box{
     background-color: aqua;

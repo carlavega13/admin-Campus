@@ -1,17 +1,18 @@
 const axios=require("axios")
 const getGradesController=async(body)=>{
 try {
-    console.log(body); 
-    const params = {
-        wstoken: body.token,
-        wsfunction: 'core_grades_get_grades',
+    // console.log(body); 
+   let{people,token,domain,id}=body
+   let grades=await axios.get(`${domain}/webservice/rest/server.php`, {
+    params: {
+        wstoken: token,
+        wsfunction: "gradereport_user_get_grade_items",
         moodlewsrestformat: 'json',
-        courseid: 2,  // Reemplaza con el ID del curso deseado
-        userid: 3,  // Opcional: Reemplaza con el ID del usuario si es necesario
-    };
-    const grade= await axios.post(`${body.domain}/webservice/rest/server.php`,null,{params})
-    console.log(grade.data);
-    return grade.data
+        courseid:id
+    }
+})
+console.log(grades.data);
+  return grades.data
 } catch (error) {
     
 }

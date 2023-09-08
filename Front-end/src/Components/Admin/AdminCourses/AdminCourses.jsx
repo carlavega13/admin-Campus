@@ -58,7 +58,7 @@ return(
         courses?.map((course)=>{
           return (
             <div  className={s.row}>
-            <div onClick={()=>navigate(`courseDetail/${course.id}`)}>{course?.name}</div>
+            <div className={s.name} onClick={()=>navigate(`courseDetail/${course.id}`)}>{course?.name}</div>
             <div>{course?.enrolledPeople.length}</div>
             <div>
                 {course?.teacher.map(tea=>{
