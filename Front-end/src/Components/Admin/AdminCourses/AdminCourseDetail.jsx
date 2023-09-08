@@ -20,20 +20,24 @@ const AdminCourseDetail=()=>{
     const [page,setPage]=useState(1)
     let {courses,user}=useSelector(state=>state)
     let course=courses?.find(co=>co.id==id)
-    course.enrolledPeople=course.enrolledPeople.filter(student=>student.roles&&student.roles[0]?.shortname!=="teacher")
+    course.enrolledPeople=course.enrolledPeople?.filter(student=>student.roles&&student.roles[0]?.shortname!=="teacher"&&student.roles[0]?.shortname!=="editingteacher")
    const dispatch=useDispatch()
-   let csvInfo=course.enrolledPeople.map(people=>{
-       return {
-           nombre:people.fullname,
-           email:people.email,
-           telefono:people.phone1
+
+   if(!course.enrolledPeople.find((pe)=>pe.grades)){
+    dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
+    
+       }
+    let csvInfo=course.enrolledPeople.map(people=>{
+        return {
+            nombre:people.fullname,
+            email:people.email,
+            telefono:people.phone1
         }
     })
     csvInfo=Papa.unparse(csvInfo)
     
     const handlerDownloadCsv=()=>{
         downloadCsv(csvInfo,`${course.name} alumnos.csv`)
-        dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
 }
 
 const usuariosPorPagina = 15; // Cantidad de usuarios por página
@@ -81,13 +85,16 @@ return(
         <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Telefono</h4>
+        <h4 className={flag?.state?s.blur:s.normal}>Calificación</h4>
         </div>
     {sliceUsers?.map(student=>{
+        
         return (
             <div className={s.cell}>
                 <div className={s.name}>{student.fullname}</div>
                 <div className={s.name}><input value={student.email} onClick={handlerCheckBox} type="checkbox" />{student.email}<GrMailOption onClick={()=>handleEnvolope(student.email)}/></div>
                 <div className={s.name}>{student.phone1}{student.phone1?<a href={`https://wa.me/${student.phone1}`}><BsWhatsapp/></a>:""}</div>
+                <div className={s.name}>{student.grades&&student.grades[student.grades.length-1].graderaw?student.grades[student.grades.length-1].graderaw:0}</div>
             </div>
         )
     })}

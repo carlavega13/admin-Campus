@@ -52,7 +52,8 @@ export const getGrades=(people,token,domain,id)=>{
    return async(dispatch)=>{
 try {
    const response= await axios.post(`${HOST}getGrades`,{people,token,domain,id})
-   return dispatch({type:GET_GRADES,payload:response})
+   console.log(response.data);
+   return dispatch({type:GET_GRADES,payload:{response:response.data,id}})
 } catch (error) {
    console.log(error.message);
 }

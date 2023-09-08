@@ -11,7 +11,7 @@ const getPeopleInCourse=async (payload)=>{
                 courseid:courseId
             }
         })
-    
+
         for (let i = 0; i < people.data.length; i++) {
 
     
