@@ -48,7 +48,7 @@ switch (action.type) {
                 let find=state.courses.findIndex(course=>course.id==action.payload.id)
                 let res=state.courses
                 res[find].enrolledPeople=action.payload.response
-                console.log("caca",find);
+              
                 return{
                     ...state,
                     courses:res

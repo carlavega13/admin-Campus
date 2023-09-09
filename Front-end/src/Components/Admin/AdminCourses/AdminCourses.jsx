@@ -51,15 +51,21 @@ const AdminCourses=()=>{
                     to:to
                 })
                 }
+                
 return(
     <div className={s.fondo}>
+                  <div className={s.names}>
+        <h4 className={flag?.state?s.blur:s.normal}>Curso</h4>
+        <h4 className={flag?.state?s.blur:s.normal}>Cantidad de alumnos</h4>
+        <h4 className={flag?.state?s.blur:s.normal}>Profesor</h4>
+              </div>
         <div className={s.box}>
     {
         courses?.map((course)=>{
           return (
             <div  className={s.row}>
-            <div className={s.name} onClick={()=>navigate(`courseDetail/${course.id}`)}>{course?.name}</div>
-            <div>{course?.enrolledPeople.length}</div>
+            <div className={s.name} onClick={()=>course?.enrolledPeople.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher").length>0?navigate(`courseDetail/${course.id}`):null}>{course?.name}</div>
+            <div>{course?.enrolledPeople.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher").length}</div>
             <div>
                 {course?.teacher.map(tea=>{
 

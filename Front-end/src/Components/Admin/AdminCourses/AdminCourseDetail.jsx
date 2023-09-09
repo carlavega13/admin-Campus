@@ -20,11 +20,14 @@ const AdminCourseDetail=()=>{
     const [page,setPage]=useState(1)
     let {courses,user}=useSelector(state=>state)
     let course=courses?.find(co=>co.id==id)
-    course.enrolledPeople=course.enrolledPeople?.filter(student=>student.roles&&student.roles[0]?.shortname!=="teacher"&&student.roles[0]?.shortname!=="editingteacher")
+    course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
    const dispatch=useDispatch()
 
    if(!course.enrolledPeople.find((pe)=>pe.grades)){
     dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
+    return(
+        <>LOADING!!!!!!</>
+    )
     
        }
     let csvInfo=course.enrolledPeople.map(people=>{
@@ -79,6 +82,7 @@ const handleEnvolope=(to)=>{
         to:to
     })
     }
+
 return(
     <div className={s.box}>
           <div className={s.names}>
@@ -86,15 +90,17 @@ return(
         <h4 className={flag?.state?s.blur:s.normal}>Email</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Telefono</h4>
         <h4 className={flag?.state?s.blur:s.normal}>Calificación</h4>
+        <h4 className={flag?.state?s.blur:s.normal}>Porcentaje de finalizacion</h4>
         </div>
     {sliceUsers?.map(student=>{
-        
+       let progress= student?.enrolledcourses?.find(co=>co.id==id).progress
         return (
             <div className={s.cell}>
                 <div className={s.name}>{student.fullname}</div>
                 <div className={s.name}><input value={student.email} onClick={handlerCheckBox} type="checkbox" />{student.email}<GrMailOption onClick={()=>handleEnvolope(student.email)}/></div>
                 <div className={s.name}>{student.phone1}{student.phone1?<a href={`https://wa.me/${student.phone1}`}><BsWhatsapp/></a>:""}</div>
                 <div className={s.name}>{student.grades&&student.grades[student.grades.length-1].graderaw?student.grades[student.grades.length-1].graderaw:0}</div>
+                <div className={s.name}>{progress?progress.toFixed(2):"0.00"}%</div>
             </div>
         )
     })}

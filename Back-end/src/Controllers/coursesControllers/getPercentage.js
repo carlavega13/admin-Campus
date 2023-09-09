@@ -13,7 +13,8 @@ const getPercentage=async(ids,domain,token)=>{
         })
       
         let response=await Promise.all(promises).then(res=>res)
-  
+
+
         return response
 
     } catch (error) {
