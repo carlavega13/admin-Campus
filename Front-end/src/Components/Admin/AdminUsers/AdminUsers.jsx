@@ -6,7 +6,9 @@ import s from "../../../css/AdminUsers.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrMailOption } from 'react-icons/gr';
 import EmailPopOut from "../../EmailPopOut";
+import { useNavigate } from "react-router-dom";
 const AdminUsers=()=>{
+    const navigate=useNavigate()
     const [page,setPage]=useState(1)
     const[checkbox,setCheckbox]=useState([])
     const[flag,setFlag]=useState({
@@ -77,7 +79,7 @@ return(
         {sliceUsers?.map(user=>{
                 return(
                     <div className={s.cell}>
-                      <div className={s.info}>{user.fullname}</div>
+                      <div onClick={()=>navigate(`/adminHome/users/${user.id}`)} className={s.info}>{user.fullname}</div>
                       <div className={s.info}><input value={user.email} onClick={handlerCheckBox} type="checkbox" />{user.email}<GrMailOption  onClick={()=>handleEnvolope(user.email)}/></div>
                       <div className={s.info}>{user.phone1}{user.phone1?<a href={`https://wa.me/${user.phone1}`}><BsWhatsapp /></a>:""}</div>
                       
