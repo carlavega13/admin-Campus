@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER } from "./actionTypes"
+import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER,GET_GRADES } from "./actionTypes"
 
 const initialState={
     user:{
@@ -44,6 +44,16 @@ switch (action.type) {
                 allUsers:[...action.payload],
                 allUsersCopia:[...action.payload]
             }
+            case GET_GRADES:
+                let find=state.courses.findIndex(course=>course.id==action.payload.id)
+                let res=state.courses
+                res[find].enrolledPeople=action.payload.response
+              
+                return{
+                    ...state,
+                    courses:res
+                }
+                    
     default:
         return {...state}
 }

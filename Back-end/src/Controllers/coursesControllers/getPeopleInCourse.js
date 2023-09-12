@@ -11,9 +11,10 @@ const getPeopleInCourse=async (payload)=>{
                 courseid:courseId
             }
         })
-    
+
         for (let i = 0; i < people.data.length; i++) {
-      
+
+    
             if(!people.data[i].phone1){
                 let findDb= await User.findOne({where:{username:people.data[i].username}})
                 
@@ -40,7 +41,7 @@ const getPeopleInCourse=async (payload)=>{
                 }
             }
         })
-       
+    //    console.log([courseId,teachers,...people.data]);
         return [courseId,teachers,...people.data]
         
     } catch (error) {

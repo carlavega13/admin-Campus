@@ -1,5 +1,5 @@
 
-import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER } from "./actionTypes";
+import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN } from "./actionTypes";
 import axios from "axios"
 import {HOST}from"../../HOST"
 
@@ -48,13 +48,16 @@ export const getAllUsers=(info)=>{
    }
 }
 
-// export const sendEmail=(info)=>{
-// return async (dispatch)=>{
-// try {
-//    const response=await axios.post(`${HOST}postMail`,info)
-//    return dispatch({type:SEND_EMAIL,payload:response.data})
-// } catch (error) {
-//    console.log(error.message);
-// }
-// }
-// }
+export const getGrades=(people,token,domain,id)=>{
+   return async(dispatch)=>{
+try {
+   const response= await axios.post(`${HOST}getGrades`,{people,token,domain,id})
+
+   return dispatch({type:GET_GRADES,payload:{response:response.data,id}})
+} catch (error) {
+   console.log(error.message);
+}
+   }
+
+}
+
