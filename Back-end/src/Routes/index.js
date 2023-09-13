@@ -20,5 +20,18 @@ router.post("/getUSer",getUser)
 router.post("/postMail",postMail)
 router.post("/getAllUsers",getAllUsers)
 router.post("/getGrades",getGrades)
-router.get("/",(req,res)=>res.status(200).json("LISTO"))
+router.get("/",(req,res)=>{
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Soy un web service</title>
+</head>
+<body>
+    <h1>Soy un web service</h1>
+    <!-- El contenido de tu página web puede ir aquí -->
+</body>
+</html>
+`;
+    res.status(200).send(html)})
 module.exports=router
