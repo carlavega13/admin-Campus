@@ -65,9 +65,9 @@ return(
           return (
             <div  className={s.row}>
             <div className={s.name} onClick={()=>course?.enrolledPeople.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher").length>0?navigate(`courseDetail/${course.id}`):null}>{course?.name}</div>
-            <div>{course?.enrolledPeople.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher").length}</div>
+            <div>{course?.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher").length}</div>
             <div>
-                {course?.teacher.map(tea=>{
+                {course?.teacher?.map(tea=>{
 
                        return(<div>{tea.fullname}<GrMailOption  onClick={()=>handleEnvolope(user.email)}/><input value={tea.email} onClick={handlerCheckBox} type="checkbox" />{tea.phone1?<a href={`https://wa.me/${tea.phone1}`}><BsWhatsapp/></a>:""}</div>)
               

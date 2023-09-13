@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "nodemon -L"
+    "start": "node index.js",
+    "build": "echo -L"
   },
   "dependencies": {
     "@sendgrid/mail": "^7.7.0",
