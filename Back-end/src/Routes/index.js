@@ -20,4 +20,5 @@ router.post("/getUSer",getUser)
 router.post("/postMail",postMail)
 router.post("/getAllUsers",getAllUsers)
 router.post("/getGrades",getGrades)
+router.get("/",(req,res)=>res.status(200).json("LISTO"))
 module.exports=router
