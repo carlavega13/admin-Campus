@@ -15,6 +15,7 @@ flex-direction: column;
     width: 100%;
     display: flex;
     justify-content: center;
+    padding: 1em;
 }
 .names{
     display: flex;
@@ -23,4 +24,8 @@ flex-direction: column;
 .blur{
     color: transparent; /* Hace que el texto sea transparente */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
+}
+.normal{
+    border: 1px solid rgb(63, 89, 84);  
+    padding: 1em;
 }

@@ -20,7 +20,7 @@ for (let i = 0; i < grades.data.usergrades.length; i++) {
  let ids=people.map(p=>p.id)
 
 let response=await getPercentage(ids,domain,token)
-// console.log(people);
+
 people=people.map((pep,index)=>{
     pep={
         ...pep,
@@ -29,7 +29,7 @@ enrolledcourses:response[index]
     return pep
 
 })
-// console.log(people);
+
   return people
 } catch (error) {
     

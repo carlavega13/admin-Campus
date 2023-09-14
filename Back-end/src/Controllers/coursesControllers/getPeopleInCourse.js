@@ -41,7 +41,7 @@ const getPeopleInCourse=async (payload)=>{
                 }
             }
         })
-       console.log([courseId,teachers,...people.data]);
+
         return [courseId,teachers,...people.data]
         
     } catch (error) {
