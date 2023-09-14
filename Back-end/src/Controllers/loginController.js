@@ -7,11 +7,11 @@ const loginController=async(user)=>{
       
  const findUrl= await Domain.findOne({where:{isActive:true}})
  const token=await axios.get(`${findUrl.url}login/token.php?username=${user?.username}&password=${user?.password}&service=moodle_mobile_app`)
+ console.log(token.data,findUrl);
 if(token.data.error){
     throw new Error("no fue posible iniciar sesion por favor revise su informacion y vuelva a intentarlo")
 }
 if(!find){
-
    const response= await postUser({
        ...user,
        token:token.data.token
@@ -45,11 +45,3 @@ throw new Error(error.message)
 }
 module.exports=loginController
 
-// if(!find){
-
-//    const response= await postUser({
-//        ...user,
-//        token:token.data.token
-//     })
-//     return response
-//    }
