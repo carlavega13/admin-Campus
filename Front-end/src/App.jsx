@@ -9,6 +9,7 @@ import AdminUsers from './Components/Admin/AdminUsers/AdminUsers'
 import AdminUserDetail from './Components/Admin/AdminUsers/AdminUserDetail'
 import LoginPage from './Components/Login/LoginPage'
 import ChangeDomain from './Components/Admin/AdminHome/ChangeDomain'
+import CreateUser from './Components/Admin/AdminHome/CreateUser'
 
 function App() {
 
@@ -23,7 +24,8 @@ function App() {
    <Route path="adminHome/courses/courseDetail/:id" element={<AdminCourseDetail/>}/>
    <Route path='/adminHome/users' element={<AdminUsers/>}/>
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
-   <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}></Route>
+   <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}/>
+   <Route path='/adminHome/changeDomain/createUser/:isSuperAdmin' element={<CreateUser/>}/>
 
     </Routes>
     </div>

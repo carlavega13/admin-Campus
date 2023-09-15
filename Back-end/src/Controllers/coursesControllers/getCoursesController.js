@@ -12,7 +12,7 @@ const getCoursesController=async(user)=>{
     let promises=[]
 
 
-console.log(courses.data);
+
         courses.data.shift()
 courses=courses.data.map((course)=>{
     promises.push(getPeopleInCourse({domain:user.domain,token:user.token,courseId:course.id}))

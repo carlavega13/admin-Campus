@@ -1,15 +1,29 @@
 import { useState } from "react"
+import axios from "axios"
+import { HOST } from "../../../../HOST"
+import { useNavigate } from "react-router-dom"
 
 const ChangeDomain=()=>{
+  const navigate=useNavigate()
     
     const [domain,setDomain]=useState("")
     let urlRegex=/^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/
-    const handleDomain=()=>{
+    const [flag,setFlag]=useState(false)
+    const handleDomain=async()=>{
         if(!urlRegex.test(domain)){
-        return alert("Esta URL no es valida")
+        return  alert("Esta URL no es valida")
         }
-        
+      if(  confirm("Seguro que quieres cambiar la URL?")){
+        const res=await axios.post(`${HOST}postDomain`,domain)
+if(res.data==="debe crear un usuario superAdmin para esta url"){
+  setFlag(true)
+alert("tu mama")
+}
+      }
             }
+const handleCreateUser=()=>{
+navigate("/adminHome/changeDomain/createUser/true")
+}
  return(
     <div>
 
@@ -19,6 +33,10 @@ const ChangeDomain=()=>{
     <p>Recordá que la URL debe ser valida para una instancia de Moodle.
         Ejemplo: "https://ejemplo.ar/moodleejemplo/"
     </p>
+    {flag&&<div>
+      <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
+      <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
+      </div>}
     </div>
  )   
 }
