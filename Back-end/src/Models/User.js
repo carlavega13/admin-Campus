@@ -27,6 +27,10 @@ module.exports = (sequelize) => {
         defaultValue: 'user'
           
       },
+      isSuperAdmin:{
+        type:DataTypes.BOOLEAN,
+        defaultValue: false
+      },
       firstname:{
         type: DataTypes.STRING,
         

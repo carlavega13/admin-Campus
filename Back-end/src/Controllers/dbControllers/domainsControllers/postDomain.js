@@ -1,7 +1,12 @@
 
 const {Domain}=require("../../../db")
+const getUserForDomain=require("./getUserForDomain")
 const postDomain=async({domain})=>{
     try {
+       const res= await getUserForDomain(domain)
+      if(!res){
+        return "debe crear un usuario superAdmin para esta url"
+      }
         const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
         if(typeof domain==="string"){
             if(urlRegex.test(domain)){
@@ -20,6 +25,7 @@ const postDomain=async({domain})=>{
             return response
         }
     }
+    return res
 } catch (error) {
     return error.message
 }
