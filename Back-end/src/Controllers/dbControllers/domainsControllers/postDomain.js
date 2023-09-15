@@ -1,4 +1,4 @@
-const { response } = require("express");
+
 const {Domain}=require("../../../db")
 const postDomain=async({domain})=>{
     try {
