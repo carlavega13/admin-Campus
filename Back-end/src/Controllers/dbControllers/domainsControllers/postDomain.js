@@ -4,7 +4,7 @@ const getUserForDomain=require("./getUserForDomain")
 const postDomain=async({domain})=>{
     try {
        const res= await getUserForDomain(domain)
-    //    console.log(res);
+       console.log("res",res);
       if(!res){
         return "debe crear un usuario superAdmin para esta url"
       }

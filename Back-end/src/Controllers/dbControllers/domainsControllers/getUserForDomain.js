@@ -8,12 +8,13 @@ try {
         isSuperAdmin: true
     }})
 
+    
+    for (let i = 0; i < admins.length; i++) {
    
-
-   for (let i = 0; i < admins.length; i++) {
-       
+       console.log(i);
 
    let res= await axios.get(`${domain}login/token.php?username=${admins[i].username}&password=${admins[i].password}&service=moodle_mobile_app`)
+//    console.log(res.data);
    if(res.data.token){
      
 return true
@@ -23,7 +24,7 @@ return true
 return false
 
 } catch (error) {
-    
+    console.log(error.message);
 }
 }
 module.exports=getUserForDomain
