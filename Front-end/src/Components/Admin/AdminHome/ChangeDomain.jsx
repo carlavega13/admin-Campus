@@ -3,6 +3,7 @@ import axios from "axios"
 import { HOST } from "../../../../HOST"
 import CreateUser from "./CreateUser"
 import { useDispatch } from "react-redux"
+import { deleteAll } from "../../../Redux/actions"
 
 const ChangeDomain=()=>{
   
@@ -26,6 +27,7 @@ if(res.data==="debe crear un usuario superAdmin para esta url"){
 }
 if(res.data.id){
   alert(`La URL activa ahora es: ${res.data.url}. Por favor ingrese denuevo con un usuario para este dominio`)
+  dispatch(deleteAll())
 }
       }
             }
