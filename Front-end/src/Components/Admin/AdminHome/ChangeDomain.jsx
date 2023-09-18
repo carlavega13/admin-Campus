@@ -4,9 +4,10 @@ import { HOST } from "../../../../HOST"
 import CreateUser from "./CreateUser"
 import { useDispatch } from "react-redux"
 import { deleteAll } from "../../../Redux/actions"
+import { useNavigate } from "react-router-dom"
 
 const ChangeDomain=()=>{
-  
+  const navigate=useNavigate()
   const dispatch=useDispatch()
     
     const [domain,setDomain]=useState("")
@@ -31,6 +32,7 @@ if(res.data==="Esta URL es la misma que esta activa en estos momentos"){
 if(res.data.id){
   alert(`La URL activa ahora es: ${res.data.url}. Por favor ingrese denuevo con un usuario para este dominio`)
   dispatch(deleteAll())
+  navigate("/")
 }
       }
             }
