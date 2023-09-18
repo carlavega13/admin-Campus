@@ -11,10 +11,10 @@ try {
     
     for (let i = 0; i < admins.length; i++) {
    
-       console.log(i);
+
 
    let res= await axios.get(`${domain}login/token.php?username=${admins[i].username}&password=${admins[i].password}&service=moodle_mobile_app`)
-//    console.log(res.data);
+
    if(res.data.token){
      
 return true

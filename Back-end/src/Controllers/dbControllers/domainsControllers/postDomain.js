@@ -4,30 +4,45 @@ const getUserForDomain=require("./getUserForDomain")
 const postDomain=async({domain})=>{
     try {
        const res= await getUserForDomain(domain)
-       console.log("res",res);
+   
       if(!res){
         return "debe crear un usuario superAdmin para esta url"
       }
         const urlRegex = /^(https?|ftp):\/\/[^\s/$.?#].[^\s]*$/;
         if(typeof domain==="string"){
             if(urlRegex.test(domain)){
-                const find = await Domain.findOne({where:{isActive:true}})
-                if(find){
+                const actualDomain= await Domain.findOne({where:{isActive:true}})
+                console.log(actualDomain);
+                if (!actualDomain) {
+                   let find=await Domain.findOne({where:{url:domain}})
+                    if(find){
+                        await find.update({isActive:true})
+                    }else{
+                      find=  await Domain.create({url:domain,isActive:true})
+                        
+                    }
+                     return find
+                }
+     
+                if(actualDomain.url==domain){
+                    return "Esta URL es la misma que esta activa en estos momentos"
+                }else{
+                    const find=await Domain.findOne({where:{url:domain}})
+   
+                    await actualDomain.update({isActive:false})
+                    if(find){
+                        await find.update({isActive:true})
+                        return find
+                    }else{
+                        const response=await Domain.create({url:domain,isActive:true})
 
-                    find.update({isActive:false})
+                        return response
+                    }
                 }
-                const findCopy=await Domain.findOne({where:{url:domain}})
-                if(findCopy){
-                    findCopy.update({isActive:true})
-                    return findCopy
-                }
-               
-            const response= await Domain.create({url:domain,isActive:true})
-            return response
+            }
         }
-    }
-    return res
 } catch (error) {
+    console.log(error.message);
     return error.message
 }
 }

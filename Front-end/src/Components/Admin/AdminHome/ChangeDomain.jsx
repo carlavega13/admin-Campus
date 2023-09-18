@@ -25,6 +25,9 @@ if(res.data==="debe crear un usuario superAdmin para esta url"){
   setFlags({...flags,warningFlag:true})
 
 }
+if(res.data==="Esta URL es la misma que esta activa en estos momentos"){
+  alert(res.data)
+}
 if(res.data.id){
   alert(`La URL activa ahora es: ${res.data.url}. Por favor ingrese denuevo con un usuario para este dominio`)
   dispatch(deleteAll())
