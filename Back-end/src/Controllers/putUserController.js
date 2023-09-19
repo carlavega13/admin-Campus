@@ -1,6 +1,5 @@
 const{User}=require("../db")
-const axios=require("axios")
-const putUserController=async({firstName,lastName,DNI,phone,email,id})=>{
+const putUserController=async({firstName,lastName,DNI,phone,email,id,domain})=>{
 try {
     const userToEdit= await User.findOne({where:{id:id}})
     if(DNI&&DNI.length>5){
@@ -10,9 +9,10 @@ try {
             fullname:`${firstName} ${lastName}`,
             dni:DNI.toString(),
             phone:phone,
-            email:email
+            email:email,
+           
         })
-   return res
+   return{...res,domain}
     }else{
 
         const res1= await userToEdit.update({
@@ -21,9 +21,23 @@ try {
             phone:phone,
             email:email,
             fullname:`${firstName} ${lastName}`,
+           
         })
         
-               return res1
+       
+               return {
+                id:res1.id,
+                username:res1.username,
+                token:res1.token,
+                rol:res1.rol,
+                isSuperAdmin:res1.isSuperAdmin,
+                 firsname:res1.firsname,
+                 lastname:res1.lastname,
+                 phone:res1.phone,
+                 email:res1.email,
+                 fullname:`${res1.firstname} ${res1.lastname}`,
+                 domain:domain
+               }
     }
 } catch (error) {
     
