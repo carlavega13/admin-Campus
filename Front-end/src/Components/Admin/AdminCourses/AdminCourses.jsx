@@ -24,6 +24,16 @@ const AdminCourses=()=>{
             </>
         )
     }
+    if(courses==="No hay cursos"){
+        return(
+            <div>
+                <h1>No hay cursos que mostrar</h1>
+                
+                <button onClick={()=>navigate("/adminHome")}>HOME</button>
+        <button onClick={()=>navigate("/createCourse")}>Crea un curso</button>
+            </div>
+        )
+    }
     const handlerCheckBox=(e)=>{
 
         if(e.target.checked){

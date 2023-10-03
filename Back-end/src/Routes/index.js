@@ -9,6 +9,8 @@ const postMail = require("./dbRoutes/postMail");
 const getAllUsers = require("./getAllUsers");
 const getGrades = require("./getGrades");
 const postCourse = require("./postCourse");
+const postUserMoodle = require("./postUserMoodle");
+const putUserMoodle = require("./putUserMoodle");
 
 const router=Router()
 
@@ -22,6 +24,8 @@ router.post("/postMail",postMail)
 router.post("/getAllUsers",getAllUsers)
 router.post("/getGrades",getGrades)
 router.post("/postCourse",postCourse)
+router.post("/postUserMoodle",postUserMoodle)
+router.post("/putUserMoodle",putUserMoodle)
 router.get("/",(req,res)=>{
     const html = `
 <!DOCTYPE html>

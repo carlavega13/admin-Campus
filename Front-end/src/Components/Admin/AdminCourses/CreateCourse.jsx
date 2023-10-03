@@ -1,14 +1,18 @@
 import { useState } from "react"
 import axios from "axios"
 import { HOST } from "../../../../HOST"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import {getCourses }from "../../../Redux/actions"
+import { useNavigate } from "react-router-dom"
 const CreateCourse=()=>{
+    const dispatch=useDispatch()
+    const navigate=useNavigate()
     const [info,setInfo]=useState({
         fullname:"",
         shortname:"",
         categoryid:"1"
     })
-    const{domain,username}=useSelector(state=>state.user)
+    const{domain,username,token}=useSelector(state=>state.user)
     const handleChange=(e)=>{
         setInfo({
             ...info,
@@ -24,7 +28,10 @@ const CreateCourse=()=>{
           return  alert(`Hubo un error: ${res.data.message}`)
         }
         if(res.data[0].id){
-           return alert("Su curso se creo correctamente")
+            dispatch(getCourses({domain,token}))
+            alert("Su curso se creo correctamente")
+            navigate("/adminhome/courses")
+             return
         }
         }
         

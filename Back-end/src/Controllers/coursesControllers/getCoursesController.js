@@ -43,8 +43,10 @@ for (let i = 0; i < promisesUsers.length; i++) {
   
     
 }
-
-
+if(courses.length===0){
+    return "No hay cursos"
+}
+console.log(courses);
     return courses
  
 } catch (error) {
