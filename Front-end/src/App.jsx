@@ -10,6 +10,7 @@ import AdminUserDetail from './Components/Admin/AdminUsers/AdminUserDetail'
 import LoginPage from './Components/Login/LoginPage'
 import ChangeDomain from './Components/Admin/AdminHome/ChangeDomain'
 import CreateUser from './Components/Admin/AdminHome/CreateUser'
+import CreateCourse from './Components/Admin/AdminCourses/CreateCourse'
 
 function App() {
 
@@ -26,6 +27,7 @@ function App() {
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
    <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}/>
    <Route path='/adminHome/changeDomain/createUser/:isSuperAdmin' element={<CreateUser/>}/>
+   <Route path='/createCourse' element={<CreateCourse/>}/>
 
     </Routes>
     </div>
