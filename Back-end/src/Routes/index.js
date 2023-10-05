@@ -18,14 +18,14 @@ router.post("/postDomain",createDomain)
 router.post("/postUser",createUser)
 router.post("/login",login)
 router.post("/getCourses",getCourses)
-router.put("/putUser", putUser)
 router.post("/getUSer",getUser)
 router.post("/postMail",postMail)
 router.post("/getAllUsers",getAllUsers)
 router.post("/getGrades",getGrades)
 router.post("/postCourse",postCourse)
 router.post("/postUserMoodle",postUserMoodle)
-router.post("/putUserMoodle",putUserMoodle)
+router.put("/putUser", putUser)
+router.put("/putUserMoodle",putUserMoodle)
 router.get("/",(req,res)=>{
     const html = `
 <!DOCTYPE html>
