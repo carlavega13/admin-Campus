@@ -41,6 +41,7 @@ const CreateCourse=()=>{
     }
  }
 return(<div>
+    <button onClick={()=>navigate("/adminhome/courses")}>ATRAS</button><button onClick={()=>navigate("/adminHome")}>HOME</button>
 <label htmlFor="">Nombre del curso</label>
 <input onChange={handleChange} value={info?.fullname} name="fullname" type="text" placeholder="Nombre del curso" /> 
 <label htmlFor="">Nombre corto</label>
