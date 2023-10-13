@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { Route, Routes } from 'react-router-dom'
 import AdminHome from './Components/Admin/AdminHome/AdminHome'
 import AdminCourses from './Components/Admin/AdminCourses/AdminCourses'
@@ -9,8 +9,8 @@ import AdminUsers from './Components/Admin/AdminUsers/AdminUsers'
 import AdminUserDetail from './Components/Admin/AdminUsers/AdminUserDetail'
 import LoginPage from './Components/Login/LoginPage'
 import ChangeDomain from './Components/Admin/AdminHome/ChangeDomain'
-import CreateUser from './Components/Admin/AdminHome/CreateUser'
 import CreateCourse from './Components/Admin/AdminCourses/CreateCourse'
+import CreateUser from './Components/Admin/AdminUsers/CreateUser'
 
 function App() {
 
@@ -26,8 +26,8 @@ function App() {
    <Route path='/adminHome/users' element={<AdminUsers/>}/>
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
    <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}/>
-   <Route path='/adminHome/changeDomain/createUser/:isSuperAdmin' element={<CreateUser/>}/>
    <Route path='/createCourse' element={<CreateCourse/>}/>
+   <Route path='/createUser' element={<CreateUser/>}/>
 
     </Routes>
     </div>

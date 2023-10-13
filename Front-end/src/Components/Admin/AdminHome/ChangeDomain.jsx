@@ -1,7 +1,7 @@
 import { useState } from "react"
 import axios from "axios"
 import { HOST } from "../../../../HOST"
-import CreateUser from "./CreateUser"
+import CreateAdmin from "./CreateAdmin"
 import { useDispatch } from "react-redux"
 import { deleteAll } from "../../../Redux/actions"
 import { useNavigate } from "react-router-dom"
@@ -60,7 +60,7 @@ const onChangeDomain=(e)=>{
       <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
       <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
       </div>}
-      {flags.componentFlag&&<CreateUser domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>}
+      {flags.componentFlag&&<CreateAdmin domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>}
     </div>
  )   
 }

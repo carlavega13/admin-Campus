@@ -71,6 +71,7 @@ alert("Debes selecionar al menos un usuario")
 return(
     <div>
         <button onClick={()=>navigate("/adminHome")}>HOME</button>
+        <button onClick={()=>navigate("/createUser")}>Crear usuario</button>
        <div className={s.box}>
         <div className={s.names}>
         <h4 className={flag.state?s.blur:s.normal}>Nombres</h4>
