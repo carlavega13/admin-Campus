@@ -1,13 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers } from "../../../Redux/actions";
-import Paginated from "../../Paginated";
 import { useState } from "react";
 import s from "../../../css/AdminUsers.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
-import { GrMailOption } from 'react-icons/gr';
 import EmailPopOut from "../../EmailPopOut";
 import { useNavigate } from "react-router-dom";
-
 import { DataGrid } from '@mui/x-data-grid';
 const AdminUsers=()=>{
     const navigate=useNavigate()
@@ -29,9 +26,7 @@ const AdminUsers=()=>{
     }
 
 const columns=[
-    { field: 'fullname', headerName: 'NOMBRE',width: 300,description:"Haga click en un nombre para ver el detalle del usuario",
-
-},  
+    { field: 'fullname', headerName: 'NOMBRE',width: 300,description:"Haga click en un nombre para ver el detalle del usuario"},  
     { field: 'email', headerName: 'EMAIL',width: 300},
     {
         field: 'phone1',
