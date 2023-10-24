@@ -92,7 +92,6 @@ const handleEnvolope=(to)=>{
 
 return(
     <div className={s.box}>
-        <button onClick={()=>navigate("/adminHome/courses")}>Atras</button>
         <button onClick={()=>navigate("/adminHome")}>HOME</button>
           <div className={s.names}>
         <h4 className={flag?.state?s.blur:s.normal}>Nombres</h4>

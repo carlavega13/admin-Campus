@@ -20,12 +20,12 @@ function App() {
     <Routes>
    <Route path="/" element={<LoginPage />}/>
    <Route path="/adminHome" element={<AdminHome />}/>
-   <Route path="/adminhome/courses" element={<AdminCourses />}/>
+   {/* <Route path="/adminhome/courses" element={<AdminCourses />}/> */}
    <Route path="/firstEditProfile" element={<FirstLoginEditProfile />}/>
-   <Route path="adminHome/courses/courseDetail/:id" element={<AdminCourseDetail/>}/>
-   <Route path='/adminHome/users' element={<AdminUsers/>}/>
+   <Route path="adminHome/courseDetail/:id" element={<AdminCourseDetail/>}/>
+   {/* <Route path='/adminHome/users' element={<AdminUsers/>}/> */}
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
-   <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}/>
+   {/* <Route path='/adminHome/changeDomain' element={<ChangeDomain/>}/> */}
    <Route path='/createCourse' element={<CreateCourse/>}/>
    <Route path='/createUser' element={<CreateUser/>}/>
 

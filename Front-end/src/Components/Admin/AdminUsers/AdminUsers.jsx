@@ -86,7 +86,7 @@ const columns=[
           onCellClick={(params,e)=>{
             console.log(params,e);
             if(params.field==="fullname"){
-                navigate(`${params.id}`)
+                navigate(`/adminHome/users/${params.id}`)
             }
           
                 }}
