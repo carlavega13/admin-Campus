@@ -46,8 +46,8 @@ const handleCreate=async()=>{
     }
 }
 return(
-    <>
-     <button onClick={()=>navigate("/adminhome/users")}>ATRAS</button><button onClick={()=>navigate("/adminHome")}>HOME</button>
+    <div>
+<button onClick={()=>navigate("/adminHome")}>HOME</button>
     <label htmlFor="">Nombre de usuario</label>
    <input onChange={handleOnChange} name="username" value={info.username}  type="text" placeholder="Nombre de usuario" />
     <label htmlFor="">Contraseña</label>
@@ -59,7 +59,7 @@ return(
     <label htmlFor="">Email</label>
    <input onChange={handleOnChange} name="email" value={info.email} type="text" placeholder="Email"/>
    <button onClick={handleCreate}>Crear usuario</button>
-    </>
+    </div>
 )
 }
 export default CreateUser

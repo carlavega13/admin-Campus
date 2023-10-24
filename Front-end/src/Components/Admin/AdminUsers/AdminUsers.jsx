@@ -6,6 +6,7 @@ import { BsWhatsapp } from 'react-icons/bs';
 import EmailPopOut from "../../EmailPopOut";
 import { useNavigate } from "react-router-dom";
 import { DataGrid } from '@mui/x-data-grid';
+import loading from "../../../public/images/AdminHome/loading-loading-gif.gif"
 const AdminUsers=()=>{
     const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -19,9 +20,9 @@ const AdminUsers=()=>{
         if(allUsers?.length===0){
         dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
         return( 
-            <>
-            LOADING!!!!!
-            </>
+            <div className={s.divLoading}>
+              <img src={loading} alt="loading" className={s.loading} />
+            </div>
         )
     }
 
@@ -48,29 +49,27 @@ const columns=[
           return null;
         },
       },
-
-]
-const rows=allUsers?.map(user=>{
-    return {id:user.id,fullname:user.fullname,email:user.email,phone1:user.phone1?user.phone1:""}
-})
-const handlerSendSelected=()=>{
-if(users.length===0){
-alert("Debes selecionar al menos un usuario")
-}else{
-const usersInfo=users.map(id=>allUsers.find(user=>user.id==id).email)
-
-    setFlag({
-        state:true,
-        to:usersInfo
+    ]
+    const rows=allUsers?.map(user=>{
+        return {id:user.id,fullname:user.fullname,email:user.email,phone1:user.phone1?user.phone1:""}
     })
-}
-}
-
-    return(
+    const handlerSendSelected=()=>{
+    if(users.length===0){
+    alert("Debes selecionar al menos un usuario")
+    }else{
+    const usersInfo=users.map(id=>allUsers.find(user=>user.id==id).email)
+    
+        setFlag({
+            state:true,
+            to:usersInfo
+        })
+    }
+    }
+    
+      return(
         <div>
-                 <button onClick={()=>navigate("/adminHome")}>HOME</button>
-      <button onClick={()=>navigate("/createUser")}>Crear usuario</button>
-                 <div style={{ height: 500, width: '100%'}}>
+          <button onClick={()=>navigate("/createUser")}className={s.btnCreate}>Crear usuario</button>
+          <div style={{ height: 500, width: '100%'}}>
           <DataGrid
            rows={rows}
            columns={columns}
@@ -94,12 +93,11 @@ const usersInfo=users.map(id=>allUsers.find(user=>user.id==id).email)
           
           />
         </div>
-        <button onClick={handlerSendSelected}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
+        <button onClick={handlerSendSelected}
+          className={s.btnEmails}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
         {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
         </div>
-   
-
-    )
-}
-
-export default AdminUsers
+        )
+    }
+    
+    export default AdminUsers

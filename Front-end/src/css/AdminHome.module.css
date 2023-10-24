@@ -3,8 +3,11 @@ p {
     font-weight: bold;
     color: #868AA5;
 }
+.containerAll {
+    width: 100%;
+    display: flex;
+}
 .container {
-    background: red;
     background: #d7d7d8;
     padding: 12px;
     display: flex;
@@ -12,6 +15,7 @@ p {
     position: relative;
     top: -8px;
     left: -8px;
+    width: 12rem;
 }
 .divSettings {
     padding: 0 12px 0 12px;
@@ -19,7 +23,7 @@ p {
     flex-direction: column;
 }
 .divSettings p {
-    cursor: default !important; 
+    cursor: default !important;
 }
 .settings {
     display: flex;
@@ -67,7 +71,34 @@ p {
 }
 .pUrl {
     padding: 0 6px 0 6px;
-    width: 7rem;
     display: flex;
     text-align: center;
+    overflow-wrap: break-word;
+}
+.right {
+    width: 90%;
+}
+.selected {
+    color: #2f3367;
+}
+
+@media (max-width: 1080px) {
+    .containerAll {
+        flex-direction: column;
+    }
+    .container {
+        width: 100%;
+    }
+    .divBtnsOptions {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+    .divBtnsOptions div {
+        width: 12rem;
+        margin-right: 12px;
+        border: 1.5px solid #868AA5
+    }
+    .right {
+        width: 100%;
+    }
 }
