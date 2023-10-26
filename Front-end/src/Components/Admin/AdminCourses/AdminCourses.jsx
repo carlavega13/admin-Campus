@@ -36,7 +36,7 @@ const AdminCourses=()=>{
     }
 const columns=[
     { field: 'course', headerName: 'CURSOS',width: 300,description:"Haga click en un nombre para ver el detalle del curso"},
-    { field: 'usersamount', headerName: 'USUARIOS', description: "USUARIOS",width: 150},
+    { field: 'usersamount', headerName: 'ESTUDIANTES', description: "CANTIDAD DE ESTUDIANTES",width: 150},
     { field: 'teacher', headerName: 'PROFESOR', width: 300,
     renderCell: (params) => {
         const phoneNumber = params.row.phone1;

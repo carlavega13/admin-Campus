@@ -17,6 +17,7 @@ import iconFileSelected from "../../../public/images/AdminHome/fileSelected.png"
 import iconReportSelected from "../../../public/images/AdminHome/reportSelected.png"
 import iconChangeSelected from "../../../public/images/AdminHome/changeSelected.png"
 import iconProfileSelected from "../../../public/images/AdminHome/profileSelected.png"
+import EditProfile from "../../EditProfile/EditProfile.jsx"
 
 const AdminHome = () => {
   const navigate = useNavigate()
@@ -34,7 +35,9 @@ const AdminHome = () => {
     <div className={s.divSettings}>
       <div className={s.settings}>
         <p>{user?.firstName} {user?.lastName}</p>
-        <img src={iconSettings} className={s.iconSettings}/>
+        <img onClick={()=>{
+        setValue("editProfile")
+        }} src={iconSettings} className={s.iconSettings}/>
       </div>
       <p>{user?.username}</p>
     </div>
@@ -88,6 +91,11 @@ const AdminHome = () => {
       value === "changeDomain"
       ? <ChangeDomain/>
       : null
+    }
+    {
+          value === "editProfile"
+          ? <EditProfile/>
+          : null
     }
   </div>
 </div>
