@@ -27,9 +27,13 @@ if(info.phone1){
     url+=`&users[0][phone1]=${info.phone1}`
 }
 const res=await axios(`${url}`)
-if(!res){
-
+console.log(res.data);
+if(!res.data){
+    return "Se actualizo su información"
+}else{
+    return "No se pudo actualizar la información"
 }
+
 } catch (error) {
     console.log(error.message);
 }

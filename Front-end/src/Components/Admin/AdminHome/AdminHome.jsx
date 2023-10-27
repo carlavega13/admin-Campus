@@ -22,7 +22,7 @@ import EditProfile from "../../EditProfile/EditProfile.jsx"
 const AdminHome = () => {
   const navigate = useNavigate()
   const user = useSelector(state => state.user)
-  const [ value, setValue ] = useState("courses");
+  const [ value, setValue ] = useState("users");
 
   useEffect(() => { }, [value])
   if(!user?.phone||!user?.email) {
@@ -94,7 +94,7 @@ const AdminHome = () => {
     }
     {
           value === "editProfile"
-          ? <EditProfile/>
+          ? <EditProfile token={user.token} domain={user.domain} username={user.username}/>
           : null
     }
   </div>

@@ -115,7 +115,7 @@ return(
         />
       </div>
       <button onClick={handlerSendSelected}className={s.btnEmails}>
-          {`Enviar email a todos los usuarios seleccionados`}
+          {`Enviar email a todos los usuarios seleccionados (${teacher.length})`}
       </button>
       {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
     </div>
