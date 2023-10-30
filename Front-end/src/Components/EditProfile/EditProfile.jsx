@@ -6,6 +6,7 @@ import { HOST } from "../../../HOST"
 import { useDispatch, useSelector } from "react-redux"
 import { getAllUsers } from "../../Redux/actions"
 import { useNavigate } from "react-router-dom"
+import CountrySelect from "./CountrySelect" 
 
 const EditProfile=()=>{
     const navigate=useNavigate()
@@ -88,6 +89,7 @@ setError(validator(profile))
 
         }
     }
+    console.log(profile);
 
 return (
     <div className={s.box}>
@@ -105,7 +107,7 @@ return (
         {error?.phone1?<p>{error.phone1}</p>:<></>}
         <label htmlFor="">Email: <input value={profile.email} name="email" onChange={handleChange} type="text" /></label>
         {error?.email?<p>{error.email}</p>:<></>}
-        <label htmlFor="">Pais: <input value={profile.country} name="country" onChange={handleChange} type="text" /></label>
+        <label htmlFor="">Pais: <CountrySelect profile={profile} setProfile={setProfile}/></label>
         {error?.country?<p>{error.country}</p>:<></>}
         <label htmlFor="">Ciudad: <input value={profile.city} name="city" onChange={handleChange} type="text" /></label>
         {error?.city?<p>{error.city}</p>:<></>}

@@ -26,14 +26,20 @@ if(info.email){
 if(info.phone1){
     url+=`&users[0][phone1]=${info.phone1}`
 }
+if(info.country){
+    url+=`&users[0][country]=${info.country}`
+}
+if(info.city){
+    url+=`&users[0][city]=${info.city}`
+}
 const res=await axios(`${url}`)
-console.log(res.data);
+
+
 if(!res.data){
     return "Se actualizo su información"
 }else{
     return "No se pudo actualizar la información"
 }
-
 } catch (error) {
     console.log(error.message);
 }
