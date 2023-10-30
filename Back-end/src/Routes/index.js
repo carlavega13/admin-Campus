@@ -14,6 +14,7 @@ const putUserMoodle = require("./putUserMoodle");
 
 const router=Router()
 
+
 router.post("/postDomain",createDomain)
 router.post("/postUser",createUser)
 router.post("/login",login)
