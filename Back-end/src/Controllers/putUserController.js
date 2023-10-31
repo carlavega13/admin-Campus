@@ -12,7 +12,19 @@ try {
             email:email,
            
         })
-   return{...res,domain}
+  return {
+    id:res.id,
+    username:res.username,
+    token:res.token,
+    rol:res.rol,
+    isSuperAdmin:res.isSuperAdmin,
+     firsname:res.firsname,
+     lastname:res.lastname,
+     phone:res.phone,
+     email:res.email,
+     fullname:`${res.firstname} ${res.lastname}`,
+     domain:domain
+   }
     }else{
 
         const res1= await userToEdit.update({
