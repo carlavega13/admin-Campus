@@ -11,8 +11,6 @@ try {
     if(res.data[0].id){
         await postUser(info)
     }
-    
-
     return res.data
     
 } catch (error) {

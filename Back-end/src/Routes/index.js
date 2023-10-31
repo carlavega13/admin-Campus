@@ -11,6 +11,7 @@ const getGrades = require("./getGrades");
 const postCourse = require("./postCourse");
 const postUserMoodle = require("./postUserMoodle");
 const putUserMoodle = require("./putUserMoodle");
+const postEnrolUser = require("./postEnrolUser");
 
 const router=Router()
 
@@ -27,6 +28,7 @@ router.post("/postCourse",postCourse)
 router.post("/postUserMoodle",postUserMoodle)
 router.put("/putUser", putUser)
 router.put("/putUserMoodle",putUserMoodle)
+router.post("/enrolUser",postEnrolUser)
 router.get("/",(req,res)=>{
     const html = `
 <!DOCTYPE html>
