@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 const Sheet=()=>{
-  const notify = ()=> toast('🦄 Wow so easy!', {
+    const notify = (msg)=> toast(`${msg}`, {
     position: "bottom-center",
     autoClose: 5000,
     hideProgressBar: false,
@@ -12,11 +12,11 @@ const Sheet=()=>{
     progress: undefined,
     theme: "dark",
     });
-  return(
-       <div>
-
-        <button onClick={notify}>Notify!</button>
-        <ToastContainer
+return (
+    <div>
+        <button onClick={()=>notify("esto es una notificación")}>click</button>
+        <div>
+              <ToastContainer
 position="bottom-center"
 autoClose={5000}
 hideProgressBar={false}
@@ -28,9 +28,16 @@ draggable
 pauseOnHover
 theme="dark"
 />
-      </div>
-    
-  )
+        </div>
+       
+    </div>
+)
+
 }
 export default Sheet
+
+
+     
+
+
 

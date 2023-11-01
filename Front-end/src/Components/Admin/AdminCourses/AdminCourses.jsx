@@ -87,6 +87,7 @@ if(teacher.length===0){
 }
 return(
     <div className={s.container}>
+      <button className={s.btnEmails} onClick={()=>navigate("/createCourse")}>Crear curso</button>
       <div >
         <DataGrid className={s.containerDataGrid}
          rows={rows}
