@@ -36,6 +36,13 @@ const handleCreate=async()=>{
             const res=await axios.post(`${HOST}postUserMoodle`,{username,domain,info})
             if(res.data[0].id){
                 dispatch(getAllUsers({domain,token}))
+                setInfo({
+                    username:"",
+                    password:"",
+                    firstname:"",
+                    lastname:"",
+                    email:""
+                })
                 return alert(`El usuario: ${info?.firstname} ${info?.lastname}, se creo correctamente`)
                 
             }
