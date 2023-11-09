@@ -8,7 +8,8 @@ import { useState } from "react";
 import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
 import { DataGrid } from '@mui/x-data-grid';
-
+import EnrolUser from "./EnrolUser";
+ 
 const AdminCourseDetail=()=>{
         const navigate =useNavigate()
     const[flag,setFlag]=useState({
@@ -16,12 +17,13 @@ const AdminCourseDetail=()=>{
         to:""
     })
     const [users,setUsers]=useState([])
+    const [enrolUser,setEnrolUser]=useState(false)
 const {id}=useParams()
-let {courses,user}=useSelector(state=>state)
+let user=useSelector(state=>state.user)
+let courses=useSelector(state=>state.courses)
     let course=courses?.find(co=>co.id==id)
     course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
        const dispatch=useDispatch()
-    
        if(!course.enrolledPeople.find((pe)=>pe.grades)){
         dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
         return(
@@ -103,6 +105,7 @@ const handleSendMail=()=>{
 return(
     <div>
        <button onClick={()=>navigate("/adminHome")}>HOME</button>
+       <button onClick={()=>setEnrolUser(!enrolUser)}>{`Matricular usuario al curso: ${course?.fullname}`}</button>
         <div>
 
         <DataGrid
@@ -123,7 +126,9 @@ return(
         </div>
         <button onClick={handlerDownloadCsv}>Descargar CSV</button>
         <button onClick={handleSendMail}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
-        {flag.state?<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>:""}
+        {flag.state&&<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>}
+        {enrolUser&&<EnrolUser user={user} courseName={course?.fullname} setEnrolUser={setEnrolUser} courseid={id}/>}
+        
     </div>
 )
 }
