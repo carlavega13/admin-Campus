@@ -4,7 +4,7 @@ import s from "../../../css/AdminCourseDetail.module.css"
 import Papa from 'papaparse';
 import downloadCsv from "../../../downloadCsv";
 import { BsWhatsapp } from 'react-icons/bs';
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
 import { DataGrid } from '@mui/x-data-grid';
@@ -26,6 +26,7 @@ let courses=useSelector(state=>state.courses)
        const dispatch=useDispatch()
        if(!course.enrolledPeople.find((pe)=>pe.grades)){
         dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
+        console.log("s",course);
         return(
             <>
             <button onClick={()=>navigate("/adminHome")}>HOME</button>
@@ -34,6 +35,9 @@ let courses=useSelector(state=>state.courses)
         )
         
            }
+           useEffect(()=>{
+
+           },[courses])
         let csvInfo=course.enrolledPeople.map(people=>{
             return {
                 nombre:people.fullname,

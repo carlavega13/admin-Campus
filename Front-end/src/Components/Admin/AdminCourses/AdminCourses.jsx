@@ -4,7 +4,7 @@ import s from "../../../css/AdminCourses.module.css"
 import { BsWhatsapp } from 'react-icons/bs';
 import { GrMailOption } from 'react-icons/gr';
 import { useNavigate } from "react-router-dom";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import EmailPopOut from "../../EmailPopOut";
 import { DataGrid } from '@mui/x-data-grid';
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif"
@@ -34,6 +34,7 @@ const AdminCourses=()=>{
             </div>
         )
     }
+
 const columns=[
     { field: 'course', headerName: 'CURSOS',width: 300,description:"Haga click en un nombre para ver el detalle del curso"},
     { field: 'usersamount', headerName: 'ESTUDIANTES', description: "CANTIDAD DE ESTUDIANTES",width: 150},
@@ -107,6 +108,7 @@ return(
             console.log(params);
             if(params.row.usersamount>0){
                       if(params.field==="course"){
+        
                 navigate(`courseDetail/${params.id}`)
             }
             }

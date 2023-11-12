@@ -6,6 +6,8 @@ import s from "../../css/Login.module.css"
 import userIcon from "../../public/images/Login/Profile.png"
 import passIcon from "../../public/images/Login/mdi_password.png"
 
+
+
 const Login=()=>{
     const navigate=useNavigate()
     const dispatch=useDispatch()
@@ -25,10 +27,12 @@ const Login=()=>{
     }    
     const handlerLogin=()=>{
       try {
-        dispatch(login(user))
+      const res=  dispatch(login(user))
+      console.log("caca",res);
         
       } catch (error) {
         console.log("cada");
+        alert(error.message)
       }
         
     }

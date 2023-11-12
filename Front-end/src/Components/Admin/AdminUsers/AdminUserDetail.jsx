@@ -7,6 +7,7 @@ import s from "../../../css/AdminUserDetail.module.css"
 import { GrMailOption } from 'react-icons/gr';
 import { BsWhatsapp } from 'react-icons/bs';
 import EmailPopOut from "../../EmailPopOut";
+import { DataGrid } from '@mui/x-data-grid';
 
 
 export const dateTransfer=(timeStamp)=>{
@@ -44,53 +45,75 @@ const handleEnvolope=(to)=>{
        grades:response.data[0].grades
     }
  
-a.push(order)
+    a.push(order)
 }
 
 setInfo(a)
 }
 courses()
 },[])
-// console.log(flag.state);
-return(
-    <div>
-        <button onClick={()=>navigate("/adminHome")}>HOME</button>
 
-    <h1>{user?.fullname}</h1>
+
+let aux=0
+info.forEach((i)=>{
+    if(i.grades.length>aux){
+        aux=i.grades.length
+    }
+})
+
+
+
+const columns=[
+    { field: 'course', headerName: 'CURSOS',width: 300},
+    { field: 'lastaccess', headerName: 'ULTIMO ACCESO',width: 100},
+    
+]
+for (let i = 0; i < aux; i++) {
+
+    if(i===aux-1){
+       columns.push({field:`finalactivity`, headerName: 'Calificacion final',width: 300})
+    }else{
+
+        columns.push({field:`activity${i}`, headerName: '',width: 300})
+    }
+    
+}
+
+const rows=info?.map(i=>{
+    let e=0
+let a= {id:i.course.id,course:i.course.fullname,lastaccess:i.course.lastaccess&&`${dateTransfer(i.course.lastaccess)}`}
+i.grades.forEach((element)=>{
+    if(element.itemname){
+
+        a[`activity${e}`]=`${element.itemname}/${element.graderaw?element.graderaw:""}`
+        e++
+    }else{
+        a.finalactivity=element.graderaw&&element.graderaw
+    }
+})
+return a
+})
+
+return(
+    <div> 
+         <button onClick={()=>navigate("/adminHome")}>HOME</button>    
+         <h1>{user?.fullname}</h1>
     <h5 onClick={()=>handleEnvolope(user?.email)}>{user?.email}<GrMailOption/></h5>
     {user.phone1&&<h5>{user?.phone1}<a href={`https://wa.me/${user?.phone1}`}><BsWhatsapp/></a></h5>}
     <h5>{dateTransfer(user.firstaccess)}</h5>
-  {user?.enrolledcourses?.length>0&&info?.length==0?<div>LOADING</div>:
-  <div>
-    <div className={s.names}>
-            <h3>Curso</h3>
-    <h3 className={s.name}>Ultimo acceso</h3>
-        <h3>Calificaciones</h3>
-</div>
-
-      <div className={s.box}>
-    
-    {
-        info?.map(course=>{
-            return(
-                <div className={s.cell}>
-                    <div>{course?.course?.displayname}</div>
-                    {course?.course?.lastaccess&&<div>{dateTransfer(course.course.lastaccess)}</div>}
-                   {course?.grades?.map(grade=>{
-                    return(
-                        <div>
-                            <div>{`${grade?.itemname?grade?.itemname:"Total del curso"}/ ${grade.graderaw?grade.graderaw:"No realizado"}`}</div>
-                        </div>
-                    )
-                   })}
-                </div>
-            )
-
-        })
-    }
+    <div style={{height:"fit-content"}}>
+            <DataGrid
+        columns={columns}
+        rows={rows}
+        initialState={{
+            pagination: {
+              paginationModel: { page: 0, pageSize: 5 },
+            },
+          }}
+          pageSizeOptions={[10,40,50]}
+        /> 
     </div>
-  </div>
-}
+    
 {flag?.state&&<EmailPopOut to={flag.to} flag={flag.state} setFlag={setFlag}/>}
     </div>
 )

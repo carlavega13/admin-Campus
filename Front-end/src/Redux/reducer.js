@@ -1,4 +1,4 @@
-import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER,GET_GRADES, DELETE_ALL } from "./actionTypes"
+import { GET_ALL_USERS, GET_COURSES, LOGIN, PUT_USER,GET_GRADES, DELETE_ALL, PUT_HOME } from "./actionTypes"
 
 const initialState={
     user:{
@@ -12,7 +12,7 @@ const initialState={
     },
     courses:[],
     allUsers:[],
-    allUsersCopia:[]
+    homeValue:"courses"
 }
 
 const reducer=(state=initialState,action)=>{
@@ -42,7 +42,7 @@ switch (action.type) {
             return{
                 ...state,
                 allUsers:[...action.payload],
-                allUsersCopia:[...action.payload]
+     
             }
             case GET_GRADES:
                 let find=state.courses.findIndex(course=>course.id==action.payload.id)
@@ -70,7 +70,11 @@ switch (action.type) {
                     allUsersCopia:[]
                     }
 
-                    
+        case PUT_HOME:
+            return{
+                ...state,
+                homeValue:action.payload
+            }            
     default:
         return {...state}
 }

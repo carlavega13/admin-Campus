@@ -8,7 +8,7 @@ import AdminUserDetail from './Components/Admin/AdminUsers/AdminUserDetail'
 import LoginPage from './Components/Login/LoginPage'
 import CreateCourse from './Components/Admin/AdminCourses/CreateCourse'
 import CreateUser from './Components/Admin/AdminUsers/CreateUser'
-import Sheet from './functions/toast'
+
 
 
 
@@ -25,7 +25,7 @@ function App() {
    <Route path='/adminHome/users/:id' element={<AdminUserDetail/>}/>
    <Route path='/createCourse' element={<CreateCourse/>}/>
    <Route path='/createUser' element={<CreateUser/>}/>
-   <Route path='/r' element={<Sheet/>}/>
+
 
     </Routes>
     </div>
