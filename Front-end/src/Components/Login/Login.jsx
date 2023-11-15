@@ -38,14 +38,18 @@ const Login=()=>{
     }
     useEffect(()=>{},[userLogged])
 
-    if(userLogged?.username&&userLogged?.phone===null) {
+    if(userLogged?.username&&!userLogged?.phone) {
+      console.log("fir sedit");
         navigate("firstEditProfile")
       return
     }
     if(userLogged?.username&&userLogged?.rol==="administrador") {
         navigate("/adminHome")
     }
-                 
+    if(userLogged?.username&&userLogged?.rol==="estudiante") {
+      console.log("fcaca");
+      navigate("/studentHome")
+  }     
               
 return (
     <div className={s.containerLogin}>

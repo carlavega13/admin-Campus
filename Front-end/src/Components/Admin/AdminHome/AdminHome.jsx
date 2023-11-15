@@ -28,7 +28,7 @@ console.log(value);
   <div className={s.container}>
     <div className={s.divSettings}>
       <div className={s.settings}>
-        <p>{user?.firstName} {user?.lastName}</p>
+        <p>{user?.firstname} {user?.lastname}</p>
         <img onClick={()=>dispatch(putHome("editProfile"))} src={iconSettings} className={s.iconSettings}/>
       </div>
       <p>{user?.username}</p>

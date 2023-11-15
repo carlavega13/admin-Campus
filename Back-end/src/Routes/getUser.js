@@ -1,8 +1,8 @@
 const getUserController = require("../Controllers/getUserController")
 
-const getUser=(req,res)=>{
+const getUser=async(req,res)=>{
 try {
-    const response=getUserController(req.body)
+    const response=await getUserController(req.body)
     res.status(200).json(response)
 } catch (error) {
     res.status(200).json(error.message)

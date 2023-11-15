@@ -18,7 +18,7 @@ try {
     token:res.token,
     rol:res.rol,
     isSuperAdmin:res.isSuperAdmin,
-     firsname:res.firsname,
+     firsname:res.firstname,
      lastname:res.lastname,
      phone:res.phone,
      email:res.email,
@@ -43,7 +43,7 @@ try {
                 token:res1.token,
                 rol:res1.rol,
                 isSuperAdmin:res1.isSuperAdmin,
-                 firsname:res1.firsname,
+                 firstname:res1.firstname,
                  lastname:res1.lastname,
                  phone:res1.phone,
                  email:res1.email,
@@ -52,7 +52,8 @@ try {
                }
     }
 } catch (error) {
-    
+   console.log(error.message); 
+   return error.message
 }
 }
 module.exports=putUserController

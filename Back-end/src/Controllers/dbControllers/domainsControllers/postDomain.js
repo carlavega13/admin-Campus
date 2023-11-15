@@ -12,7 +12,7 @@ const postDomain=async({domain})=>{
         if(typeof domain==="string"){
             if(urlRegex.test(domain)){
                 const actualDomain= await Domain.findOne({where:{isActive:true}})
-                console.log(actualDomain);
+        
                 if (!actualDomain) {
                    let find=await Domain.findOne({where:{url:domain}})
                     if(find){

@@ -18,15 +18,16 @@ const AdminCourseDetail=()=>{
     })
     const [users,setUsers]=useState([])
     const [enrolUser,setEnrolUser]=useState(false)
-const {id}=useParams()
-let user=useSelector(state=>state.user)
-let courses=useSelector(state=>state.courses)
+    const {id}=useParams()
+    let user=useSelector(state=>state.user)
+    let courses=useSelector(state=>state.courses)
     let course=courses?.find(co=>co.id==id)
     course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
-       const dispatch=useDispatch()
+    const dispatch=useDispatch()
+
        if(!course.enrolledPeople.find((pe)=>pe.grades)){
         dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
-        console.log("s",course);
+
         return(
             <>
             <button onClick={()=>navigate("/adminHome")}>HOME</button>
@@ -35,9 +36,7 @@ let courses=useSelector(state=>state.courses)
         )
         
            }
-           useEffect(()=>{
-
-           },[courses])
+ 
         let csvInfo=course.enrolledPeople.map(people=>{
             return {
                 nombre:people.fullname,
@@ -50,6 +49,7 @@ let courses=useSelector(state=>state.courses)
         const handlerDownloadCsv=()=>{
             downloadCsv(csvInfo,`${course.name} alumnos.csv`)
     }
+
     const columns=[
         { field: 'fullname', headerName: 'NOMBRE',width: 100},
         { field: 'email', headerName: 'EMAIL',width: 100},
@@ -90,7 +90,7 @@ const rows=course?.enrolledPeople.map(pep=>{
     if(!pep.enrolledcourses?.errorcode){
 
 
-        aux.finalPercentage= pep.enrolledcourses?.find(co=>co.id==id).progress
+        aux.finalPercentage= pep.enrolledcourses?.find(co=>co.id==id).progress.toFixed(2)
     }
   return aux
 })

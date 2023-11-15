@@ -24,7 +24,7 @@ module.exports = (sequelize) => {
       },
       rol:{
         type: DataTypes.STRING,
-        defaultValue: 'user'
+        defaultValue: 'estudiante'
           
       },
       isSuperAdmin:{

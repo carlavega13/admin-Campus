@@ -4,7 +4,7 @@ import s from "../../css/FirstLoginEditProfile.module.css"
 import { useDispatch, useSelector } from "react-redux"
 import { putUser } from "../../Redux/actions"
 import { useNavigate } from "react-router-dom"
-const FirstLoginEditProfile=()=>{
+const FirstLoginEditProfile=({rol})=>{
     const dispatch=useDispatch()
     const navigate=useNavigate()
     const user=useSelector(state=>state.user)
@@ -38,12 +38,17 @@ const FirstLoginEditProfile=()=>{
     const handlerSubmit=()=>{
     
      setError(validator(profile))
-     console.log(error.phone);
+
      if(!error.firstName&&!error.lastName&&!error.phone&&!error.email){
         dispatch(putUser({...profile,id:user.id,domain:user.domain}))
         alert("Se actualizo su informacion")
-     console.log(user);
-     navigate("/adminHome")
+      if(user.rol==="estudiante"){
+        
+        navigate("/studentHome")
+      }else{
+
+          navigate("/adminHome")
+      }
     }
 }
 

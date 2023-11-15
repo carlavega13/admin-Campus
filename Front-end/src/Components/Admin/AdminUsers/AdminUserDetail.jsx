@@ -107,7 +107,7 @@ return(
         rows={rows}
         initialState={{
             pagination: {
-              paginationModel: { page: 0, pageSize: 5 },
+              paginationModel: { page: 0, pageSize: 10 },
             },
           }}
           pageSizeOptions={[10,40,50]}
