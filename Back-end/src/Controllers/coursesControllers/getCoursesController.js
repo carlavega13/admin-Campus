@@ -14,7 +14,6 @@ const getCoursesController=async(user)=>{
 
 
         courses.data.shift()
-     
 courses=courses.data.map((course)=>{
     promises.push(getPeopleInCourse({domain:user.domain,token:user.token,courseId:course.id}))
     return{
@@ -47,11 +46,10 @@ for (let i = 0; i < promisesUsers.length; i++) {
 if(courses.length===0){
     return "No hay cursos"
 }
-console.log(courses);
     return courses
  
 } catch (error) {
-    console.log(error.message);
+
     return error.message
 }
 }

@@ -31,7 +31,6 @@ const Login=()=>{
       console.log("caca",res);
         
       } catch (error) {
-        console.log("cada");
         alert(error.message)
       }
         
@@ -39,7 +38,6 @@ const Login=()=>{
     useEffect(()=>{},[userLogged])
 
     if(userLogged?.username&&!userLogged?.phone) {
-      console.log("fir sedit");
         navigate("firstEditProfile")
       return
     }
@@ -47,7 +45,6 @@ const Login=()=>{
         navigate("/adminHome")
     }
     if(userLogged?.username&&userLogged?.rol==="estudiante") {
-      console.log("fcaca");
       navigate("/studentHome")
   }     
               

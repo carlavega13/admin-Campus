@@ -1,6 +1,7 @@
 const {User,Domain}=require("../db")
 const axios=require("axios")
 const postUser = require("./dbControllers/postUser")
+const getUserController = require("./getUserController")
 const loginController=async(user)=>{
     try {
         const find=await User.findOne({where:{username:user.username}})
@@ -14,29 +15,25 @@ if(!find){
        ...user,
        token:token.data.token
     })
-    console.log(response);
+    const info=await getUserController({domain:findUrl.url,username:response.username,password:response.password,rol:response.rol})
     return {
-        id:response.id,
-        username:response.username,
-        token:response.token,
-        rol:response.rol,
-        domain:findUrl.url
+...info,
+rol:response.rol,
+token:token.data.token,
+domain:findUrl.url
     }
    }
  if(find.token!==token.data.token){
     await find.update({token:token.data.token})
  }
+ const info=await getUserController({domain:findUrl.url,username:find.username,password:find.password,rol:find.rol})
+
  return {
-    id:find.id,
-    username:find.username,
-    token:find.token,
-    rol:find.rol,
-    domain:findUrl.url,
-    firstname:find.firstname,
-    lastname:find.lastname,
+    ...info,
     phone:find.phone,
-    email:find.email,
-    DNI:find.dni
+    rol:find.rol,
+    token:token.data.token,
+    domain:findUrl.url
 }
 } catch (error) {
 throw new Error(error.message)
