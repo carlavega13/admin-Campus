@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom"
 import { HOST } from "../../../../HOST"
 import { getAllUsers } from "../../../Redux/actions"
 import axios from "axios"
+import s from "../../../css/CreateUser.module.css"
 
 const CreateUser=()=>{
     const navigate=useNavigate()
@@ -53,19 +54,38 @@ const handleCreate=async()=>{
     }
 }
 return(
-    <div>
-<button onClick={()=>navigate("/adminHome")}>HOME</button>
-    <label htmlFor="">Nombre de usuario</label>
-   <input onChange={handleOnChange} name="username" value={info.username}  type="text" placeholder="Nombre de usuario" />
-    <label htmlFor="">Contraseña</label>
-   <input onChange={handleOnChange} name="password" value={info.password} type="text" placeholder="Contraseña" />
-    <label htmlFor="">Primer nombre</label>
-   <input onChange={handleOnChange} name="firstname" value={info.firstname} type="text" placeholder="Primer nombre" />
-    <label htmlFor="">Apellido</label>
-   <input onChange={handleOnChange} name="lastname" value={info.lastname} type="text" placeholder="Apellido"/>
-    <label htmlFor="">Email</label>
-   <input onChange={handleOnChange} name="email" value={info.email} type="text" placeholder="Email"/>
-   <button onClick={handleCreate}>Crear usuario</button>
+    <div className={s.container}>
+
+      <div className={s.formContainer}>
+        <button onClick={()=>navigate("/adminHome")}className={s.btns}>Home</button>
+        <div>
+          <label htmlFor="">Nombre de usuario</label>
+          <input onChange={handleOnChange} name="username" value={info.username}  type="text" placeholder="Nombre de usuario" />
+        </div>
+        <div>
+          <label htmlFor="">Contraseña</label>
+          <input onChange={handleOnChange} name="password" value={info.password} type="text" placeholder="Contraseña" />
+        </div>
+        <div>
+          <label htmlFor="">Primer nombre</label>
+          <input onChange={handleOnChange} name="firstname" value={info.firstname} type="text" placeholder="Primer nombre" />
+        </div>
+        <div>
+          <label htmlFor="">Apellido</label>
+          <input onChange={handleOnChange} name="lastname" value={info.lastname} type="text" placeholder="Apellido"/>
+        </div>
+        <div>
+          <label htmlFor="">Email</label>
+          <input onChange={handleOnChange} name="email" value={info.email} type="text" placeholder="Email"/>
+        </div>
+        <div>
+
+        <button onClick={handleCreate}className={s.btns}style={{margin: "1.5rem 0 0 0", alignSelf: "flex-end"}}>
+        Crear usuario
+        </button>
+        </div>
+      </div>
+
     </div>
 )
 }

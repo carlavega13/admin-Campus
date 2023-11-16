@@ -37,20 +37,39 @@
     color: transparent; /* Hace que el texto sea transparente */
     text-shadow: 0 0 5px rgba(0, 0, 0, 0.752); 
 }
-.btnEmails {
+.btnCreate {
     background: #2f3367;
-    height: auto;
+    height: 1.6rem;
+    width: 12rem;
     max-width: 28rem;
     color: #fff;
     padding: 4px 16px 4px 16px;
-    margin-top: 12px;
     border-radius: 4px;
     border: none;
     font-weight: bold;
-    font-size: .85rem;
+    font-size: 1rem;
     letter-spacing: 2px;
     cursor: pointer;
     transition: .3s;
+    margin: .5rem 0 1rem 0;
+}
+.btnCreate:hover {
+    background: #535AAC;
+}
+.btnEmails {
+    background: #2f3367;
+    /* height: 1.6rem; */
+    max-width: 28rem;
+    color: #fff;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s;
+    /* margin: .5rem 0 1rem 0; */
 }
 .btnEmails:hover {
     background: #535AAC;

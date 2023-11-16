@@ -48,20 +48,24 @@ const onChangeDomain=(e)=>{
 }
 return(
   <div className={s.container}>
-  <div>
-
-    <label>Cambiar dominio de Moodle:</label>
-    <input onChange={onChangeDomain} value={domain} type="text" placeholder="URL de Moodle" />
-    <button onClick={handleDomain}>Cambiar</button>
-  </div>
-  <p className={s.pEjemplo}>Recordá que la URL debe ser valida para una instancia de Moodle.
+    <div>
+  
+      <label>Cambiar dominio de Moodle:</label>
+      <input onChange={onChangeDomain} value={domain} type="text" placeholder="URL de Moodle" />
+      <button onClick={handleDomain}>Cambiar</button>
+    </div>
+    <p className={s.pEjemplo}>
+      Recordá que la URL debe ser valida para una instancia de Moodle.
       Ejemplo: "https://ejemplo.ar/moodleejemplo/"
-  </p>
-  {flags.warningFlag&&<div>
-    <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
-    <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
-    </div>}
-    {flags.componentFlag&&<CreateAdmin domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>}
+    </p>
+    { flags.warningFlag &&   <div>
+      <p>Necesitas crear un usuario SuperAdmin para esta URL de moodle</p>
+      <button onClick={handleCreateUser}>Crear usuario SuperAdmin</button>
+    </div>
+    }
+    { flags.componentFlag && 
+    <CreateAdmin domain={domain} setFlags={setFlags} flags={flags} isSuperAdmin={true}/>
+    }
   </div>
 )   
 }

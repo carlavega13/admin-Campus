@@ -52,22 +52,45 @@ const FirstLoginEditProfile=({rol})=>{
     }
 }
 
-    return (
-        <div className={s.box}>
-             <label htmlFor="">Nombres <input onChange={handlerChange} name="firstName" value={profile.firstName} type="text" placeholder="Nombres" /></label>
-                  {error?.firstName?<p>{error.firstName}</p>:<></>}
-        <label htmlFor="">Apellidos <input onChange={handlerChange} name="lastName" value={profile.lastName} type="text" placeholder="Apellidos" /></label>
-        {error?.lastName?<p>{error.lastName}</p>:<></>}
-        <label htmlFor="">DNI <input onChange={handlerChange} name="DNI" value={profile.DNI} type="number" placeholder="DNI" /></label>
-        
-        <label htmlFor="">Celular <input onChange={handlerChange} name="phone" value={profile.phone} type="text" placeholder="Celular" /></label>
-        {error?.phone?<p>{error.phone}</p>:<></>}
-        <label htmlFor="">Email <input onChange={handlerChange} name="email" value={profile.email} type="text" placeholder="Email" /></label>
-        {error?.email?<p>{error.email}</p>:<></>}
-        <button onClick={handlerSubmit}>Enviar</button>
-         
-      
-        </div>
-    )
+return (
+    <div className={s.container}>
+     <div className={s.containerForm}>
+
+      <div>
+        <label htmlFor="">Nombres </label>
+        <input onChange={handlerChange} name="firstName" value={profile.firstName} type="text" placeholder="Nombres" />
+        { error?.firstName 
+        ? <p>{error.firstName}</p>
+        : <p> </p>
+        }
+      </div>
+
+      <div>
+        <label htmlFor="">Apellidos </label>
+        <input onChange={handlerChange} name="lastName" value={profile.lastName} type="text" placeholder="Apellidos" />
+        {error?.lastName?<p>{error.lastName}</p>:<p></p>}
+      </div>
+
+      <div style={{marginBottom: "2.5rem"}}>
+        <label htmlFor="">DNI</label>
+        <input onChange={handlerChange} name="DNI" value={profile.DNI} type="number" placeholder="DNI" />
+      </div>
+
+      <div>
+        <label htmlFor="">Celular </label>
+        <input onChange={handlerChange} name="phone" value={profile.phone} type="text" placeholder="Celular" />
+        {error?.phone?<p>{error.phone}</p>:<p></p>}
+      </div>
+
+      <div>
+        <label htmlFor="">Email</label>
+        <input onChange={handlerChange} name="email" value={profile.email} type="text" placeholder="Email" />
+        {error?.email?<p>{error.email}</p>:<p></p>}
+      </div>
+
+      <button onClick={handlerSubmit}className={s.btnSubmit}>Enviar</button>
+     </div>
+    </div>
+)
 }
 export default FirstLoginEditProfile

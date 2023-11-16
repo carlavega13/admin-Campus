@@ -1,7 +1,8 @@
 import { useEffect, useState } from "react"
 import {IoIosArrowDown} from "react-icons/io"
 import { RiDeleteBin2Line } from "react-icons/ri"
-import { useSelector } from "react-redux"
+import { useDispatch, useSelector } from "react-redux"
+import { getAllUsers } from "../../../Redux/actions"
 
 
 const UserSelect=({info,setInfo})=>{
@@ -9,6 +10,10 @@ const UserSelect=({info,setInfo})=>{
     const [user,setUSer]=useState("")
     const [active,setActive]=useState(false)
     const [filteredUsers,setFilteredUsers]=useState(users)
+    const dispatch=useDispatch
+    if(users.length===0){
+        dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
+    }
 const handleClick=(e,name)=>{
       setUSer(name)
       setInfo({

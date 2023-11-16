@@ -20,22 +20,11 @@ const EditProfile=()=>{
         country:"",
         city:""
     })
-    const dispatch=useDispatch() 
     const [error,setError]=useState({})
     useEffect(()=>{
     setError(validator(profile))
     },[profile])
     const user = useSelector(state => state.user)
-    const allUsers = useSelector(state => state.allUsers)
-    if(allUsers.length===0){
-        dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
-        return(
-            <div>
-                LOADING!!!!!
-            </div>
-        )
-    }
-    const {id}=allUsers.find(use=>use.username==user.username)
     const handleChange=(e)=>{
         setProfile({
             ...profile,
@@ -73,14 +62,16 @@ const EditProfile=()=>{
                 if(profile.city){
                     info.city=profile.city
                 }
-                info.id=id
+                info.id=user.id
               const res=await axios.put(`${HOST}putUserMoodle`,{
+              
                 username:user?.username,
                 domain:user?.domain,
-                token:user.token,
+                token:user?.token,
             info:info
 
               })
+              console.log(res.data);
               alert(res.data)
                
             }
@@ -162,7 +153,7 @@ return (
 
 
      </div>
-        <button onClick={handleSend}className={s.btn}>Editar mi informacion</button>
+        <button onClick={handleSend}className={s.btnSubmit}>Editar mi informacion</button>
     </div>
 )
 }

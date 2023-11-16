@@ -1,37 +1,54 @@
-input {
+.box input {
     /* background: greenyellow; */
     font-family: Montserrat;
     letter-spacing: 1px;
-    border-radius: 4px;
+    border-radius: 1rem;
     border: 2px solid #868AA5;
+    border: 2px solid #535AAC;
     font-weight: bold;
     color: #424242;
+    z-index: 1;
+    padding-left: 10px;
+    height: 1.5rem;
 }
-label {
+.box label {
     /* background: blueviolet; */
     font-family: Montserrat;
     letter-spacing: 1px;
-    font-size: 1rem;
+    font-size: 1.1rem;
     font-weight: bold;
     color: #868AA5;
+    color: #535AAC;
+    color: #555555;
     margin-bottom: .2rem;
+    z-index: 1;
+    padding-left: 10px;
 }
-
+.box h2 {
+    color: #555555;
+}
 .box {
 display: flex;
 flex-direction: column;
 /* justify-content: center; */
 /* align-items: center; */
-height: 100vh;
-width: 100%;
+/* height: 100vh; */
+padding: 3rem;
+/* width: 100%; */
+box-shadow: 2px 2px 6px 4px rgb(0,0,0,0.35);
+border-radius: 12px;
+/* border: 3px solid #535AAC; */
+/* margin-top: 2rem; */
+margin: 2rem 1rem 0 1rem;
 /* background: orange; */
 }
 .formContainer {
     background: #fff;
+    /* background: #535AAC; */
     padding: 3px;
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    /* justify-content: center; */
 }
 .formContainer > div {
     /* background: violet; */
@@ -58,7 +75,7 @@ width: 100%;
     display: flex;
     flex-direction: column;
 }
-.btn {
+.btnSubmit {
     width: fit-content;
     padding: 0 .5rem 0 .5rem;
     margin: 3rem 1rem 0 0;
@@ -66,4 +83,21 @@ width: 100%;
     letter-spacing: 1px;
     z-index: 1;
     align-self: flex-end;
+    background: #2f3367;
+    height: auto;
+    max-width: 28rem;
+    color: #fff;
+    padding: 4px 16px 4px 16px;
+    margin-top: 12px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: .85rem;
+    letter-spacing: 2px;
+    cursor: pointer;
+    transition: .3s;
+}
+
+.btnSubmit:hover {
+    background: #535AAC;
 }

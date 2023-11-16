@@ -2,6 +2,7 @@ import axios from "axios"
 import { useState } from "react"
 import { useParams } from "react-router-dom"
 import { HOST } from "../../../../HOST"
+import s from "../../../css/CreateAdmin.module.css"
 
 const CreateAdmin=({domain,isSuperAdmin,setFlags,flags})=>{
 
@@ -52,15 +53,25 @@ const CreateAdmin=({domain,isSuperAdmin,setFlags,flags})=>{
     }    
    
 if(isSuperAdmin){
-    return(
-        <div>
+    return (
+        <div className={s.container}>
+
+          <div>
             <label>Nombre de usuario</label>
             <input name="username" onChange={handleOnChange} value={info?.username} type="text" />
+          </div>
+
+          <div>
             <label>Contraseña</label>
             <input name="password" onChange={handleOnChange} value={info?.password} type="text" />
-            <p>La contraseña debería tener al menos 8 caracter(es), al menos 1 dígito(s), al menos 1 minúscula(s), 
-al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #</p>
-        <button onClick={handleCreateUser}>Crear Usuario</button>
+          </div>
+
+          <p style={{color: "#59B4B4", fontSize: ".9rem"}}>La contraseña debería tener al menos 8 caracteres, al menos 1 dígito(s), al menos 1 minúscula(s), 
+             al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #
+          </p>
+          <div>
+            <button onClick={handleCreateUser}className={s.btnCreate}>Crear Usuario</button>
+          </div>
         </div>
     )
 }

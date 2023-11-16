@@ -4,6 +4,7 @@ import { HOST } from "../../../../HOST"
 import { useDispatch, useSelector } from "react-redux"
 import {getCourses }from "../../../Redux/actions"
 import { useNavigate } from "react-router-dom"
+import s from "../../../css/CreateCourse.module.css"
 const CreateCourse=()=>{
     const dispatch=useDispatch()
     const navigate=useNavigate()
@@ -40,15 +41,32 @@ const CreateCourse=()=>{
         alert(error.message)
     }
  }
-return(<div>
-<button onClick={()=>navigate("/adminHome")}>HOME</button>
-<label htmlFor="">Nombre del curso</label>
-<input onChange={handleChange} value={info?.fullname} name="fullname" type="text" placeholder="Nombre del curso" /> 
-<label htmlFor="">Nombre corto</label>
-<input onChange={handleChange} value={info?.shortname} name="shortname" type="text" placeholder="Nombre corto" />
-<label htmlFor="">Categoria ID (default 1) </label>
-<input onChange={handleChange} value={info?.categoryid} type="number"  name="categoryid" placeholder="Categoria ID"/>
-<button onClick={handleSubmit}>Crear curso</button>
-</div>)
+return(
+<div className={s.container}>
+  <div className={s.formContainer}>
+
+    <button onClick={()=>navigate("/adminHome")}className={s.btns}>Home</button>
+
+    <div>
+      <label htmlFor="">Nombre del curso</label>
+      <input onChange={handleChange} value={info?.fullname} name="fullname" type="text" placeholder="Nombre del curso" /> 
+    </div>
+
+    <div>
+      <label htmlFor="">Nombre corto</label>
+      <input onChange={handleChange} value={info?.shortname} name="shortname" type="text" placeholder="Nombre corto" />
+    </div>
+    <div>
+      <label htmlFor="">Categoria ID (default 1) </label>
+      <input onChange={handleChange} value={info?.categoryid} type="number"  name="categoryid" placeholder="Categoria ID"/>
+    </div>
+    <div>
+
+    <button onClick={handleSubmit}style={{marginTop: "1rem", alignSelf: "flex-end"}}className={s.btns}>Crear curso</button>
+    </div>
+  </div>
+
+</div>
+)
 }
 export default CreateCourse

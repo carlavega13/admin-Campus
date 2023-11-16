@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { useNavigate } from "react-router-dom"
-import iconSettings from "../../public/images/AdminHome/settings.png"
+import setting from "../../public/images/AdminHome/setting.png"
 import { putHome } from "../../Redux/actions"
 import EditProfile from "../EditProfile/EditProfile"
 import { useEffect } from "react"
@@ -11,7 +11,6 @@ const StudentHome=()=>{
     const user = useSelector(state => state.user)
     const value=useSelector(state=>state.homeValue)
  if(!user.firstname||!user.phone){
-    console.log(user.firstname,user.phone);
     return <div>
         LOADING...
     </div>

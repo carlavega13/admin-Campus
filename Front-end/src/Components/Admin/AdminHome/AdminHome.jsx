@@ -5,7 +5,8 @@ import AdminCourses from '../AdminCourses/AdminCourses.jsx'
 import AdminUsers from '../AdminUsers/AdminUsers.jsx'
 import ChangeDomain from '../AdminHome/ChangeDomain.jsx'
 import s from "../../../css/AdminHome.module.css"
-import iconSettings from "../../../public/images/AdminHome/settings.png"
+import setting from "../../../public/images/AdminHome/setting.png"
+import selectSetting from "../../../public/images/AdminHome/select_setting.png"
 import { FaUser, FaFileAlt } from "react-icons/fa"
 import { CgMenu } from "react-icons/cg"
 import { TfiExchangeVertical } from "react-icons/tfi"
@@ -29,7 +30,7 @@ console.log(value);
     <div className={s.divSettings}>
       <div className={s.settings}>
         <p>{user?.firstname} {user?.lastname}</p>
-        <img onClick={()=>dispatch(putHome("editProfile"))} src={iconSettings} className={s.iconSettings}/>
+        <img onClick={()=>dispatch(putHome("editProfile"))} src={value==="editProfile"?selectSetting:setting} className={s.iconSettings}/>
       </div>
       <p>{user?.username}</p>
     </div>

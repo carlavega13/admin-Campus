@@ -21,13 +21,14 @@ const AdminCourseDetail=()=>{
     const {id}=useParams()
     let user=useSelector(state=>state.user)
     let courses=useSelector(state=>state.courses)
-    let course=courses?.find(co=>co.id==id)
+    let course =courses?.find(co=>co.id==id)
+
+
     course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
     const dispatch=useDispatch()
-
        if(!course.enrolledPeople.find((pe)=>pe.grades)){
         dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
-
+         console.log("no hay");
         return(
             <>
             <button onClick={()=>navigate("/adminHome")}>HOME</button>
@@ -37,6 +38,7 @@ const AdminCourseDetail=()=>{
         
            }
  
+           console.log("hay");
         let csvInfo=course.enrolledPeople.map(people=>{
             return {
                 nombre:people.fullname,
