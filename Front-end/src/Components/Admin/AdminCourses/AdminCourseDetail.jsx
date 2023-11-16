@@ -22,23 +22,20 @@ const AdminCourseDetail=()=>{
     let user=useSelector(state=>state.user)
     let courses=useSelector(state=>state.courses)
     let course =courses?.find(co=>co.id==id)
-
+const [promise,setPromise]=useState(false)
 
     course.enrolledPeople=course.enrolledPeople?.filter(student=>student?.roles&&student.roles[0]?.shortname!=="teacher"&&student?.roles&&student.roles[0]?.shortname!=="editingteacher")
     const dispatch=useDispatch()
        if(!course.enrolledPeople.find((pe)=>pe.grades)){
-        dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id))
-         console.log("no hay");
+ dispatch(getGrades(course.enrolledPeople,user.token,user.domain,id)).then(res=>setPromise(true))
+
         return(
             <>
             <button onClick={()=>navigate("/adminHome")}>HOME</button>
             LOADING!!!!!!
             </>
         )
-        
-           }
- 
-           console.log("hay");
+           } 
         let csvInfo=course.enrolledPeople.map(people=>{
             return {
                 nombre:people.fullname,
@@ -108,7 +105,11 @@ const handleSendMail=()=>{
             })
         }
 }
-return(
+// useEffect(()=>{
+
+// },[promise])
+
+    return(
     <div>
        <button onClick={()=>navigate("/adminHome")}>HOME</button>
        <button onClick={()=>setEnrolUser(!enrolUser)}>{`Matricular usuario al curso: ${course?.fullname}`}</button>
@@ -137,6 +138,8 @@ return(
         
     </div>
 )
+
+
 }
 
 export default AdminCourseDetail

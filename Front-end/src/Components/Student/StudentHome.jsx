@@ -5,6 +5,8 @@ import { putHome } from "../../Redux/actions"
 import EditProfile from "../EditProfile/EditProfile"
 import { useEffect } from "react"
 import FirstLoginEditProfile from "../FirstLoginEditProfile/FirstLoginEditProfile"
+import selectSetting from "../../public/images/AdminHome/select_setting.png"
+
 const StudentHome=()=>{
     const navigate = useNavigate()
     const dispatch=useDispatch()
@@ -19,7 +21,7 @@ const StudentHome=()=>{
 return(
     <div>
   <p>{`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}</p>
-  <img onClick={()=>dispatch(putHome("editProfile"))}  src={iconSettings} />
+  <img  onClick={()=>dispatch(putHome("editProfile"))}  src={value==="editProfile"?selectSetting:setting} />
   {
       value === "editProfile"
       ? <EditProfile/>
