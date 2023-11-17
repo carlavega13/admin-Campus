@@ -76,7 +76,8 @@ const [promise,setPromise]=useState(false)
     ].filter(pe=>pe)
 const rows=course?.enrolledPeople.map(pep=>{
     let aux={ id:pep.id, fullname:pep.fullname,email:pep.email,phone1:pep.phone1?pep.phone1:"",}
-    for (let i = 0; i < pep.grades.length; i++) {
+    if(pep.grades){
+            for (let i = 0; i < pep.grades.length; i++) {
 
         if(pep.grades[i].itemname){
             aux[pep.grades[i].itemname]=pep.grades[i].graderaw?pep.grades[i].graderaw:""
@@ -86,10 +87,15 @@ const rows=course?.enrolledPeople.map(pep=>{
         }
         
     }
+    }
+
     if(!pep.enrolledcourses?.errorcode){
 
 
-        aux.finalPercentage= pep.enrolledcourses?.find(co=>co.id==id).progress.toFixed(2)
+        aux.finalPercentage= pep.enrolledcourses?.find(co=>co.id==id).progress
+        if(aux.finalPercentage){
+            aux.finalPercentage=aux.finalPercentage.toFixed(2)
+        }
     }
   return aux
 })

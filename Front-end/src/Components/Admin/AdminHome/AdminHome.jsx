@@ -30,7 +30,7 @@ console.log(value);
     <div className={s.divSettings}>
       <div className={s.settings}>
         <p>{user?.firstname} {user?.lastname}</p>
-        <img onClick={()=>dispatch(putHome("editProfile"))} src={value==="editProfile"?selectSetting:setting} className={s.iconSettings}/>
+        <img onClick={()=>dispatch(putHome("editProfile"))} src={value==="editProfile"?selectSetting:setting} className={`${s.iconSettings} ${value==="editProfile"?s.selectedProfile:null}`}/>
       </div>
       <p>{user?.username}</p>
     </div>
