@@ -10,7 +10,7 @@ try {
     return response
 } catch (error) {
     console.log(error.message);
-    return error.message
+    throw new Error(error.message) 
 }
 }
 module.exports= postMailController

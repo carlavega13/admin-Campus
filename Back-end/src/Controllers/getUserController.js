@@ -11,7 +11,7 @@ password=admin.password
 
 }
   const token=await axios(`${domain}login/token.php?username=${username}&password=${password}&service=prueba`)
-  const response= await axios(`${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${username}`)
+  const response= await axios(`${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${user.username}`)
 const res={
   id: response.data.users[0].id,
   username:response.data.users[0].username,
@@ -27,7 +27,7 @@ const res={
   return res
 } catch (error) {
   console.log(error.message);
-    return error.message
+  throw new Error(error.message) 
 }
 }
 module.exports=getUserController

@@ -1,5 +1,5 @@
 
-import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN, DELETE_ALL, PUT_HOME } from "./actionTypes";
+import { GET_ALL_USERS, GET_COURSES, GET_GRADES, LOGIN, PUT_USER,PUT_DOMAIN, DELETE_ALL, PUT_HOME, GET_STUDENT_COURSES } from "./actionTypes";
 import axios from "axios"
 import {HOST}from"../../HOST"
 
@@ -70,4 +70,15 @@ export const deleteAll=()=>{
 
 export const putHome=(value)=>{
    return {type:PUT_HOME, payload:value}
+}
+
+export const getStudentCourses=(user)=>{
+   return async (dispatch)=>{
+      try {
+         const response= await axios.post(`${HOST}getStudentCourses`,user)
+         return dispatch({type:GET_STUDENT_COURSES,payload:response.data})
+      } catch (error) {
+         
+      }
+   }
 }

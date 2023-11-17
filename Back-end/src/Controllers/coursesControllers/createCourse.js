@@ -10,7 +10,7 @@ const res=await axios(`${domain}/webservice/rest/server.php?wstoken=${token.data
     return res.data
    
 } catch (error) {
-    console.log(error);
+    throw new Error(error.message) 
 }
 }
 module.exports=createCourse

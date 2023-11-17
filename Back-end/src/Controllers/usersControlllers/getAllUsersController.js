@@ -27,7 +27,7 @@ try {
     }
     return people.data
 } catch (error) {
-    console.log(error.message);
+    throw new Error(error.message) 
 }
 }
 module.exports=getAllUsersController

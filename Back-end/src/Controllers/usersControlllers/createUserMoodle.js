@@ -14,7 +14,7 @@ try {
     return res.data
     
 } catch (error) {
-    return "No se pudo crear el usuario."
+   throw new Error("No se pudo crear el usuario.") 
 }
 
 }

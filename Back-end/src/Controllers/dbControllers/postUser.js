@@ -9,7 +9,7 @@ try {
         return response
     }
 } catch (error) {
-    return error.message
+    throw new Error(error.message) 
 }
 }
 module.exports=postUser

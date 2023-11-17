@@ -42,8 +42,7 @@ const postDomain=async({domain})=>{
             }
         }
 } catch (error) {
-    console.log(error.message);
-    return error.message
+    throw new Error(error.message) 
 }
 }
 module.exports=postDomain

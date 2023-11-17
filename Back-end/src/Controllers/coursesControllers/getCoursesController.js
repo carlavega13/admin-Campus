@@ -49,8 +49,7 @@ if(courses.length===0){
     return courses
  
 } catch (error) {
-
-    return error.message
+    throw new Error(error.message) 
 }
 }
 module.exports=getCoursesController

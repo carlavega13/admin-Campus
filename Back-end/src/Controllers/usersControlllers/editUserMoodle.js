@@ -41,7 +41,8 @@ if(!res.data){
     return "No se pudo actualizar la información"
 }
 } catch (error) {
-    console.log(error.message);
+
+    throw new Error(error.message) 
 }
 }
 module.exports=editUserMoodle

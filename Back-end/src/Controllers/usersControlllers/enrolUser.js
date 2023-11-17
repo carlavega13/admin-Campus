@@ -11,8 +11,7 @@ try {
 
 return res.data
 } catch (error) {
-    console.log(error.message);
-    return error.message
+    throw new Error(error.message) 
 }
 }
 module.exports=enrolUser

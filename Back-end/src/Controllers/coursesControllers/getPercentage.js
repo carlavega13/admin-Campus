@@ -18,7 +18,7 @@ const getPercentage=async(ids,domain,token)=>{
         return response
 
     } catch (error) {
-        console.log(error.message);
+        throw new Error(error.message) 
     }
 
 }

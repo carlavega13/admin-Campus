@@ -45,7 +45,7 @@ const getPeopleInCourse=async (payload)=>{
         return [courseId,teachers,...people.data]
         
     } catch (error) {
-        console.log(error.message);
+        throw new Error(error.message) 
     }
 }
 module.exports=getPeopleInCourse

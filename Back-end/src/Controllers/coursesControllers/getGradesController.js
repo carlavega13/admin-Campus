@@ -32,7 +32,7 @@ enrolledcourses:response[index]
 
   return people
 } catch (error) {
-    
+    throw new Error(error.message) 
 }
 }
 module.exports=getGradesController

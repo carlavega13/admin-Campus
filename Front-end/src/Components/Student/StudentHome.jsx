@@ -7,6 +7,7 @@ import { FaFileAlt } from "react-icons/fa"
 import { CgMenu } from "react-icons/cg"
 import selectSetting from "../../public/images/AdminHome/select_setting.png"
 import s from "../../css/StudentHome.module.css"
+import StudentCourses from "./StudentCourses"
 
 const StudentHome=()=>{
     const navigate = useNavigate()
@@ -52,6 +53,12 @@ return (
   {
       value === "editProfile"
       ? <EditProfile/>
+      : null 
+    }
+
+{
+      value === "courses"
+      ? <StudentCourses user={user}/>
       : null 
     }
   </div>
