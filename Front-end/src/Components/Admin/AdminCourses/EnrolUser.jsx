@@ -1,9 +1,16 @@
 import { useState } from "react";
 import UserSelect from "./UserSelect";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
 import {HOST} from "../../../../HOST"
+import { getAllUsers } from "../../../Redux/actions";
+
 const EnrolUser=({courseid,setEnrolUser,courseName,user})=>{
+    const users=useSelector(state=>state.allUsers)
+    const dispatch=useDispatch()
+    if(users.length===0){
+        dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
+    }
     const [info,setInfo]=useState({
       courseid:Number(courseid),
       roleid:5

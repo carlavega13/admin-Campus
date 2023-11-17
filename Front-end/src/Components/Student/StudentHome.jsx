@@ -21,7 +21,7 @@ const StudentHome=()=>{
 return(
     <div>
   <p>{`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}</p>
-  <img  onClick={()=>dispatch(putHome("editProfile"))}  src={value==="editProfile"?selectSetting:setting} />
+  <img style={{width:"2rem"}}  onClick={()=>dispatch(putHome("editProfile"))}  src={value==="editProfile"?selectSetting:setting} />
   {
       value === "editProfile"
       ? <EditProfile/>

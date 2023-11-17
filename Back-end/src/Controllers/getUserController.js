@@ -2,12 +2,13 @@ const axios=require("axios")
 const {User}=require("../db")
 const getUserController=async(user)=>{
 try {
-console.log(user);
+
 let {domain,username,password}=user
 if(user.rol!=="administrador"){
-const admin=await User.findOne({where:{rol:"administrador"}})
+const admin=await User.findOne({where:{username:"carlavega"}})
 username=admin.username
 password=admin.password
+
 }
   const token=await axios(`${domain}login/token.php?username=${username}&password=${password}&service=prueba`)
   const response= await axios(`${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${username}`)

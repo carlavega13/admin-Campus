@@ -18,7 +18,7 @@ try {
     token:res.token,
     rol:res.rol,
     isSuperAdmin:res.isSuperAdmin,
-     firsname:res.firstname,
+     firstname:res.firstname,
      lastname:res.lastname,
      phone:res.phone,
      email:res.email,
@@ -36,7 +36,7 @@ try {
            
         })
         
-       
+       console.log(userToEdit);
                return {
                 id:res1.id,
                 username:res1.username,

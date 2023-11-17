@@ -12,6 +12,7 @@ const postCourse = require("./postCourse");
 const postUserMoodle = require("./postUserMoodle");
 const putUserMoodle = require("./putUserMoodle");
 const postEnrolUser = require("./postEnrolUser");
+const getEnrolledCourses = require("./studentRoutes/getEnrolledCourses");
 
 const router=Router()
 
@@ -29,6 +30,7 @@ router.post("/postUserMoodle",postUserMoodle)
 router.put("/putUser", putUser)
 router.put("/putUserMoodle",putUserMoodle)
 router.post("/enrolUser",postEnrolUser)
+router.post("/getStudentCourses",getEnrolledCourses)
 router.get("/",(req,res)=>{
     const html = `
 <!DOCTYPE html>

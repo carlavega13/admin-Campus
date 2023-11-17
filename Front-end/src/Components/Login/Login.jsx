@@ -27,9 +27,7 @@ const Login=()=>{
     }    
     const handlerLogin=()=>{
       try {
-      const res=  dispatch(login(user))
-      console.log("caca",res);
-        
+   dispatch(login(user))        
       } catch (error) {
         alert(error.message)
       }

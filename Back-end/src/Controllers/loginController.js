@@ -11,11 +11,13 @@ if(token.data.error){
     throw new Error("no fue posible iniciar sesion por favor revise su informacion y vuelva a intentarlo")
 }
 if(!find){
+    const info=await getUserController({domain:findUrl.url,username:user.username,password:user.password,rol:"estudiante"})
    const response= await postUser({
        ...user,
+       id:info.id,
        token:token.data.token
     })
-    const info=await getUserController({domain:findUrl.url,username:response.username,password:response.password,rol:response.rol})
+//     const info=await getUserController({domain:findUrl.url,username:response.username,password:response.password,rol:response.rol})
     return {
 ...info,
 rol:response.rol,

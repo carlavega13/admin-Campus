@@ -10,10 +10,7 @@ const UserSelect=({info,setInfo})=>{
     const [user,setUSer]=useState("")
     const [active,setActive]=useState(false)
     const [filteredUsers,setFilteredUsers]=useState(users)
-    const dispatch=useDispatch
-    if(users.length===0){
-        dispatch(getAllUsers({domain:user?.domain,token:user?.token}))
-    }
+useEffect(()=>{},[users])
 const handleClick=(e,name)=>{
       setUSer(name)
       setInfo({
@@ -27,10 +24,10 @@ const handlerChange=(e)=>{
     setUSer(e.target.value)
     if(e.target.value.length>1){
 
-        setFilteredUsers(users.filter(u=>u.fullname.includes(`${e.target.value[0].toUpperCase()}${e.target.value.slice(1)}`)))
+        setFilteredUsers(users?.filter(u=>u.fullname.includes(`${e.target.value[0].toUpperCase()}${e.target.value.slice(1)}`)))
     }else{
         
-        setFilteredUsers(users.filter(u=>u.fullname.includes(e.target.value)))
+        setFilteredUsers(users?.filter(u=>u.fullname.includes(e.target.value)))
     }
     if(user===e.target.value){
         setActive(false)
@@ -42,7 +39,7 @@ if(user.length===0){
     setFilteredUsers(users)
 }
 
-},[user])
+},[user,users])
 return(
     <div>
     <input onChange={handlerChange} value={user} type="text" />{user.length>0&&<RiDeleteBin2Line onClick={()=>setUSer("")}/>}<IoIosArrowDown onClick={()=>setActive(!active)}/>
