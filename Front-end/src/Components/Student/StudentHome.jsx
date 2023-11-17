@@ -3,9 +3,10 @@ import { useNavigate } from "react-router-dom"
 import setting from "../../public/images/AdminHome/setting.png"
 import { putHome } from "../../Redux/actions"
 import EditProfile from "../EditProfile/EditProfile"
-import { useEffect } from "react"
-import FirstLoginEditProfile from "../FirstLoginEditProfile/FirstLoginEditProfile"
+import { FaFileAlt } from "react-icons/fa"
+import { CgMenu } from "react-icons/cg"
 import selectSetting from "../../public/images/AdminHome/select_setting.png"
+import s from "../../css/StudentHome.module.css"
 
 const StudentHome=()=>{
     const navigate = useNavigate()
@@ -16,18 +17,45 @@ const StudentHome=()=>{
     return <div>
         LOADING...
     </div>
- }
+ } 
 
-return(
-    <div>
-  <p>{`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}</p>
-  <img style={{width:"2rem"}}  onClick={()=>dispatch(putHome("editProfile"))}  src={value==="editProfile"?selectSetting:setting} />
+return (
+<div className={s.containerAll}>
+  <div className={s.container}>
+    <div className={s.divSettings}>
+      <div className={s.settings}>
+        <p>
+            {`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} 
+            ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}
+        </p>
+        <img onClick={()=>dispatch(putHome("editProfile"))}
+        src={value==="editProfile"?selectSetting:setting}
+        className={`${s.iconSettings} ${value==="editProfile"?s.selectedProfile:null}`}
+        />
+      </div>
+      <p>{user?.username}</p>
+    </div>
+
+    
+    <div className={s.divBtnsOptions}>
+      <div onClick={()=>dispatch(putHome("courses"))}
+        className={value==="courses"?s.borderGr:s.borderDefault}>
+        <FaFileAlt className={s.icons2}color={value==="courses"?"#59B4B4":"#868AA5"}/>
+        <p className={value==="courses"?s.selected:null}>Cursos</p>
+        <CgMenu className={s.icons}color={value==="courses"?"#9283BD":"#868AA5"}/>
+      </div>
+    </div>
+  </div>
+
+  <div className={s.right}>
+
   {
       value === "editProfile"
       ? <EditProfile/>
-      : null
+      : null 
     }
-    </div>
+  </div>
+</div>
 )
 }
 export default StudentHome

@@ -1,17 +1,11 @@
-p {
-    letter-spacing: 1px;
-    font-weight: bold;
-    color: #868AA5;
-    transition: .3s;
-}
 .containerAll {
-    width: 100%;
+    /* background: lightsteelblue; */
     display: flex;
-    /* background: green; */
+    width: 100%;
 }
 .container {
     background: #d7d7d8;
-    background:linear-gradient(180deg, #d7d7d8 70%, #fff 100%);
+    background: linear-gradient(180deg, #d7d7d8 70%, #fff 100%);
     padding: 12px;
     display: flex;
     flex-direction: column;
@@ -22,13 +16,15 @@ p {
     height: 100%;
 }
 .divSettings {
-    padding: 0 12px 0 12px;
+    /* background: blueviolet;   */
+    /* padding: 0 12px 0 12px; */
     display: flex;
     flex-direction: column;
 }
 .divSettings p {
     cursor: default !important;
 }
+
 .settings {
     display: flex;
     align-items: center;
@@ -48,11 +44,15 @@ p {
         linear-gradient(to right, #e9e9e9 30%, #e9e9e9 100%) padding-box,
         linear-gradient(to right, #59B4B4 20%, #9283BD 70%) border-box;
 }
+.right {
+    /* background: coral; */
+    width: 90%;
+}
 .selectedProfile {
     border-radius: 8px;
     border: 3px solid transparent;
     box-shadow: 2px 2px 3px 1px #B3B3B3;
-    background: 
+    background:
         linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
         linear-gradient(to right, #59B4B4 20%, #9283BD 70%) border-box;
 }
@@ -74,44 +74,25 @@ p {
     transition: .3s;
 }
 .divBtnsOptions div:hover {
-    background: 
-    linear-gradient(to right, #e9e9e9 30%, #e9e9e9 100%) padding-box,
-    linear-gradient(to right, #59B4B4 20%, #9283BD 70%) border-box;
+    background:
+        linear-gradient(to right, #e9e9e9 30%, #e9e9e9 100%) padding-box,
+        linear-gradient(to right, #59B4B4 20%, #9283BD 70%) border-box;
 }
 .icons {
     width: 1.5rem;
     height: 1.5rem;
     transition: .3s;
 }
+
 .icons2 {
     width: 1.2rem;
     height: 1.2rem;
-    transition: .3s;   
-}
-.iconOptions {
-    width: 1.5rem;
-    height: 1.5rem;
-}
-.pUrl {
     transition: .3s;
-    display: flex;
-    text-align: center;
-    overflow-wrap: break-word;
-    width: 7rem;
-}
-.right {
-    width: 90%;
 }
 .selected {
     background: linear-gradient(to right, #59B4B4, #9283BD);
     -webkit-background-clip: text;
-    color: transparent; 
-}
-
-.pButtons {
-    background: linear-gradient(to right, #59B4B4, #9283BD);
-    -webkit-background-clip: text;
-    color: transparent; 
+    color: transparent;
 }
 .borderDefault {
     border-radius: 8px;
@@ -120,29 +101,8 @@ p {
 .borderGr {
     border-radius: 8px;
     border: 3px solid transparent;
-    background: 
+    background:
         linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
         linear-gradient(to right, #59B4B4 20%, #9283BD 70%) border-box;
     box-shadow: 2px 2px 3px 1px #B3B3B3;
-}
-
-@media (max-width: 1080px) {
-    .containerAll {
-        flex-direction: column;
-    }
-    .container {
-        width: 100%;
-    }
-    .divBtnsOptions {
-        flex-direction: row;
-        flex-wrap: wrap;
-    }
-    .divBtnsOptions div {
-        width: 12rem;
-        margin-right: 12px;
-        border: 1.5px solid #59B4B4
-    }
-    .right {
-        width: 100%;
-    }
 }

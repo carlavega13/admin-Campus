@@ -111,10 +111,6 @@ const handleSendMail=()=>{
             })
         }
 }
-// useEffect(()=>{
-
-// },[promise])
-
     return(
     <div>
        <button onClick={()=>navigate("/adminHome")}>HOME</button>
