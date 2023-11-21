@@ -4,7 +4,8 @@ import { useDispatch, useSelector } from "react-redux";
 import axios from "axios"
 import {HOST} from "../../../../HOST"
 import { getAllUsers } from "../../../Redux/actions";
-
+import s from "../../../css/EnrolUser.module.css"
+import{IoCloseSharp}from"react-icons/io5"
 const EnrolUser=({courseid,setEnrolUser,courseName,user})=>{
     const users=useSelector(state=>state.allUsers)
     const dispatch=useDispatch()
@@ -44,25 +45,32 @@ const EnrolUser=({courseid,setEnrolUser,courseName,user})=>{
             alert(error.message)
         }
     }
-console.log(info);
 
-return(
-    <div>
-        <button onClick={()=>setEnrolUser(false)}>X</button>
-        <p>{`Matricular alumno en el curso ${courseName}`}</p>
-        <label>Rol: </label>
-        <select onChange={handleChange}>
-            <option value={5}>Alumno</option>
-            <option value={3}>Profesor</option>
-            <option value={4}>Profesor sin posibilidad de editar</option>
-            <option value={1}>Gestor</option>
-        </select>
-        <div>
-           <label>Usuarios: </label>
-        <UserSelect setInfo={setInfo} info={info}/> 
+
+    return (
+        <div className={s.container}>
+          <div className={s.divCloseIcon}>
+            <IoCloseSharp onClick={()=>setEnrolUser(false)}
+            className={s.iconClose}/>
+          </div>
+          <p>{`Matricular alumno en el curso ${courseName}`}</p>
+          <div className={s.containerForm}>
+            <div className={s.enrolUser}>
+              <label >Rol: </label>
+              <select onChange={handleChange}>
+                <option value={5}style={{background: "#D9D9D9"}}>Alumno</option>
+                <option value={3}style={{background: "#EAEAEA"}}>Profesor</option>
+                <option value={4}style={{background: "#D9D9D9"}}>Profesor sin posibilidad de editar</option>
+                <option value={1}style={{background: "#EAEAEA"}}>Gestor</option>
+              </select>
+            </div>
+            <div className={s.containerUserSelect}>
+              <label>Usuarios: </label>
+              <UserSelect setInfo={setInfo} info={info}/> 
+            </div>
+          </div>
+          <button onClick={handlerEnrolUser}className={s.btn}>Matricular</button>
         </div>
-        <button onClick={handlerEnrolUser}>Matricular</button>
-    </div>
-)
-}
- export default EnrolUser
+    )
+    }
+     export default EnrolUser

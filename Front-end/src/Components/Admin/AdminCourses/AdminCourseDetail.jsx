@@ -111,15 +111,24 @@ const handleSendMail=()=>{
             })
         }
 }
-    return(
-    <div>
-       <button onClick={()=>navigate("/adminHome")}>HOME</button>
-       <button onClick={()=>setEnrolUser(!enrolUser)}>{`Matricular usuario al curso: ${course?.fullname}`}</button>
-        <div>
+return(
+    <div className={s.box}>
+      <button onClick={()=>navigate("/adminHome")}
+        className={s.btn}
+      >
+        HOME
+      </button>
+      <button onClick={()=>setEnrolUser(!enrolUser)}
+        className={s.btn}
+      >
+        {`Matricular usuario al curso: ${course?.fullname}`}
+      </button>
+      <div className={s.dataGridContainer}>
 
         <DataGrid
         columns={columns}
         rows={rows}
+        style={{width: "98vw"}}
         initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 6 },
@@ -132,11 +141,20 @@ const handleSendMail=()=>{
           }}
        
         />
+      </div>
+        <button onClick={handlerDownloadCsv}className={s.btn}>Descargar CSV</button>
+        <button onClick={handleSendMail}className={s.btn}>
+            {`Enviar mensaje a los usuarios seleccionados (${users?.length})`}
+        </button>
+        <div className={s.boxEnrolUser}>
+
+        {flag.state&&
+        <EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>
+        }
+        {enrolUser&&
+        <EnrolUser user={user} courseName={course?.fullname} setEnrolUser={setEnrolUser} courseid={id}/>
+        }
         </div>
-        <button onClick={handlerDownloadCsv}>Descargar CSV</button>
-        <button onClick={handleSendMail}>{`Enviar mensaje a los usuarios seleccionados (${users?.length})`}</button>
-        {flag.state&&<EmailPopOut  to={flag.to} flag={flag.state} setFlag={setFlag}/>}
-        {enrolUser&&<EnrolUser user={user} courseName={course?.fullname} setEnrolUser={setEnrolUser} courseid={id}/>}
         
     </div>
 )

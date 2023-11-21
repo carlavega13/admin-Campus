@@ -1,6 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getStudentCourses } from "../../Redux/actions"
-import { DataGrid } from "@mui/x-data-grid"
+import {dateTransfer}from "../Admin/AdminUsers/AdminUserDetail"
 
 const StudentCourses=({user})=>{
     const dispatch=useDispatch()
@@ -24,13 +24,13 @@ const StudentCourses=({user})=>{
 
             </div>
             <div>
-           progreso: {course.progress&&course.progress}
+           progreso: {course.progress?course.progress:0}
 
             </div>
 
            <div>
 
-           ultimo acceso: {course.lastaccess?course.lastaccess:"Nunca"}
+           ultimo acceso: {course.lastaccess?dateTransfer(course.lastaccess):"Nunca"}
            </div>
              </div>
      )

@@ -3,7 +3,7 @@ const {User}=require("../../db")
 const editUserMoodle=async(body)=>{
 try {
     const {info}=body
-const admin=await User.findOne({where:{username:body.username}})
+const admin=await User.findOne({where:{username:"carlavega"}})
 const token=await axios(`${body.domain}login/token.php?username=${admin.username}&password=${admin.password}&service=prueba`)
 // const res=await axios(`${body.domain}/webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_update_users&moodlewsrestformat=json&users[0][id]=378&users[0][username]=${info.username}&users[0][password]=${info.password}&users[0][firstname]=${info.firstname}&users[0][lastname]=${info.lastname}&users[0][email]=${info.email}`)
 let url=`${body.domain}/webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_update_users&moodlewsrestformat=json&users[0][id]=${info.id}`

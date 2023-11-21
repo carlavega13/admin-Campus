@@ -105,7 +105,7 @@ return(
           }}
         onCellClick={(params,e)=>{
             
-            if(params.row.usersamount>1){
+            if(params.row.usersamount>=1){
                       if(params.field==="course"){
         
                 navigate(`courseDetail/${params.id}`)

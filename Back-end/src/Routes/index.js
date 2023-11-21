@@ -13,6 +13,7 @@ const postUserMoodle = require("./postUserMoodle");
 const putUserMoodle = require("./putUserMoodle");
 const postEnrolUser = require("./postEnrolUser");
 const getEnrolledCourses = require("./studentRoutes/getEnrolledCourses");
+const studentGrades = require("./StundentGrades");
 
 const router=Router()
 
@@ -31,6 +32,7 @@ router.put("/putUser", putUser)
 router.put("/putUserMoodle",putUserMoodle)
 router.post("/enrolUser",postEnrolUser)
 router.post("/getStudentCourses",getEnrolledCourses)
+router.post("/getStudentGrades",studentGrades)
 router.get("/",(req,res)=>{
     const html = `
 <!DOCTYPE html>
