@@ -17,7 +17,7 @@ const getStudentCourses = async ({ domain, token, userId }) => {
         progress:course.progress
       };
     });
-console.log(filterRes);
+
     return filterRes;
   } catch (error) {
   throw new Error(error.message) 

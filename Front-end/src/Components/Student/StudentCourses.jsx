@@ -1,8 +1,10 @@
 import { useDispatch, useSelector } from "react-redux"
 import { getStudentCourses } from "../../Redux/actions"
 import {dateTransfer}from "../Admin/AdminUsers/AdminUserDetail"
+import { useNavigate } from "react-router-dom"
 
 const StudentCourses=({user})=>{
+    const navigate=useNavigate()
     const dispatch=useDispatch()
     const courses=useSelector(state=>state.courses)
     if(courses.length===0){
@@ -17,8 +19,10 @@ const StudentCourses=({user})=>{
     return( 
         <div>
 {     courses.map(course=>{
+    console.log(course);
      return(
         <div>
+            <button onClick={()=>navigate(`/grades/${course.id}`)}>Calificaciones</button>
             <div>
           nombre: {course.fullname}  
 

@@ -7,6 +7,7 @@ import {
   DELETE_ALL,
   PUT_HOME,
   GET_STUDENT_COURSES,
+  GET_STUDENT_GRADES,
 } from "./actionTypes";
 
 const initialState = {
@@ -89,6 +90,15 @@ case GET_STUDENT_COURSES:
         ...state,
         courses:action.payload
     }
+    case GET_STUDENT_GRADES:
+      const index=state.courses.findIndex(c=>c.id==action.payload.courseid)
+      console.log(action.payload);
+      let course= state.courses;
+     course[index].grades = action.payload.res.usergrades[0].gradeitems;
+      return{
+        ...state,
+        courses:course
+      }
     default:
       return { ...state };
   }

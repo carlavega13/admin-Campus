@@ -9,6 +9,7 @@ import LoginPage from './Components/Login/LoginPage'
 import CreateCourse from './Components/Admin/AdminCourses/CreateCourse'
 import CreateUser from './Components/Admin/AdminUsers/CreateUser'
 import StudentHome from './Components/Student/StudentHome'
+import StudentCourseDetail from './Components/Student/StudentCourseDetail'
 
 
 
@@ -27,7 +28,7 @@ function App() {
    <Route path='/createCourse' element={<CreateCourse/>}/>
    <Route path='/createUser' element={<CreateUser/>}/>
    <Route path='/studentHome' element={<StudentHome/>}/>
-
+   <Route path='/grades/:id' element={<StudentCourseDetail/>}/>
     </Routes>
     </div>
   )
