@@ -1,80 +1,78 @@
 .container {
-    /* background: violet; */
-    border-radius: 8px;
-    box-shadow: 2px 2px 5px 3px #25252586;
-    padding: 12px;
+  /* background: violet; */
+  border-radius: 8px;
+  box-shadow: 2px 2px 5px 3px #25252586;
+  padding: 12px;
 }
 .divCloseIcon {
-    /* background: red; */
-    display: flex;
-    justify-content: flex-end;
-    position: absolute;
-    width: 98%;
+  /* background: red; */
+  display: flex;
+  justify-content: flex-end;
+  position: absolute;
+  width: 98%;
 }
 .iconClose {
-    width: 1.6rem;
-    background: rgb(209, 54, 54);
-    border-radius: 1rem;
-    padding: 2px;
-    font-size: 1.6rem;
-    color: #eee;
-    transition: .3s;
-    cursor: pointer;
+  width: 1.6rem;
+  background: rgb(209, 54, 54);
+  border-radius: 1rem;
+  padding: 2px;
+  font-size: 1.6rem;
+  color: #eee;
+  transition: 0.3s;
+  cursor: pointer;
 }
 .iconClose:hover {
-    background: rgb(229, 87, 87);
+  background: rgb(229, 87, 87);
 }
 .btn {
-    background: #2f3367;
-    width: fit-content;
-    color: #fff;
-    padding: 4px 16px 4px 16px;
-    border-radius: 4px;
-    border: none;
-    font-weight: bold;
-    font-size: 1rem;
-    letter-spacing: 1px;
-    cursor: pointer;
-    transition: .3s;
-    margin: .5rem 0 .5rem 0rem;
-    font-family: Montserrat;
+  background: #2f3367;
+  width: fit-content;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 0.5rem 0rem;
+  font-family: Montserrat;
 }
 .btn:hover {
-    background: #535AAC;
+  background: #535aac;
 }
 .enrolUser {
-    /* background: greenyellow; */
-    display: flex;
-    flex-direction: column;
-    margin-right: 2rem;
+  /* background: greenyellow; */
+  display: flex;
+  flex-direction: column;
+  margin-right: 2rem;
 }
 .enrolUser > select {
-    /* background: yellow; */
-    width: 14rem;
-    height: 1.8rem;
-    font-family: Montserrat;
-    font-weight: bold;
-    letter-spacing: 1px;
+  /* background: yellow; */
+  width: 14rem;
+  height: 1.8rem;
+  font-family: Montserrat;
+  font-weight: bold;
+  letter-spacing: 1px;
 }
-.enrolUser >label {
-    font-weight: bold;
-    letter-spacing: 1px;
-    font-family: Montserrat;
-    color: #555;
+.enrolUser > label {
+  font-weight: bold;
+  letter-spacing: 1px;
+  font-family: Montserrat;
+  color: #555;
 }
 .enrolUser > select > option {
-    font-family: Montserrat;
-    font-weight: bold;
-    letter-spacing: 10px;
-
+  font-family: Montserrat;
+  font-weight: bold;
+  letter-spacing: 10px;
 }
 .containerForm {
-    /* background: green; */
-    display: flex;
-
+  /* background: green; */
+  display: flex;
 }
-.containerUserSelect >label{
-    font-weight: bold;
-    letter-spacing: 1px;
-    color: #555;
+.containerUserSelect > label {
+  font-weight: bold;
+  letter-spacing: 1px;
+  color: #555;
 }

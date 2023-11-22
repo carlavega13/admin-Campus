@@ -1,96 +1,124 @@
-import { useEffect, useState } from "react"
-import {validator} from "../FirstLoginEditProfile/validator"
-import s from "../../css/FirstLoginEditProfile.module.css"
-import { useDispatch, useSelector } from "react-redux"
-import { putUser } from "../../Redux/actions"
-import { useNavigate } from "react-router-dom"
-const FirstLoginEditProfile=({rol})=>{
-    const dispatch=useDispatch()
-    const navigate=useNavigate()
-    const user=useSelector(state=>state.user)
-    const[profile,setProfile]=useState({
-        firstName:"",
-        lastName:"",
-        DNI:"",
-        phone:"",
-        email:""
+import { useEffect, useState } from "react";
+import { validator } from "../FirstLoginEditProfile/validator";
+import s from "../../css/FirstLoginEditProfile.module.css";
+import { useDispatch, useSelector } from "react-redux";
+import { putUser } from "../../Redux/actions";
+import { useNavigate } from "react-router-dom";
+const FirstLoginEditProfile = ({ rol }) => {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const user = useSelector((state) => state.user);
+  const [profile, setProfile] = useState({
+    firstName: "",
+    lastName: "",
+    DNI: "",
+    phone: "",
+    email: "",
+  });
+  const [error, setError] = useState({
+    firstName: "",
+    lastName: "",
+    DNI: "",
+    phone: "",
+    email: "",
+  });
+  useEffect(() => {
+    setError(validator(profile));
+  }, [profile]);
+  const handlerChange = (e) => {
+    setProfile({
+      ...profile,
+      [e.target.name]: e.target.value,
+    });
+  };
+  const handlerSubmit = () => {
+    setError(validator(profile));
 
-    })
-    const[error,setError]=useState({
-        firstName:"",
-        lastName:"",
-        DNI:"",
-        phone:"",
-        email:""
-
-    })
-    useEffect(()=>{
-        setError(validator(profile))
-    },[profile])
-    const handlerChange=(e)=>{
-        setProfile({
-            ...profile,
-            [e.target.name]:e.target.value
-    
+    if (!error.firstName && !error.lastName && !error.phone && !error.email) {
+      dispatch(
+        putUser({
+          ...profile,
+          id: user.id,
+          domain: user.domain,
+          token: user.token,
         })
-  
-    }
-    const handlerSubmit=()=>{
-    
-     setError(validator(profile))
-
-     if(!error.firstName&&!error.lastName&&!error.phone&&!error.email){
-        dispatch(putUser({...profile,id:user.id,domain:user.domain,token:user.token}))
-        alert("Se actualizo su informacion")
-      if(user.rol==="estudiante"){
-        
-        navigate("/studentHome")
-      }else{
-
-          navigate("/adminHome")
+      );
+      alert("Se actualizo su informacion");
+      if (user.rol === "estudiante") {
+        navigate("/studentHome");
+      } else {
+        navigate("/adminHome");
       }
     }
-}
+  };
 
-return (
+  return (
     <div className={s.container}>
-     <div className={s.containerForm}>
+      <div className={s.containerForm}>
+        <div>
+          <label htmlFor="">Nombres </label>
+          <input
+            onChange={handlerChange}
+            name="firstName"
+            value={profile.firstName}
+            type="text"
+            placeholder="Nombres"
+          />
+          {error?.firstName ? <p>{error.firstName}</p> : <p> </p>}
+        </div>
 
-      <div>
-        <label htmlFor="">Nombres </label>
-        <input onChange={handlerChange} name="firstName" value={profile.firstName} type="text" placeholder="Nombres" />
-        { error?.firstName 
-        ? <p>{error.firstName}</p>
-        : <p> </p>
-        }
+        <div>
+          <label htmlFor="">Apellidos </label>
+          <input
+            onChange={handlerChange}
+            name="lastName"
+            value={profile.lastName}
+            type="text"
+            placeholder="Apellidos"
+          />
+          {error?.lastName ? <p>{error.lastName}</p> : <p></p>}
+        </div>
+
+        <div style={{ marginBottom: "2.5rem" }}>
+          <label htmlFor="">DNI</label>
+          <input
+            onChange={handlerChange}
+            name="DNI"
+            value={profile.DNI}
+            type="number"
+            placeholder="DNI"
+          />
+        </div>
+
+        <div>
+          <label htmlFor="">Celular </label>
+          <input
+            onChange={handlerChange}
+            name="phone"
+            value={profile.phone}
+            type="text"
+            placeholder="Celular"
+          />
+          {error?.phone ? <p>{error.phone}</p> : <p></p>}
+        </div>
+
+        <div>
+          <label htmlFor="">Email</label>
+          <input
+            onChange={handlerChange}
+            name="email"
+            value={profile.email}
+            type="text"
+            placeholder="Email"
+          />
+          {error?.email ? <p>{error.email}</p> : <p></p>}
+        </div>
+
+        <button onClick={handlerSubmit} className={s.btnSubmit}>
+          Enviar
+        </button>
       </div>
-
-      <div>
-        <label htmlFor="">Apellidos </label>
-        <input onChange={handlerChange} name="lastName" value={profile.lastName} type="text" placeholder="Apellidos" />
-        {error?.lastName?<p>{error.lastName}</p>:<p></p>}
-      </div>
-
-      <div style={{marginBottom: "2.5rem"}}>
-        <label htmlFor="">DNI</label>
-        <input onChange={handlerChange} name="DNI" value={profile.DNI} type="number" placeholder="DNI" />
-      </div>
-
-      <div>
-        <label htmlFor="">Celular </label>
-        <input onChange={handlerChange} name="phone" value={profile.phone} type="text" placeholder="Celular" />
-        {error?.phone?<p>{error.phone}</p>:<p></p>}
-      </div>
-
-      <div>
-        <label htmlFor="">Email</label>
-        <input onChange={handlerChange} name="email" value={profile.email} type="text" placeholder="Email" />
-        {error?.email?<p>{error.email}</p>:<p></p>}
-      </div>
-
-      <button onClick={handlerSubmit}className={s.btnSubmit}>Enviar</button>
-     </div>
     </div>
-)
-}
-export default FirstLoginEditProfile
+  );
+};
+export default FirstLoginEditProfile;

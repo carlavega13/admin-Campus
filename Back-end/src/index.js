@@ -1,16 +1,16 @@
 const express = require("express");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const router =require("./Routes/index")
+const router = require("./Routes/index");
 
-const server=express()
+const server = express();
 
 server.use(bodyParser.urlencoded({ extended: true, limit: "50mb" }));
 server.use(bodyParser.json({ limit: "50mb" }));
 server.use(cookieParser());
 server.use((req, res, next) => {
- //* update to match all domains you will make the request from 
-  res.header("Access-Control-Allow-Origin", "*"); 
+  //* update to match all domains you will make the request from
+  res.header("Access-Control-Allow-Origin", "*");
   res.header("Access-Control-Allow-Credentials", "true");
   res.header(
     "Access-Control-Allow-Headers",
@@ -20,17 +20,14 @@ server.use((req, res, next) => {
   next();
 });
 
-
 server.use("/", router);
-
 
 //! Error catching endware.
 server.use((err, req, res, next) => {
-    const status = err.status || 500;
-    const message = err.message || err;
-    console.error("este es el mensaje de error",err.message);
-    res.status(status).send(message);
-  });
-  
-  module.exports = server;
-  
+  const status = err.status || 500;
+  const message = err.message || err;
+  console.error("este es el mensaje de error", err.message);
+  res.status(status).send(message);
+});
+
+module.exports = server;

@@ -13,14 +13,14 @@ const getStudentCourses = async ({ domain, token, userId }) => {
       return {
         id: course.id,
         fullname: course.fullname,
-        lastaccess:course.lastaccess,
-        progress:course.progress
+        lastaccess: course.lastaccess,
+        progress: course.progress,
       };
     });
 
     return filterRes;
   } catch (error) {
-  throw new Error(error.message) 
+    throw new Error(error.message);
   }
 };
 module.exports = getStudentCourses;

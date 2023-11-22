@@ -1,5 +1,5 @@
-let sumar=function(a,b){
-    return a+b
-}
+let sumar = function (a, b) {
+  return a + b;
+};
 
-console.log(sumar(2,2));
+console.log(sumar(2, 2));

@@ -1,9 +1,9 @@
 const { Router } = require("express");
-const login=require("../Routes/login");
+const login = require("../Routes/login");
 const createDomain = require("./dbRoutes/createDomain");
 const createUser = require("./dbRoutes/createUser");
 const getCourses = require("./getCourses");
-const putUser= require("./putUser");
+const putUser = require("./putUser");
 const getUser = require("./getUser");
 const postMail = require("./dbRoutes/postMail");
 const getAllUsers = require("./getAllUsers");
@@ -16,27 +16,26 @@ const getEnrolledCourses = require("./studentRoutes/getEnrolledCourses");
 const studentGrades = require("./StundentGrades");
 const getTeacherCourse = require("./studentRoutes/getTeacherCourse");
 
-const router=Router()
+const router = Router();
 
-
-router.post("/postDomain",createDomain)
-router.post("/postUser",createUser)
-router.post("/login",login)
-router.post("/getCourses",getCourses)
-router.post("/getUser",getUser)
-router.post("/postMail",postMail)
-router.post("/getAllUsers",getAllUsers)
-router.post("/getGrades",getGrades)
-router.post("/postCourse",postCourse)
-router.post("/postUserMoodle",postUserMoodle)
-router.put("/putUser", putUser)
-router.put("/putUserMoodle",putUserMoodle)
-router.post("/enrolUser",postEnrolUser)
-router.post("/getStudentCourses",getEnrolledCourses)
-router.post("/getStudentGrades",studentGrades)
-router.post("/getTeacher",getTeacherCourse)
-router.get("/",(req,res)=>{
-    const html = `
+router.post("/postDomain", createDomain);
+router.post("/postUser", createUser);
+router.post("/login", login);
+router.post("/getCourses", getCourses);
+router.post("/getUser", getUser);
+router.post("/postMail", postMail);
+router.post("/getAllUsers", getAllUsers);
+router.post("/getGrades", getGrades);
+router.post("/postCourse", postCourse);
+router.post("/postUserMoodle", postUserMoodle);
+router.put("/putUser", putUser);
+router.put("/putUserMoodle", putUserMoodle);
+router.post("/enrolUser", postEnrolUser);
+router.post("/getStudentCourses", getEnrolledCourses);
+router.post("/getStudentGrades", studentGrades);
+router.post("/getTeacher", getTeacherCourse);
+router.get("/", (req, res) => {
+  const html = `
 <!DOCTYPE html>
 <html>
 <head>
@@ -48,5 +47,6 @@ router.get("/",(req,res)=>{
 </body>
 </html>
 `;
-    res.status(200).send(html)})
-module.exports=router
+  res.status(200).send(html);
+});
+module.exports = router;

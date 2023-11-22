@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
       res[find].enrolledPeople = action.payload.response;
 
       return {
-    ...state,
+        ...state,
         courses: res,
       };
     case DELETE_ALL:
@@ -85,20 +85,22 @@ const reducer = (state = initialState, action) => {
         ...state,
         homeValue: action.payload,
       };
-case GET_STUDENT_COURSES:
-    return{
+    case GET_STUDENT_COURSES:
+      return {
         ...state,
-        courses:action.payload
-    }
+        courses: action.payload,
+      };
     case GET_STUDENT_GRADES:
-      const index=state.courses.findIndex(c=>c.id==action.payload.courseid)
+      const index = state.courses.findIndex(
+        (c) => c.id == action.payload.courseid
+      );
       console.log(action.payload);
-      let course= state.courses;
-     course[index].grades = action.payload.res.usergrades[0].gradeitems;
-      return{
+      let course = state.courses;
+      course[index].grades = action.payload.res.usergrades[0].gradeitems;
+      return {
         ...state,
-        courses:course
-      }
+        courses: course,
+      };
     default:
       return { ...state };
   }

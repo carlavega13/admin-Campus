@@ -1,70 +1,70 @@
 .container {
-    /* background: blue; */
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  /* background: blue; */
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 .formContainer {
-    /* background: red; */
-    max-width: 800px;
-    /* width: 800px; */
+  /* background: red; */
+  max-width: 800px;
+  /* width: 800px; */
 }
 .formContainer > div {
-    /* background: green; */
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    margin-top: 12px;
+  /* background: green; */
+  display: flex;
+  flex-direction: column;
+  width: 600px;
+  margin-top: 12px;
 }
 .formContainer > div > input {
-    /* background: orange; */
-    border-radius: 1rem;
-    font-family: Montserrat;
-    letter-spacing: 1px;
-    border-radius: 1rem;
-    border: 2px solid #868AA5;
-    border: 2px solid #535AAC;
-    font-weight: bold;
-    color: #424242;
-    z-index: 1;
-    padding-left: 10px;
-    height: 1.5rem;
-    margin-top: .2rem;
+  /* background: orange; */
+  border-radius: 1rem;
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  border-radius: 1rem;
+  border: 2px solid #868aa5;
+  border: 2px solid #535aac;
+  font-weight: bold;
+  color: #424242;
+  z-index: 1;
+  padding-left: 10px;
+  height: 1.5rem;
+  margin-top: 0.2rem;
 }
 .formContainer > div > label {
-    font-family: Montserrat;
-    letter-spacing: 1px;
-    font-size: 1.1rem;
-    font-weight: bold;
-    color: #868AA5;
-    color: #535AAC;
-    color: #555555;
-    padding-left: 10px;
+  font-family: Montserrat;
+  letter-spacing: 1px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #868aa5;
+  color: #535aac;
+  color: #555555;
+  padding-left: 10px;
 }
 .btns {
-    background: #2f3367;
-    height: 1.6rem;
-    width: 12rem;
-    max-width: 28rem;
-    color: #fff;
-    padding: 4px 16px 4px 16px;
-    border-radius: 4px;
-    border: none;
-    font-weight: bold;
-    font-size: 1rem;
-    letter-spacing: 2px;
-    cursor: pointer;
-    transition: .3s;
-    margin: .5rem 0 1rem 0;
+  background: #2f3367;
+  height: 1.6rem;
+  width: 12rem;
+  max-width: 28rem;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 1rem 0;
 }
 .btns:hover {
-    background: #535AAC;
+  background: #535aac;
 }
 @media (max-width: 800px) {
-    .formContainer {
-        max-width: 0;
-        width: 100%;
-        /* background: green; */
-    }
+  .formContainer {
+    max-width: 0;
+    width: 100%;
+    /* background: green; */
+  }
 }

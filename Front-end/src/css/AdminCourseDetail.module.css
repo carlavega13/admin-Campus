@@ -1,30 +1,30 @@
-.box{
-    display: flex;
-    flex-direction: column;
-    width: 100vw;
-    }
-    .btn {
-        background: #2f3367;
-        width: fit-content;
-        color: #fff;
-        padding: 4px 16px 4px 16px;
-        border-radius: 4px;
-        border: none;
-        font-weight: bold;
-        font-size: 1rem;
-        letter-spacing: 1px;
-        cursor: pointer;
-        transition: .3s;
-        margin: .5rem 0 .5rem 0rem;
-        font-family: Montserrat;
-    }
-    .btn:hover {
-        background: #535AAC;
-    }
-    .dataGridContainer { 
-        width: 98vw;
-        overflow: auto
-    }
-    .boxEnrolUser {
-        /* background: lightsteelblue; */
-    }
+.box {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+}
+.btn {
+  background: #2f3367;
+  width: fit-content;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 0.5rem 0rem;
+  font-family: Montserrat;
+}
+.btn:hover {
+  background: #535aac;
+}
+.dataGridContainer {
+  width: 98vw;
+  overflow: auto;
+}
+.boxEnrolUser {
+  /* background: lightsteelblue; */
+}
