@@ -19,7 +19,6 @@ const StudentCourses=({user})=>{
     return( 
         <div>
 {     courses.map(course=>{
-    console.log(course);
      return(
         <div>
             <button onClick={()=>navigate(`/grades/${course.id}`)}>Calificaciones</button>
