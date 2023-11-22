@@ -20,7 +20,6 @@ const putUserController = async ({
         firstname: firstName,
         lastname: lastName,
         phone1: phone,
-        email: email,
       },
     });
 

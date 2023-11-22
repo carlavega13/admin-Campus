@@ -3,7 +3,7 @@ const { User } = require("../../db");
 const editUserMoodle = async (body) => {
   try {
     const { info } = body;
-    const admin = await User.findOne({ where: { username: "carlavega" } });
+    const admin = await User.findOne({ where: { rol: "administrador",isSuperAdmin:true,domain:body.domain } });
     const token = await axios(
       `${body.domain}login/token.php?username=${admin.username}&password=${admin.password}&service=prueba`
     );

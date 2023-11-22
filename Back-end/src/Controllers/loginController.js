@@ -25,6 +25,7 @@ const loginController = async (user) => {
         ...user,
         id: info.id,
         token: token.data.token,
+        domain: findUrl.url,
       });
       //     const info=await getUserController({domain:findUrl.url,username:response.username,password:response.password,rol:response.rol})
       return {
@@ -42,6 +43,7 @@ const loginController = async (user) => {
       username: find.username,
       password: find.password,
       rol: find.rol,
+      isSuperAdmin: find.isSuperAdmin,
     });
 
     return {

@@ -3,8 +3,12 @@ const { User } = require("../db");
 const getUserController = async (user) => {
   try {
     let { domain, username, password } = user;
-    if (user.rol !== "administrador") {
-      const admin = await User.findOne({ where: { username: "carlavega" } });
+    console.log(domain);
+    if (user.rol !== "administrador" || user.isSuperAdmin !== true) {
+      const admin = await User.findOne({
+        where: { rol: "administrador", isSuperAdmin: true, domain: domain },
+      });
+
       username = admin.username;
       password = admin.password;
     }

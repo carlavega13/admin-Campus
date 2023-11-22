@@ -51,6 +51,9 @@ module.exports = (sequelize) => {
       dni: {
         type: DataTypes.STRING,
       },
+      domain: {
+        type: DataTypes.STRING,
+      },
     },
     { timestamps: false }
   );
