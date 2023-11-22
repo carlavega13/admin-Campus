@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
       res[find].enrolledPeople = action.payload.response;
 
       return {
-        ...state,
+    ...state,
         courses: res,
       };
     case DELETE_ALL:
