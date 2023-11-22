@@ -40,7 +40,7 @@ const FirstLoginEditProfile=({rol})=>{
      setError(validator(profile))
 
      if(!error.firstName&&!error.lastName&&!error.phone&&!error.email){
-        dispatch(putUser({...profile,id:user.id,domain:user.domain}))
+        dispatch(putUser({...profile,id:user.id,domain:user.domain,token:user.token}))
         alert("Se actualizo su informacion")
       if(user.rol==="estudiante"){
         
