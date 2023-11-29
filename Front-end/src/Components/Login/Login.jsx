@@ -41,6 +41,10 @@ const Login = () => {
   if (userLogged?.username && userLogged?.rol === "estudiante") {
     navigate("/studentHome");
   }
+  if (userLogged?.username && userLogged?.rol === "profesor") {
+    navigate("/teacherHome");
+  }
+
 
   return (
     <div className={s.containerLogin}>

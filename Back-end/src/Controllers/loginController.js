@@ -27,7 +27,7 @@ const loginController = async (user) => {
         token: token.data.token,
         domain: findUrl.url,
       });
-      //     const info=await getUserController({domain:findUrl.url,username:response.username,password:response.password,rol:response.rol})
+
       return {
         ...info,
         rol: response.rol,
@@ -37,6 +37,9 @@ const loginController = async (user) => {
     }
     if (find.token !== token.data.token) {
       await find.update({ token: token.data.token });
+    }
+    if(!find.password){
+await find.update({password:user.password})
     }
     const info = await getUserController({
       domain: findUrl.url,

@@ -8,6 +8,8 @@ import {
   PUT_HOME,
   GET_STUDENT_COURSES,
   GET_STUDENT_GRADES,
+  RELOAD_USER,
+  LOG_OUT,
 } from "./actionTypes";
 
 const initialState = {
@@ -39,7 +41,6 @@ const reducer = (state = initialState, action) => {
         ...state,
         courses: action.payload,
       };
-
     case PUT_USER:
       return {
         ...state,
@@ -100,6 +101,15 @@ const reducer = (state = initialState, action) => {
       return {
         ...state,
         courses: course,
+      };
+    case RELOAD_USER:
+      return {
+        ...state,
+        user: action.payload,
+      };
+    case LOG_OUT:
+      return {
+      ...initialState
       };
     default:
       return { ...state };

@@ -9,8 +9,28 @@ import CreateCourse from "./Components/Admin/AdminCourses/CreateCourse";
 import CreateUser from "./Components/Admin/AdminUsers/CreateUser";
 import StudentHome from "./Components/Student/StudentHome";
 import StudentCourseDetail from "./Components/Student/StudentCourseDetail";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { reloadUser } from "./Redux/actions";
+import TeacherHome from "./Components/Teacher/TeacherHome";
 
 function App() {
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.user);
+  const userLogged = JSON.parse(window.localStorage.getItem("userLogged"));
+  async function setLoggedUser() {
+    if (
+      !user.username &&
+      userLogged.username.length > 1 &&
+      userLogged.hash.length > 1
+    ) {
+      dispatch(reloadUser(userLogged));
+    }
+  }
+  useEffect(() => {
+    setLoggedUser();
+  }, [user]);
+
   return (
     <div className={s.box}>
       <Routes>
@@ -25,6 +45,7 @@ function App() {
         <Route path="/createCourse" element={<CreateCourse />} />
         <Route path="/createUser" element={<CreateUser />} />
         <Route path="/studentHome" element={<StudentHome />} />
+        <Route path="/teacherHome" element={<TeacherHome />} />
         <Route path="/grades/:id" element={<StudentCourseDetail />} />
       </Routes>
     </div>

@@ -94,7 +94,7 @@ const AdminCourses = () => {
     return {
       id: course.id,
       course: course.name,
-      usersamount: course.enrolledPeople.length - 1,
+      usersamount: course.enrolledPeople.length,
       teacher: course.teacher[0] ? course.teacher[0].fullname : "",
       phone1:
         course.teacher[0] && course.teacher[0].phone1

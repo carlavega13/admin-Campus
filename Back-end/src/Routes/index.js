@@ -15,6 +15,9 @@ const postEnrolUser = require("./postEnrolUser");
 const getEnrolledCourses = require("./studentRoutes/getEnrolledCourses");
 const studentGrades = require("./StundentGrades");
 const getTeacherCourse = require("./studentRoutes/getTeacherCourse");
+const postReloadUser = require("./postreloadUser");
+const postChangeRol = require("./postChangeRol");
+const teacherCourses = require("./teacherRoutes/teacherCourses");
 
 const router = Router();
 
@@ -34,6 +37,9 @@ router.post("/enrolUser", postEnrolUser);
 router.post("/getStudentCourses", getEnrolledCourses);
 router.post("/getStudentGrades", studentGrades);
 router.post("/getTeacher", getTeacherCourse);
+router.post("/reloadUser", postReloadUser);
+router.post("/changeRol", postChangeRol);
+router.post("/teacherCourse", teacherCourses);
 router.get("/", (req, res) => {
   const html = `
 <!DOCTYPE html>

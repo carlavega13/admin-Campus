@@ -12,17 +12,6 @@ const getAllUsersController = async (info) => {
       },
     });
 
-    for (let i = 0; i < people.data.length; i++) {
-      if (!people.data[i].phone1) {
-        let findDb = await User.findOne({
-          where: { username: people.data[i].username },
-        });
-
-        if (findDb && findDb.phone) {
-          people.data[i].phone1 = findDb.phone;
-        }
-      }
-    }
     return people.data;
   } catch (error) {
     throw new Error(error.message);

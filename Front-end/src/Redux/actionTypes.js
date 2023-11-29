@@ -8,3 +8,5 @@ export const DELETE_ALL = "DELETE_ALL";
 export const PUT_HOME = "PUT_HOME";
 export const GET_STUDENT_COURSES = "GET_STUDENT_COURSES";
 export const GET_STUDENT_GRADES = "GET_STUDENT_GRADES";
+export const RELOAD_USER="RELOAD_USER"
+export const LOG_OUT="LOG_OUT"

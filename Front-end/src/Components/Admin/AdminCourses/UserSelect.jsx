@@ -2,7 +2,6 @@ import { useEffect, useState } from "react";
 import { IoIosArrowDown } from "react-icons/io";
 import { RiDeleteBin2Line } from "react-icons/ri";
 import { useDispatch, useSelector } from "react-redux";
-import { getAllUsers } from "../../../Redux/actions";
 import s from "../../../css/UserSelect.module.css";
 
 const UserSelect = ({ info, setInfo }) => {
@@ -11,12 +10,14 @@ const UserSelect = ({ info, setInfo }) => {
   const [active, setActive] = useState(false);
   const [filteredUsers, setFilteredUsers] = useState(users);
   useEffect(() => {}, [users]);
-  const handleClick = (e, name) => {
+  const handleClick = (e, name,username) => {
     setUSer(name);
     setInfo({
       ...info,
       userid: Number(e.target.id),
       userfullname: name,
+      username:username
+
     });
     setActive(false);
   };
@@ -64,7 +65,7 @@ const UserSelect = ({ info, setInfo }) => {
           {filteredUsers?.map((user, i) => {
             return (
               <div
-                onClick={(e) => handleClick(e, user.fullname)}
+                onClick={(e) => handleClick(e, user.fullname,user.username)}
                 id={user.id}
                 style={{ background: i % 2 === 0 ? "#EAEAEA" : "#D9D9D9" }}
                 className={s.divUserName}

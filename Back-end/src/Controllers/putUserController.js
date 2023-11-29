@@ -22,7 +22,6 @@ const putUserController = async ({
         phone1: phone,
       },
     });
-
     let info = {
       firstname: firstName,
       lastname: lastName,

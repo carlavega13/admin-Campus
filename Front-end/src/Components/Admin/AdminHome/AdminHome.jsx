@@ -11,7 +11,8 @@ import { FaUser, FaFileAlt } from "react-icons/fa";
 import { CgMenu } from "react-icons/cg";
 import { TfiExchangeVertical } from "react-icons/tfi";
 import EditProfile from "../../EditProfile/EditProfile.jsx";
-import { putHome } from "../../../Redux/actions.js";
+import { logOut, putHome } from "../../../Redux/actions.js";
+import ChangeRoles from "../AdminRoles/ChangeRoles.jsx";
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -19,7 +20,6 @@ const AdminHome = () => {
   const user = useSelector((state) => state.user);
   const value = useSelector((state) => state.homeValue);
 
-  console.log(value);
   useEffect(() => {}, [value]);
   if (!user?.phone || !user?.email) {
     navigate("/firstEditProfile");
@@ -94,6 +94,15 @@ const AdminHome = () => {
             />
           </div>
         </div>
+        <button onClick={() => dispatch(putHome("roles"))}>Roles</button>
+        <button
+          onClick={() => {
+            dispatch(logOut());
+            navigate("/");
+          }}
+        >
+          LOGOUT
+        </button>
       </div>
 
       <div className={s.right}>
@@ -103,6 +112,7 @@ const AdminHome = () => {
         {value === "users" ? <AdminUsers /> : null}
 
         {value === "changeDomain" ? <ChangeDomain /> : null}
+        {value === "roles" ? <ChangeRoles user={user}/> : null}
       </div>
     </div>
   );

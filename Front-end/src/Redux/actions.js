@@ -9,22 +9,45 @@ import {
   PUT_HOME,
   GET_STUDENT_COURSES,
   GET_STUDENT_GRADES,
+  RELOAD_USER,
+  LOG_OUT,
 } from "./actionTypes";
 import axios from "axios";
 import { HOST } from "../../HOST";
+import bcryptjs from "bcryptjs";
 
 export const login = (user) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(`${HOST}login`, user);
-
+      const hash = await bcryptjs.hash(user.password, 10);
+      window.localStorage.setItem(
+        "userLogged",
+        JSON.stringify({ username: user.username, hash: hash })
+      );
       return dispatch({ type: LOGIN, payload: response.data });
     } catch (error) {
+      console.log(error);
       alert(error.response.data);
     }
   };
 };
 
+export const reloadUser = (userLogged) => {
+  return async (dispatch) => {
+    try {
+      const response = await axios.post(`${HOST}reloadUser`, userLogged);
+      return dispatch({ type: RELOAD_USER, payload: response.data });
+    } catch (error) {}
+  };
+};
+export const logOut = () => {
+  window.localStorage.setItem(
+    "userLogged",
+    JSON.stringify({ username: "", hash: "" })
+  );
+  return { type: LOG_OUT };
+};
 export const getCourses = (user) => {
   return async (dispatch) => {
     try {

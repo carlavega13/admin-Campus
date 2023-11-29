@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import setting from "../../public/images/AdminHome/setting.png";
-import { putHome } from "../../Redux/actions";
+import { putHome,logOut } from "../../Redux/actions";
 import EditProfile from "../EditProfile/EditProfile";
 import { FaFileAlt } from "react-icons/fa";
 import { CgMenu } from "react-icons/cg";
@@ -52,7 +52,16 @@ const StudentHome = () => {
               className={s.icons}
               color={value === "courses" ? "#9283BD" : "#868AA5"}
             />
+            
           </div>
+          <button
+          onClick={() => {
+            dispatch(logOut());
+            navigate("/");
+          }}
+        >
+          LOGOUT
+        </button>
         </div>
       </div>
 
