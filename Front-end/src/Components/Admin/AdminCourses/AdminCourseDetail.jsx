@@ -146,7 +146,14 @@ const AdminCourseDetail = () => {
   };
   return (
     <div className={s.box}>
-      <button onClick={() => navigate("/adminHome")} className={s.btn}>
+      <button onClick={() =>{
+        if(user.rol==="administrador"){
+navigate("/adminHome")
+        }
+        if(user.rol==="profesor"){
+          navigate("/teacherHome")
+        }
+        }} className={s.btn}>
         HOME
       </button>
       <button onClick={() => setEnrolUser(!enrolUser)} className={s.btn}>

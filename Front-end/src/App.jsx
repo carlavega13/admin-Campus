@@ -38,7 +38,7 @@ function App() {
         <Route path="/adminHome" element={<AdminHome />} />
         <Route path="/firstEditProfile" element={<FirstLoginEditProfile />} />
         <Route
-          path="adminHome/courseDetail/:id"
+          path="/courseDetail/:id"
           element={<AdminCourseDetail />}
         />
         <Route path="/adminHome/users/:id" element={<AdminUserDetail />} />

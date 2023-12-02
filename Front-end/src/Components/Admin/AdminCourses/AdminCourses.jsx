@@ -12,7 +12,7 @@ const AdminCourses = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { courses, user, allUsers } = useSelector((res) => res);
+  const { courses, user } = useSelector((res) => res);
   const [flag, setFlag] = useState({
     state: false,
     to: [],
@@ -147,7 +147,7 @@ const AdminCourses = () => {
           onCellClick={(params, e) => {
             if (params.row.usersamount >= 1) {
               if (params.field === "course") {
-                navigate(`courseDetail/${params.id}`);
+                navigate(`/courseDetail/${params.id}`);
               }
             }
           }}

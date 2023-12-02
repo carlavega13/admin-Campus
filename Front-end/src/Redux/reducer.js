@@ -10,6 +10,7 @@ import {
   GET_STUDENT_GRADES,
   RELOAD_USER,
   LOG_OUT,
+  GET_TEACHER_COURSES,
 } from "./actionTypes";
 
 const initialState = {
@@ -107,6 +108,12 @@ const reducer = (state = initialState, action) => {
         ...state,
         user: action.payload,
       };
+      case GET_TEACHER_COURSES:
+
+        return{
+          ...state,
+          courses:action.payload
+        }
     case LOG_OUT:
       return {
       ...initialState

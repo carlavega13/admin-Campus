@@ -3,7 +3,7 @@ import UserSelect from "./UserSelect";
 import { useDispatch, useSelector } from "react-redux";
 import axios from "axios";
 import { HOST } from "../../../../HOST";
-import { getAllUsers } from "../../../Redux/actions";
+import { getAllUsers, getTeacherCourse } from "../../../Redux/actions";
 import s from "../../../css/EnrolUser.module.css";
 import { IoCloseSharp } from "react-icons/io5";
 const EnrolUser = ({ courseid, setEnrolUser, courseName, user }) => {
@@ -38,9 +38,10 @@ const EnrolUser = ({ courseid, setEnrolUser, courseName, user }) => {
             courseid: info.courseid,
           },
         });
-        console.log(res.data);
+
         if (!res.data) {
           alert("El usuario fue matriculado.");
+          // dispatch(getTeacherCourse({domain:user.domain,token:user.token}))
         }
       }
     } catch (error) {

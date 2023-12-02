@@ -11,6 +11,7 @@ import {
   GET_STUDENT_GRADES,
   RELOAD_USER,
   LOG_OUT,
+  GET_TEACHER_COURSES,
 } from "./actionTypes";
 import axios from "axios";
 import { HOST } from "../../HOST";
@@ -120,7 +121,6 @@ export const getStudentGrades = (user) => {
   return async (dispatch) => {
     try {
       const response = await axios.post(`${HOST}getStudentGrades`, user);
-      console.log(response.data);
       return dispatch({
         type: GET_STUDENT_GRADES,
         payload: { res: response.data, courseid: user.courseid },
@@ -130,3 +130,17 @@ export const getStudentGrades = (user) => {
     }
   };
 };
+
+export const getTeacherCourse=(user)=>{
+  return async (dispatch)=>{
+    try {
+      const response=await axios.post(`${HOST}teacherCourse`,user)
+      return dispatch({
+        type:GET_TEACHER_COURSES,
+        payload:response.data
+      })
+    } catch (error) {
+      
+    }
+  }
+}
