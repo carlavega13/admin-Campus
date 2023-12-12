@@ -7,6 +7,10 @@ import { CgMenu } from "react-icons/cg";
 import EditProfile from "../EditProfile/EditProfile";
 import selectSetting from "../../public/images/AdminHome/select_setting.png";
 import TeacherCourse from "./TeacherCourse";
+import s from "../../css/TeacherHome.module.css"
+import { ToastInfo } from "../../functions/toast";
+import{CiLogout} from "react-icons/ci"
+
 
 const TeacherHome=()=>{
     const dispatch=useDispatch()
@@ -18,10 +22,11 @@ const TeacherHome=()=>{
     }
   
     return (
-      <div>
-        <div >
-          <div >
-            <div >
+      <div  className={s.containerAll}>
+        <ToastInfo/>
+        <div className={s.container}>
+          <div className={s.divSettings}>
+            <div className={s.settings} >
               <p>
                 {`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} 
               ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}
@@ -29,40 +34,49 @@ const TeacherHome=()=>{
               <img
                 onClick={() => dispatch(putHome("editProfile"))}
                 src={value === "editProfile" ? selectSetting : setting}
-                style={{width:"2rem"}}
+                style={{width:"2rem"}} className={`${s.iconSettings} ${
+                  value === "editProfile" ? s.selectedProfile : null
+                }`}
               />
             </div>
             <p>{user?.username}</p>
           </div>
   
-          <div >
+          <div className={s.divBtnsOptions}>
             <div
               onClick={() => dispatch(putHome("courses"))}
-             
+              className={value === "courses" ? s.borderGr : s.borderDefault}
             >
               <FaFileAlt
-                
+                 className={s.icons2}
                 color={value === "courses" ? "#59B4B4" : "#868AA5"}
               />
               <p >Cursos</p>
               <CgMenu
-             
+              className={s.icons}
                 color={value === "courses" ? "#9283BD" : "#868AA5"}
               />
               
             </div>
-            <button
-            onClick={() => {
-              dispatch(logOut());
-              navigate("/");
-            }}
-          >
-            LOGOUT
-          </button>
+            <div onClick={() => {
+                  dispatch(logOut());
+                  navigate("/");
+                }}
+            >
+              <CiLogout className={s.icons}
+                color={"#868AA5"}/>
+              <p>
+                Logout
+              </p>
+              <CgMenu
+                className={s.icons}
+                color={value === "roles" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
           </div>
         </div>
   
-        <div >
+        <div className={s.right}>
           {value === "editProfile" ? <EditProfile /> : null}
   
           {value === "courses" ? <TeacherCourse user={user} /> : null}

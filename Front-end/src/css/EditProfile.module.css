@@ -1,10 +1,8 @@
 .box input {
-  /* background: greenyellow; */
   font-family: Montserrat;
   letter-spacing: 1px;
   border-radius: 1rem;
-  border: 2px solid #868aa5;
-  border: 2px solid #535aac;
+  border: 2px solid #9283bd;
   font-weight: bold;
   color: #424242;
   z-index: 1;
@@ -12,66 +10,49 @@
   height: 1.5rem;
 }
 .box label {
-  /* background: blueviolet; */
   font-family: Montserrat;
   letter-spacing: 1px;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #868aa5;
-  color: #535aac;
   color: #555555;
   margin-bottom: 0.2rem;
   z-index: 1;
   padding-left: 10px;
 }
 .box h2 {
-  color: #555555;
+  letter-spacing: .075rem;
+  color: #9283bd;
 }
 .box {
   display: flex;
   flex-direction: column;
-  /* justify-content: center; */
-  /* align-items: center; */
-  /* height: 100vh; */
   padding: 3rem;
-  /* width: 100%; */
-  box-shadow: 2px 2px 6px 4px rgb(0, 0, 0, 0.35);
-  border-radius: 12px;
-  /* border: 3px solid #535AAC; */
-  /* margin-top: 2rem; */
+  border-radius: .2rem;
   margin: 2rem 1rem 0 1rem;
-  /* background: orange; */
+  border: .1rem solid #9283bd;
 }
 .formContainer {
   background: #fff;
-  /* background: #535AAC; */
   padding: 3px;
   display: flex;
   flex-wrap: wrap;
-  /* justify-content: center; */
 }
 .formContainer > div {
-  /* background: violet; */
   width: 26rem;
   height: 4rem;
   margin: 0 1rem 1rem 0;
   z-index: 10;
   display: flex;
   flex-direction: column;
-  /* border: 2px solid #868AA5; */
   border-radius: 6px;
 }
 .formContainer > div > p {
-  /* background: red !important; */
   padding: 0;
   margin: 0;
   font-size: 0.8rem;
   color: #e33e3e;
 }
 .containerCountries {
-  /* background: blue !important; */
-  /* padding: 20px; */
-  /* height: 12rem !important; */
   display: flex;
   flex-direction: column;
 }
@@ -83,21 +64,21 @@
   letter-spacing: 1px;
   z-index: 1;
   align-self: flex-end;
-  background: #2f3367;
+  background: #9283bd;
   height: auto;
   max-width: 28rem;
   color: #fff;
-  padding: 4px 16px 4px 16px;
+  padding: .2rem .8rem .2rem .8rem;
   margin-top: 12px;
-  border-radius: 4px;
+  border-radius: .2rem;
   border: none;
   font-weight: bold;
   font-size: 0.85rem;
-  letter-spacing: 2px;
+  letter-spacing: .075rem;
   cursor: pointer;
   transition: 0.3s;
 }
 
 .btnSubmit:hover {
-  background: #535aac;
+  background: #59b4b4;
 }

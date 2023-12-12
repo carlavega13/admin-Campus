@@ -1,19 +1,23 @@
 .container {
-  /* background: violet; */
-  border-radius: 8px;
-  box-shadow: 2px 2px 5px 3px #25252586;
-  padding: 12px;
+  border-radius: .2rem;
+  box-shadow: .1rem .1rem .1rem .15rem #25252586;
+  padding: .6rem;
+}
+.container>p {
+  color: #9283bd;
+  font-weight: bold;
+  font-size: 1.2rem;
 }
 .divCloseIcon {
-  /* background: red; */
   display: flex;
   justify-content: flex-end;
-  position: absolute;
-  width: 98%;
+  position: relative;
+  width: 100%;
+  height: .01rem;
 }
 .iconClose {
   width: 1.6rem;
-  background: rgb(209, 54, 54);
+  background: #DC4949;
   border-radius: 1rem;
   padding: 2px;
   font-size: 1.6rem;
@@ -22,10 +26,10 @@
   cursor: pointer;
 }
 .iconClose:hover {
-  background: rgb(229, 87, 87);
+  background: #C74040;
 }
 .btn {
-  background: #2f3367;
+  background: #9283bd;
   width: fit-content;
   color: #fff;
   padding: 4px 16px 4px 16px;
@@ -40,16 +44,14 @@
   font-family: Montserrat;
 }
 .btn:hover {
-  background: #535aac;
+  background: #59b4b4;
 }
 .enrolUser {
-  /* background: greenyellow; */
   display: flex;
   flex-direction: column;
   margin-right: 2rem;
 }
 .enrolUser > select {
-  /* background: yellow; */
   width: 14rem;
   height: 1.8rem;
   font-family: Montserrat;
@@ -68,8 +70,11 @@
   letter-spacing: 10px;
 }
 .containerForm {
-  /* background: green; */
   display: flex;
+}
+.containerUserSelect {
+  display: flex;
+  flex-direction: column;
 }
 .containerUserSelect > label {
   font-weight: bold;

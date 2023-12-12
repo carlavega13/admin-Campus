@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getAllUsers } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import CountrySelect from "./CountrySelect";
+import { ToastInfo, notify } from "../../functions/toast";
 
 const EditProfile = () => {
   const navigate = useNavigate();
@@ -79,14 +80,15 @@ const EditProfile = () => {
           token: user?.token,
           info: info,
         });
-        console.log(res.data);
-        alert(res.data);
+
+        notify(res.data);
       }
     }
   };
 
   return (
     <div className={s.box}>
+      <ToastInfo/>
       <h2>Edita la informacion de tu perfil:</h2>
       <p>(Los campos vacios no modificaran tu información)</p>
       <div className={s.formContainer}>

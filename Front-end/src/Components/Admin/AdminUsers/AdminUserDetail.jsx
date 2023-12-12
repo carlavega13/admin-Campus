@@ -35,6 +35,7 @@ const AdminUserDetail = () => {
   useEffect(() => {
     const courses = async () => {
       let a = [];
+
       for (let i = 0; i < user?.enrolledcourses?.length; i++) {
         let response = await axios.post(`${HOST}getGrades`, {
           token,
@@ -58,11 +59,18 @@ const AdminUserDetail = () => {
   }, []);
 
   let aux = 0;
-  info.forEach((i) => {
+
+
+  info?.forEach((i) => {
+
+    if(!i.grades){
+      return
+    }
     if (i.grades.length > aux) {
       aux = i.grades.length;
     }
   });
+
 
   const columns = [
     { field: "course", headerName: "CURSOS", width: 300 },
@@ -87,7 +95,8 @@ const AdminUserDetail = () => {
       course: i.course.fullname,
       lastaccess: i.course.lastaccess && `${dateTransfer(i.course.lastaccess)}`,
     };
-    i.grades.forEach((element) => {
+    if(i.grades){
+          i.grades.forEach((element) => {
       if (element.itemname) {
         a[`activity${e}`] = `${element.itemname}/${
           element.graderaw ? element.graderaw : ""
@@ -97,29 +106,39 @@ const AdminUserDetail = () => {
         a.finalactivity = element.graderaw && element.graderaw;
       }
     });
+    }
+
     return a;
   });
 
   return (
-    <div>
-      <button onClick={() => navigate("/adminHome")}>HOME</button>
+    <div className={s.box}>
+      <button onClick={() => navigate("/adminHome")}
+        className={s.btn}>
+        HOME
+      </button>
       <h1>{user?.fullname}</h1>
-      <h5 onClick={() => handleEnvolope(user?.email)}>
-        {user?.email}
+      <div onClick={() => handleEnvolope(user?.email)}
+        className={s.divEmail}>
+        <p>{user?.email}</p>
         <GrMailOption />
+      </div>
+    {user.phone1 && (
+      <h5>
+        {user?.phone1}
+        <a href={`https://wa.me/${user?.phone1}`}>
+          <BsWhatsapp />
+        </a>
       </h5>
-      {user.phone1 && (
-        <h5>
-          {user?.phone1}
-          <a href={`https://wa.me/${user?.phone1}`}>
-            <BsWhatsapp />
-          </a>
-        </h5>
-      )}
-      <h5>{dateTransfer(user.firstaccess)}</h5>
-      <div style={{ height: "fit-content" }}>
+    )}
+      <p>Primer acceso: {dateTransfer(user.firstaccess)}</p>
+      <div style={{ 
+        height: "fit-content",
+        width: "100%"
+        }}>
         <DataGrid
           columns={columns}
+          style={{width: "99%"}}
           rows={rows}
           initialState={{
             pagination: {

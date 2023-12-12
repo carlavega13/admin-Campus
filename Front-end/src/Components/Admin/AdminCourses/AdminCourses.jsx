@@ -8,6 +8,8 @@ import { useEffect, useState } from "react";
 import EmailPopOut from "../../EmailPopOut";
 import { DataGrid } from "@mui/x-data-grid";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
+import { ToastInfo ,notifyError} from "../../../functions/toast";
+
 const AdminCourses = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -105,7 +107,7 @@ const AdminCourses = () => {
 
   const handlerSendSelected = () => {
     if (teacher.length === 0) {
-      alert("Debes selecionar al menos un usuario");
+      notifyError("Debes selecionar al menos un usuario");
     } else {
       const usersInfo = teacher
         .map((id) => {
@@ -126,6 +128,7 @@ const AdminCourses = () => {
   };
   return (
     <div className={s.container}>
+      <ToastInfo/>
       <button className={s.btnEmails} onClick={() => navigate("/createCourse")}>
         Crear curso
       </button>

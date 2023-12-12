@@ -1,12 +1,13 @@
 .container {
-  /* background: #333; */
+  border: solid 0.1rem #9283bd;
+  padding: .5rem;
+  border-radius: .2rem;
+  margin: 1rem 0 1rem 0
 }
 .row {
   display: flex;
   justify-content: space-around;
-  /* background-color: brown; */
-  padding: 1em;
-  border: 1px solid black;
+  background-color: violet;
 }
 .name {
   cursor: pointer;
@@ -16,25 +17,27 @@
   width: 70%;
 }
 .fondo {
+  background: green;
   width: 100%;
   height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  padding: 4px;
 }
 .names {
+  background: blue;
   display: flex;
   justify-content: space-evenly;
-
   width: 100%;
 }
 .blur {
-  color: transparent; /* Hace que el texto sea transparente */
+  color: transparent;/* Hace que el texto sea transparente */
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.752);
 }
 .btnCreate {
-  background: #2f3367;
+  background: #9283bd;
   height: 1.6rem;
   width: 12rem;
   max-width: 28rem;
@@ -50,29 +53,27 @@
   margin: 0.5rem 0 1rem 0;
 }
 .btnCreate:hover {
-  background: #535aac;
+  background: #59b4b4;
 }
 .btnEmails {
-  background: #2f3367;
-  /* height: 1.6rem; */
+  background: #9283bd;
   max-width: 28rem;
   color: #fff;
   padding: 4px 16px 4px 16px;
   border-radius: 4px;
   border: none;
   font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: .9rem;
+  letter-spacing: 0.075rem;
   cursor: pointer;
   transition: 0.3s;
-  /* margin: .5rem 0 1rem 0; */
+  margin: .5rem 0 1rem 0;
 }
 .btnEmails:hover {
-  background: #535aac;
+  background: #59b4b4;
 }
 .divLoading {
   width: 100%;
-  /* background-color: red; */
   display: flex;
   justify-content: center;
   align-items: center;

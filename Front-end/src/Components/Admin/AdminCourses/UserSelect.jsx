@@ -47,21 +47,25 @@ const UserSelect = ({ info, setInfo }) => {
     }
   }, [user, users]);
   return (
-    <div className={s.containerUserSelect}>
+    <div>
       <div className={s.divInputIcons}>
         <input onChange={handlerChange} value={user} type="text" />
-        {user.length > 0 && (
-          <RiDeleteBin2Line onClick={() => setUSer("")} className={s.icons} />
-        )}
-        <IoIosArrowDown
-          onClick={() => setActive(!active)}
-          className={s.icons}
-        />
+        <div>
+          {user.length > 0 && (
+            <RiDeleteBin2Line onClick={() => setUSer("")}   className={s.icons} />
+            )}
+          <IoIosArrowDown
+            onClick={() => setActive(!active)}
+            className={s.icons}
+            />
+        </div>
       </div>
 
       {active && (
         <div className={s.containerUserNames}>
-          {filteredUsers.length === 0 && <div>NO SE ENCONTRO USUARIO</div>}
+          {filteredUsers.length === 0 && 
+          <div className={s.noUsersFound}>No hay usuarios encontrados</div>
+          }
           {filteredUsers?.map((user, i) => {
             return (
               <div

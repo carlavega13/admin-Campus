@@ -4,7 +4,8 @@ import { getAllUsers } from "../../../Redux/actions"
 import { useState } from "react"
 import axios from "axios"
 import { HOST } from "../../../../HOST"
-
+import { ToastInfo, notify, notifyError } from "../../../functions/toast"
+import s from "../../../css/ChangeRoles.module.css"
 
 const ChangeRoles=(props)=>{
 
@@ -23,18 +24,22 @@ const ChangeRoles=(props)=>{
     console.log(info);
     const handleSend=async()=>{
       if(!info.rol){
-       return alert("debes seleccionar todos los campos")
+       return notifyError("debes seleccionar todos los campos")
       }
       if(!info.userid){
-       return alert("debes seleccionar todos los campos")
+       return notifyError("debes seleccionar todos los campos")
       }
       const res=await axios.post(`${HOST}changeRol`,info)
+if(res.status>=200&&res.status<300){
+  notify("se cambio el rol del usuario")
+}
     }
-return(
-    <div>
-        <label>Usuario: </label>
-    <UserSelect info={info}setInfo={setInfo}/>
-    <label>Rol: </label>
+    return(
+      <div className={s.container}>
+        <ToastInfo/>
+        <div>
+          <p>Aquí puedes cambiar el rol de un usuario</p>
+          <label>Nuevo rol: </label>
           <select onChange={handleChange}>
             <option value={"estudiante"} style={{ background: "#D9D9D9" }}>
               Alumno
@@ -46,8 +51,13 @@ return(
             Administrador
             </option>
           </select>
+          <div className={s.divUserSelect}>
+            <label>Usuario: </label>
+            <UserSelect info={info}setInfo={setInfo}/>
+          </div>
           <button onClick={handleSend}>Cambiar rol</button>
-    </div>
-)
-}
-export default ChangeRoles
+        </div>
+      </div>
+  )
+  }
+  export default ChangeRoles

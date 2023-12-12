@@ -10,9 +10,12 @@ import selectSetting from "../../../public/images/AdminHome/select_setting.png";
 import { FaUser, FaFileAlt } from "react-icons/fa";
 import { CgMenu } from "react-icons/cg";
 import { TfiExchangeVertical } from "react-icons/tfi";
+import{CiLogout} from "react-icons/ci"
+import{MdAdminPanelSettings} from "react-icons/md"
 import EditProfile from "../../EditProfile/EditProfile.jsx";
 import { logOut, putHome } from "../../../Redux/actions.js";
 import ChangeRoles from "../AdminRoles/ChangeRoles.jsx";
+import { ToastInfo } from "../../../functions/toast.jsx";
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -66,46 +69,71 @@ const AdminHome = () => {
             <FaFileAlt
               className={s.icons2}
               color={value === "courses" ? "#59B4B4" : "#868AA5"}
-            />
-            <p className={value === "courses" ? s.selected : null}>Cursos</p>
-            <CgMenu
-              className={s.icons}
-              color={value === "courses" ? "#9283BD" : "#868AA5"}
-            />
-          </div>
-          <div
-            onClick={() => dispatch(putHome("changeDomain"))}
-            className={value === "changeDomain" ? s.borderGr : s.borderDefault}
-          >
-            <TfiExchangeVertical
-              className={s.icons}
-              color={value === "changeDomain" ? "#59B4B4" : "#868AA5"}
-            />
-            <p
-              className={`${s.pUrl} ${
-                value === "changeDomain" ? s.selected : null
-              }`}
+              />
+              <p className={value === "courses" ? s.selected : null}>Cursos</p>
+              <CgMenu
+                className={s.icons}
+                color={value === "courses" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
+            <div
+              onClick={() => dispatch(putHome("changeDomain"))}
+              className={value === "changeDomain" ? s.borderGr : s.borderDefault}
             >
-              Cambiar URL del Moodle activo
-            </p>
-            <CgMenu
-              className={s.icons}
-              color={value === "changeDomain" ? "#9283BD" : "#868AA5"}
-            />
+              <TfiExchangeVertical
+                className={s.icons}
+                color={value === "changeDomain" ? "#59B4B4" : "#868AA5"}
+              />
+              <p
+                className={`${s.pUrl} ${
+                  value === "changeDomain" ? s.selected : null
+                }`}
+              >
+                Cambiar URL del Moodle activo
+              </p>
+              <CgMenu
+                className={s.icons}
+                color={value === "changeDomain" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
+  
+            <div onClick={() => dispatch(putHome("roles"))}
+              className={value === "roles" ? s.borderGr : s.borderDefault}
+              >
+              <MdAdminPanelSettings
+                className={s.icons}
+                color={value === "roles" ? "#59B4B4" : "#868AA5"}
+              />
+              <p className={`${
+                  value === "roles" ? s.selected : null
+                }`}>
+                  Roles
+              </p>
+              <CgMenu
+                className={s.icons}
+                color={value === "roles" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
+            
+            <div onClick={() => {
+                  dispatch(logOut());
+                  navigate("/");
+                }}
+            >
+              <CiLogout className={s.icons}
+                color={"#868AA5"}/>
+              <p>
+                Logout
+              </p>
+              <CgMenu
+                className={s.icons}
+                color={value === "roles" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
+            
           </div>
         </div>
-        <button onClick={() => dispatch(putHome("roles"))}>Roles</button>
-        <button
-          onClick={() => {
-            dispatch(logOut());
-            navigate("/");
-          }}
-        >
-          LOGOUT
-        </button>
-      </div>
-
-      <div className={s.right}>
+        <div className={s.right}>
         {value === "editProfile" ? <EditProfile /> : null}
         {value === "courses" ? <AdminCourses /> : null}
 

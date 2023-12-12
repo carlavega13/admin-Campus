@@ -9,6 +9,8 @@ import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
 import { DataGrid } from "@mui/x-data-grid";
 import EnrolUser from "./EnrolUser";
+import { notifyError ,ToastInfo} from "../../../functions/toast";
+import loading from "../../../public/images/AdminHome/loading-loading-gif.gif"
 
 const AdminCourseDetail = () => {
   const navigate = useNavigate();
@@ -38,10 +40,14 @@ const AdminCourseDetail = () => {
     ).then((res) => setPromise(true));
 
     return (
-      <>
-        <button onClick={() => navigate("/adminHome")}>HOME</button>
-        LOADING!!!!!!
-      </>
+      <div className={s.containerLoading}>
+        <button onClick={() => navigate("/adminHome")}
+          className={s.btn}
+          style={{marginLeft: ".5rem"}}>
+          HOME
+        </button>
+        <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
+      </div>
     );
   }
   let csvInfo = course.enrolledPeople.map((people) => {
@@ -58,8 +64,8 @@ const AdminCourseDetail = () => {
   };
 
   const columns = [
-    { field: "fullname", headerName: "NOMBRE", width: 100 },
-    { field: "email", headerName: "EMAIL", width: 100 },
+    { field: "fullname", headerName: "NOMBRE", width: 200 },
+    { field: "email", headerName: "EMAIL", width: 200 },
     {
       field: "phone1",
       headerName: "TELEFONO",
@@ -134,7 +140,7 @@ const AdminCourseDetail = () => {
   });
   const handleSendMail = () => {
     if (users.length === 0) {
-      alert("Debes selecionar al menos un usuario");
+     notifyError("Debes selecionar al menos un usuario");
     } else {
       setFlag({
         state: true,
@@ -146,14 +152,8 @@ const AdminCourseDetail = () => {
   };
   return (
     <div className={s.box}>
-      <button onClick={() =>{
-        if(user.rol==="administrador"){
-navigate("/adminHome")
-        }
-        if(user.rol==="profesor"){
-          navigate("/teacherHome")
-        }
-        }} className={s.btn}>
+      <ToastInfo/>
+      <button onClick={() => navigate("/adminHome")} className={s.btn}>
         HOME
       </button>
       <button onClick={() => setEnrolUser(!enrolUser)} className={s.btn}>
@@ -163,7 +163,7 @@ navigate("/adminHome")
         <DataGrid
           columns={columns}
           rows={rows}
-          style={{ width: "98vw" }}
+          style={{ width: "95vw"}}
           initialState={{
             pagination: {
               paginationModel: { page: 0, pageSize: 6 },

@@ -1,6 +1,5 @@
 .countryList {
   background-color: #eeee;
-  /* background: red; */
   width: 340px; /* Establece el ancho deseado para el div */
   height: 340px; /* Establece la altura deseada para el div */
   overflow: auto;
@@ -14,15 +13,12 @@
   font-size: 0.9rem;
   color: #555555;
   letter-spacing: 1px;
-  /* background: greenyellow; */
-  /* font-weight: bold; */
 }
 .btnDelete {
   margin: 0 0 0 10px;
   border-radius: 1rem;
   width: 1.6rem;
   height: 1.6rem;
-  /* background: red; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -36,12 +32,15 @@
   border-radius: 1rem;
   width: 1.6rem;
   height: 1.6rem;
-  /* background: red; */
   display: flex;
   justify-content: center;
   align-items: center;
   border: none;
   color: #eeee;
-  background: #2f3367;
+  background: #9283bd;
   cursor: pointer;
+  transition: .3s;
+}
+.btnArrow:hover {
+  background: #59b4b4;
 }

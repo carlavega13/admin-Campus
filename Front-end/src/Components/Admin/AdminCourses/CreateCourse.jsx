@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { getCourses } from "../../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import s from "../../../css/CreateCourse.module.css";
+import { notify, notifyError, ToastInfo } from "../../../functions/toast";
 const CreateCourse = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -31,22 +32,22 @@ const CreateCourse = () => {
           info: info,
         });
         if (res.data.errorcode) {
-          return alert(`Hubo un error: ${res.data.message}`);
+          return notifyError(`Hubo un error: ${res.data.message}`);
         }
         if (res.data[0].id) {
           dispatch(getCourses({ domain, token }));
-          alert("Su curso se creo correctamente");
+          notify("Su curso se creo correctamente");
           navigate("/adminHome");
           return;
         }
       }
     } catch (error) {
-      console.log(error.message);
-      alert(error.message);
+      notifyError(error.message);
     }
   };
   return (
     <div className={s.container}>
+      <ToastInfo />
       <div className={s.formContainer}>
         <button onClick={() => navigate("/adminHome")} className={s.btns}>
           Home

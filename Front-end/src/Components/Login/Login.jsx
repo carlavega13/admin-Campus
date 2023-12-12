@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import s from "../../css/Login.module.css";
 import userIcon from "../../public/images/Login/Profile.png";
 import passIcon from "../../public/images/Login/mdi_password.png";
+import { ToastInfo,notify, notifyError } from "../../functions/toast";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -26,7 +27,7 @@ const Login = () => {
     try {
       dispatch(login(user));
     } catch (error) {
-      alert(error.message);
+     notifyError(error.message);
     }
   };
   useEffect(() => {}, [userLogged]);
@@ -48,6 +49,7 @@ const Login = () => {
 
   return (
     <div className={s.containerLogin}>
+      <ToastInfo/>
       <p className={s.title}>Ingresa</p>
 
       <div className={s.inputs}>

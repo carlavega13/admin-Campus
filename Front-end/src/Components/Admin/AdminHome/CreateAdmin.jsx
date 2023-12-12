@@ -3,6 +3,7 @@ import { useState } from "react";
 import { useParams } from "react-router-dom";
 import { HOST } from "../../../../HOST";
 import s from "../../../css/CreateAdmin.module.css";
+import { ToastInfo, notify, notifyError } from "../../../functions/toast";
 
 const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
   const [info, setInfo] = useState({
@@ -20,14 +21,14 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
       let passRegex =
         /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,15}/;
       if (!passRegex.test(info?.password)) {
-        alert(
+        notifyError(
           "La contraseña debería tener al menos 8 caracter(es), al menos 1 dígito(s), al menos 1 minúscula(s), al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #"
         );
       } else {
         const token = await axios.get(
           `${domain}login/token.php?username=${info?.username}&password=${info?.password}&service=moodle_mobile_app`
         );
-        console.log(token.data);
+   
         if (token.data.token) {
           if (isSuperAdmin) {
             const res = await axios.post(`${HOST}postUser`, {
@@ -38,7 +39,7 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
             });
 
             if (res.data.id) {
-              alert(
+              notify(
                 `El usuario superAdmin: ${res.data.username} se creó exitosamente para el Moodle de URL: ${domain}`
               );
               if (setFlags && flags) {
@@ -53,13 +54,14 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
         }
       }
     } catch (error) {
-      alert(error.message);
+      notifyError(error.message);
     }
   };
 
   if (isSuperAdmin) {
     return (
       <div className={s.container}>
+        <ToastInfo/>
         <div>
           <label>Nombre de usuario</label>
           <input

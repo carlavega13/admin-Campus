@@ -16,6 +16,7 @@ import {
 import axios from "axios";
 import { HOST } from "../../HOST";
 import bcryptjs from "bcryptjs";
+import { notifyError } from "../functions/toast";
 
 export const login = (user) => {
   return async (dispatch) => {
@@ -29,7 +30,7 @@ export const login = (user) => {
       return dispatch({ type: LOGIN, payload: response.data });
     } catch (error) {
       console.log(error);
-      alert(error.response.data);
+      notifyError(error.response.data);
     }
   };
 };

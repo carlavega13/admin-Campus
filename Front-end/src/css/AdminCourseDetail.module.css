@@ -1,10 +1,26 @@
+.containerLoading {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+  align-self: center;
+  padding: 3rem 0 0 0;
+}
 .box {
   display: flex;
   flex-direction: column;
-  width: 100vw;
+  width: 100%;
+  height: fit-content;
+  border: solid .1rem #9283bd;
+  padding: .5rem;
+  border-radius: .2rem;
 }
 .btn {
-  background: #2f3367;
+  background: #9283bd;
   width: fit-content;
   color: #fff;
   padding: 4px 16px 4px 16px;
@@ -19,12 +35,11 @@
   font-family: Montserrat;
 }
 .btn:hover {
-  background: #535aac;
+  background: #59b4b4;
 }
 .dataGridContainer {
-  width: 98vw;
+  width: 95vw;
   overflow: auto;
-}
-.boxEnrolUser {
-  /* background: lightsteelblue; */
+  font-family: Montserrat;
+
 }

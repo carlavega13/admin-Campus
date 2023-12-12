@@ -3,7 +3,9 @@ import s from "../css/EmailPopOut.module.css";
 import axios from "axios";
 import { HOST } from "../../HOST";
 import { useState } from "react";
-
+import { IoSend } from "react-icons/io5";
+import { ImCross } from "react-icons/im";
+import { ToastInfo, notify } from "../functions/toast";
 const EmailPopOut = (props) => {
   const [info, setInfo] = useState({
     subject: "",
@@ -23,7 +25,7 @@ const EmailPopOut = (props) => {
         response.data[0].statusCode >= 200 &&
         response.data[0].statusCode < 300
       ) {
-        alert("su mensaje a sido enviado");
+       notify("su mensaje a sido enviado");
         props.setFlag(false);
       }
     }
@@ -37,21 +39,36 @@ const EmailPopOut = (props) => {
 
   return (
     <div className={s.box}>
-      <button onClick={() => props.setFlag(false)}>X</button>
-      <input
-        name="subject"
-        onChange={handleChange}
-        value={info.subject}
-        type="text"
-        placeholder="Asunto del email."
-      />
-      <textarea
-        name="text"
-        onChange={handleChange}
-        value={info.text}
-        placeholder="Escriba su mensaje aqui."
-      />
-      <button onClick={handleSendEmail}>Enviar email</button>
+      <div>
+        <ToastInfo/>
+        <input
+          name="subject"
+          onChange={handleChange}
+          value={info.subject}
+          type="text"
+          placeholder="Asunto del email."
+          />
+        <textarea
+          name="text"
+          onChange={handleChange}
+          value={info.text}
+          placeholder="Escriba su mensaje aqui."
+          />
+        <div className={s.btnsContainer}>
+
+          <div className={s.btnSendContainer}onClick={handleSendEmail}>
+            <button>Enviar</button>
+            <IoSend color="#eeee"/>
+          </div>
+
+          <div className={s.btnCancelContainer}onClick={() => props.setFlag(false)}>
+            <button>Cancelar</button>
+            <ImCross className={s.btnCancel}/>
+          </div>
+
+        </div>
+        <div className={s.divBackground}onClick={() => props.setFlag(false)}/>
+      </div>
     </div>
   );
 };

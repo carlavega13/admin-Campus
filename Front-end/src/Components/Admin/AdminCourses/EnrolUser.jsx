@@ -6,6 +6,7 @@ import { HOST } from "../../../../HOST";
 import { getAllUsers, getTeacherCourse } from "../../../Redux/actions";
 import s from "../../../css/EnrolUser.module.css";
 import { IoCloseSharp } from "react-icons/io5";
+import { ToastInfo, notify, notifyError } from "../../../functions/toast";
 const EnrolUser = ({ courseid, setEnrolUser, courseName, user }) => {
   const users = useSelector((state) => state.allUsers);
   const dispatch = useDispatch();
@@ -40,17 +41,18 @@ const EnrolUser = ({ courseid, setEnrolUser, courseName, user }) => {
         });
 
         if (!res.data) {
-          alert("El usuario fue matriculado.");
-          // dispatch(getTeacherCourse({domain:user.domain,token:user.token}))
+          notify("El usuario fue matriculado.");
+
         }
       }
     } catch (error) {
-      alert(error.message);
+      notifyError(error.message);
     }
   };
 
   return (
     <div className={s.container}>
+      <ToastInfo/>
       <div className={s.divCloseIcon}>
         <IoCloseSharp
           onClick={() => setEnrolUser(false)}

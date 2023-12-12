@@ -5,6 +5,7 @@ import { HOST } from "../../../../HOST";
 import { getAllUsers } from "../../../Redux/actions";
 import axios from "axios";
 import s from "../../../css/CreateUser.module.css";
+import { ToastInfo, notify, notifyError } from "../../../functions/toast";
 
 const CreateUser = () => {
   const navigate = useNavigate();
@@ -30,12 +31,12 @@ const CreateUser = () => {
   const handleCreate = async () => {
     try {
       if (!passRegex.test(info?.password)) {
-        return alert(
+        return notifyError(
           "La contraseña debería tener al menos 8 caracter(es), al menos 1 dígito(s), al menos 1 minúscula(s), al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #"
         );
       }
       if (!emailRegex.test(info?.email)) {
-        return alert("El email es invalido.");
+        return notifyError("El email es invalido.");
       }
       if (
         confirm(
@@ -56,17 +57,18 @@ const CreateUser = () => {
             lastname: "",
             email: "",
           });
-          return alert(
+          return notify(
             `El usuario: ${info?.firstname} ${info?.lastname}, se creo correctamente`
           );
         }
       }
     } catch (error) {
-      return alert(error.message);
+      return notifyError(error.message);
     }
   };
   return (
     <div className={s.container}>
+      <ToastInfo/>
       <div className={s.formContainer}>
         <button onClick={() => navigate("/adminHome")} className={s.btns}>
           Home

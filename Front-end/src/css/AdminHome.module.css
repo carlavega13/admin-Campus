@@ -10,8 +10,8 @@ p {
   /* background: green; */
 }
 .container {
-  background: #d7d7d8;
-  background: linear-gradient(180deg, #d7d7d8 70%, #fff 100%);
+  /* background: #d7d7d8; */
+  background: linear-gradient(180deg, #d7d7d8 85%, #fff 100%);
   padding: 12px;
   display: flex;
   flex-direction: column;

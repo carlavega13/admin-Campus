@@ -4,6 +4,7 @@ import s from "../../css/FirstLoginEditProfile.module.css";
 import { useDispatch, useSelector } from "react-redux";
 import { putUser } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
+import { ToastInfo, notify } from "../../functions/toast";
 const FirstLoginEditProfile = ({ rol }) => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -43,7 +44,7 @@ const FirstLoginEditProfile = ({ rol }) => {
           token: user.token,
         })
       );
-      alert("Se actualizo su informacion");
+      notify("Se actualizo su informacion");
       if (user.rol === "estudiante") {
         navigate("/studentHome");
       } else {
@@ -54,6 +55,7 @@ const FirstLoginEditProfile = ({ rol }) => {
 
   return (
     <div className={s.container}>
+      <ToastInfo/>
       <div className={s.containerForm}>
         <div>
           <label htmlFor="">Nombres </label>

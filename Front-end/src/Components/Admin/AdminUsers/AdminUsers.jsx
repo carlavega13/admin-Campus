@@ -7,6 +7,7 @@ import EmailPopOut from "../../EmailPopOut";
 import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
+import { ToastInfo, notifyError } from "../../../functions/toast";
 const AdminUsers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -70,7 +71,7 @@ const AdminUsers = () => {
   });
   const handlerSendSelected = () => {
     if (users.length === 0) {
-      alert("Debes selecionar al menos un usuario");
+      notifyError("Debes selecionar al menos un usuario");
     } else {
       const usersInfo = users.map(
         (id) => allUsers.find((user) => user.id == id).email
@@ -85,6 +86,7 @@ const AdminUsers = () => {
 
   return (
     <div>
+      <ToastInfo/>
       <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
         Crear usuario
       </button>

@@ -15,7 +15,7 @@ const navigate=useNavigate()
         {
             field: "course",
             headerName: "CURSOS",
-            width: 300,
+            width: 600,
             description: "Haga click en un nombre para ver el detalle del curso",
         },
         {
@@ -78,7 +78,7 @@ const navigate=useNavigate()
           : "",
         };
     });
-    console.log(rows);
+
     return  (
         <div>
       <DataGrid
