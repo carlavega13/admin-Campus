@@ -8,6 +8,7 @@ import { CgMenu } from "react-icons/cg";
 import selectSetting from "../../public/images/AdminHome/select_setting.png";
 import s from "../../css/StudentHome.module.css";
 import StudentCourses from "./StudentCourses";
+import{CiLogout} from "react-icons/ci"
 
 const StudentHome = () => {
   const navigate = useNavigate();
@@ -54,14 +55,21 @@ const StudentHome = () => {
             />
             
           </div>
-          <button
-          onClick={() => {
-            dispatch(logOut());
-            navigate("/");
-          }}
-        >
-          LOGOUT
-        </button>
+          <div onClick={() => {
+                  dispatch(logOut());
+                  navigate("/");
+                }}
+            >
+              <CiLogout className={s.icons}
+                color={"#868AA5"}/>
+              <p>
+                Logout
+              </p>
+              <CgMenu
+                className={s.icons}
+                color={value === "roles" ? "#9283BD" : "#868AA5"}
+              />
+            </div>
         </div>
       </div>
 

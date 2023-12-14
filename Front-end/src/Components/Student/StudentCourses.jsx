@@ -2,6 +2,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { getStudentCourses } from "../../Redux/actions";
 import { dateTransfer } from "../Admin/AdminUsers/AdminUserDetail";
 import { useNavigate } from "react-router-dom";
+import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
+import s from "../../css/StudentCourses.module.css"
 
 const StudentCourses = ({ user }) => {
   const navigate = useNavigate();
@@ -15,22 +17,31 @@ const StudentCourses = ({ user }) => {
         userId: user.id,
       })
     );
-    return <div>Loading...!!</div>;
+    return (
+      <div className={s.containerLoading}>
+        <button onClick={() => navigate("/adminHome")}
+          className={s.btn}
+          style={{marginLeft: ".5rem"}}>
+          HOME
+        </button>
+        <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
+      </div>
+    );
   }
 
   return (
-    <div>
+    <div className={s.container}>
       {courses.map((course) => {
         return (
           <div>
-            <button onClick={() => navigate(`/grades/${course.id}`)}>
+            <button className={s.btn} onClick={() => navigate(`/grades/${course.id}`)}>
               Calificaciones
             </button>
-            <div>nombre: {course.fullname}</div>
-            <div>progreso: {course.progress ? course.progress : 0}</div>
+            <div className={s.info}><label>Nombre:</label>{course.fullname}</div>
+            <div className={s.info}><label>Progreso: </label> {course.progress ? course.progress : 0}</div>
 
-            <div>
-              ultimo acceso:{" "}
+            <div className={s.info}>
+              <label>Ultimo acceso:</label>{" "}
               {course.lastaccess ? dateTransfer(course.lastaccess) : "Nunca"}
             </div>
           </div>

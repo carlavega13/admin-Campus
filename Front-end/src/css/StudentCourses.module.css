@@ -1,0 +1,37 @@
+.divLoading {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+  .loading {
+    width: 7rem;
+    height: 7rem;
+  }
+  .btn {
+    background: #9283bd;
+    width: fit-content;
+    color: #fff;
+    padding: 4px 16px 4px 16px;
+    border-radius: 4px;
+    border: none;
+    font-weight: bold;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: 0.3s;
+    margin: 0.5rem 0 0.5rem 0rem;
+    font-family: Montserrat;
+  }
+  .btn:hover {
+    background: #59b4b4;
+  }
+.info{
+  display: flex;
+  font-family: Montserrat;
+}
+label{
+  font-weight: bold;
+  font-family: Montserrat;
+}

@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate, useParams } from "react-router-dom";
 import { getStudentGrades } from "../../Redux/actions";
 import { useEffect, useState } from "react";
-
+import s from "../../css/StudentCourseDetail.module.css"
 const StudentCourseDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -26,7 +26,7 @@ const StudentCourseDetail = () => {
 
   return (
     <div>
-      <button onClick={() => navigate("/studentHome")}>HOME</button>
+      <button className={s.btn} onClick={() => navigate("/studentHome")}>HOME</button>
       <h1>Calificaciones del curso: {`${course?.fullname}`}</h1>
       {course?.grades?.map((act) => {
         return (
