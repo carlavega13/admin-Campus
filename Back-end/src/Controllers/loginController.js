@@ -48,7 +48,9 @@ await find.update({password:user.password,domain:user.doamin})
       rol: find.rol,
       isSuperAdmin: find.isSuperAdmin,
     });
-
+if(!find.email){
+  await find.update({email:info.email})
+}
     return {
       ...info,
       phone: find.phone,

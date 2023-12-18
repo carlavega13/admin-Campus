@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { validator } from "../FirstLoginEditProfile/validator";
 import s from "../../css/FirstLoginEditProfile.module.css";
 import { useDispatch, useSelector } from "react-redux";
-import { putUser } from "../../Redux/actions";
+import { logOut, putUser } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import { ToastInfo, notify } from "../../functions/toast";
 const FirstLoginEditProfile = ({ rol }) => {
@@ -12,16 +12,16 @@ const FirstLoginEditProfile = ({ rol }) => {
   const [profile, setProfile] = useState({
     firstName: "",
     lastName: "",
-    DNI: "",
+    dni: "",
     phone: "",
-    email: "",
+
   });
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
-    DNI: "",
+    dni: "",
     phone: "",
-    email: "",
+
   });
   useEffect(() => {
     setError(validator(profile));
@@ -55,7 +55,15 @@ const FirstLoginEditProfile = ({ rol }) => {
 
   return (
     <div className={s.container}>
-      <ToastInfo/>
+      <button
+        onClick={() => {
+          dispatch(logOut());
+          navigate("/");
+        }}
+      >
+        LogOut
+      </button>
+      <ToastInfo />
       <div className={s.containerForm}>
         <div>
           <label htmlFor="">Nombres </label>
@@ -85,11 +93,12 @@ const FirstLoginEditProfile = ({ rol }) => {
           <label htmlFor="">DNI</label>
           <input
             onChange={handlerChange}
-            name="DNI"
-            value={profile.DNI}
+            name="dni"
+            value={profile.dni}
             type="number"
             placeholder="DNI"
           />
+
         </div>
 
         <div>
@@ -104,17 +113,7 @@ const FirstLoginEditProfile = ({ rol }) => {
           {error?.phone ? <p>{error.phone}</p> : <p></p>}
         </div>
 
-        <div>
-          <label htmlFor="">Email</label>
-          <input
-            onChange={handlerChange}
-            name="email"
-            value={profile.email}
-            type="text"
-            placeholder="Email"
-          />
-          {error?.email ? <p>{error.email}</p> : <p></p>}
-        </div>
+
 
         <button onClick={handlerSubmit} className={s.btnSubmit}>
           Enviar

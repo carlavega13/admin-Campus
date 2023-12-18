@@ -105,7 +105,7 @@ const AdminUsers = () => {
             setUsers(user);
           }}
           onCellClick={(params, e) => {
-            console.log(params, e);
+  
             if (params.field === "fullname") {
               navigate(`/adminHome/users/${params.id}`);
             }

@@ -21,7 +21,7 @@ const ChangeRoles=(props)=>{
         rol:e.target.value
       })
     }
-    console.log(info);
+    
     const handleSend=async()=>{
       if(!info.rol){
        return notifyError("debes seleccionar todos los campos")

@@ -3,7 +3,7 @@ const editUserMoodle = require("./usersControlllers/editUserMoodle");
 const putUserController = async ({
   firstName,
   lastName,
-  DNI,
+  dni,
   phone,
   email,
   id,
@@ -27,12 +27,34 @@ const putUserController = async ({
       lastname: lastName,
       fullname: `${firstName} ${lastName}`,
       phone: phone,
-      email: email,
+ 
     };
-    if (DNI && DNI.length > 5) {
-      info.dni = DNI.toString();
+    if(email){
+      info.email=email
+    }
+    let res
+    if (dni && dni.toString().length > 5) {
+      // info.dni = dni.toString();
+   res = await userToEdit.update({
+        ...info,
+      dni:dni.toString()
+      });
+      return {
+        id: res.id,
+        username: res.username,
+        token: res.token,
+        rol: res.rol,
+        isSuperAdmin: res.isSuperAdmin,
+        firstname: res.firstname,
+        lastname: res.lastname,
+        phone: res.phone,
+        email: res.email,
+        fullname: `${res.firstname} ${res.lastname}`,
+        domain: domain,
+      };
     } else {
-      const res = await userToEdit.update(info);
+      res = await userToEdit.update(info);
+
       return {
         id: res.id,
         username: res.username,
@@ -48,6 +70,7 @@ const putUserController = async ({
       };
     }
   } catch (error) {
+
     throw new Error(error.message);
   }
 };

@@ -22,7 +22,7 @@ const StudentCourseDetail = () => {
     ).then((res) => setPromise(true));
     return <div>LOADING...</div>;
   }
-  console.log(course.grades);
+ 
 
   return (
     <div>
