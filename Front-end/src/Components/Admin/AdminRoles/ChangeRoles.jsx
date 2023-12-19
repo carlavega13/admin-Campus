@@ -39,6 +39,7 @@ if(res.status>=200&&res.status<300){
         <ToastInfo/>
         <div>
           <p>Aquí puedes cambiar el rol de un usuario</p>
+          
           <label>Nuevo rol: </label>
           <select onChange={handleChange}>
             <option value={"estudiante"} style={{ background: "#D9D9D9" }}>

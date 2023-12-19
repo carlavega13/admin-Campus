@@ -129,7 +129,8 @@ const AdminCourses = () => {
   return (
     <div className={s.container}>
       <ToastInfo/>
-      <button className={s.btnEmails} onClick={() => navigate("/createCourse")}>
+      <button className={s.btnCreate}
+        onClick={() => navigate("/createCourse")}>
         Crear curso
       </button>
       <div>

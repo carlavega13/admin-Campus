@@ -1,38 +1,49 @@
 .box {
-  /* background-color: rgb(9, 255, 0); */
   display: flex;
   flex-direction: column;
-  width: 80vw;
+  width: 99%;
+  height: fit-content;
+  border: .1rem solid #9283bd;
+  border-radius: .2rem;
+  padding: .5rem 0 .5rem .5rem;
+  font-family: Montserrat;
 }
-.cell {
-  /* background-color: blue; */
+
+.box>h1 {
+  color: #313131;
+  font-family: Montserrat;
+
+}
+
+.divEmail {
   display: flex;
-  justify-content: space-between;
+  width: fit-content;
+  align-items: center;
+  height: 1.2rem;
+  cursor: pointer;
 }
-.names {
-  display: flex;
-  justify-content: start;
-  /* justify-content: space-around; */
+
+.divEmail>p {
+  margin-right: .5rem;
+  font-family: Montserrat;
+  color: #313131;
 }
-.name {
-  margin-left: 10%;
-  margin-right: 12%;
-}
+
 .btn {
   background: #9283bd;
-  width: fit-content;
+  width: 6rem;
   color: #fff;
-  padding: 4px 16px 4px 16px;
+  padding: .2rem .8rem .2rem .8rem;
   border-radius: 4px;
   border: none;
   font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: 1px;
+  font-size: .9rem;
+  letter-spacing: 2px;
   cursor: pointer;
   transition: 0.3s;
-  margin: 0.5rem 0 0.5rem 0rem;
-  font-family: Montserrat;
+  margin: 0.5rem 0 1rem 0;
 }
+
 .btn:hover {
   background: #59b4b4;
 }

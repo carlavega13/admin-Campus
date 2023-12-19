@@ -15,14 +15,14 @@ import{MdAdminPanelSettings} from "react-icons/md"
 import EditProfile from "../../EditProfile/EditProfile.jsx";
 import { logOut, putHome } from "../../../Redux/actions.js";
 import ChangeRoles from "../AdminRoles/ChangeRoles.jsx";
-
+import {FaUserAlt}from "react-icons/fa"
 
 const AdminHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const value = useSelector((state) => state.homeValue);
-
+  const [open, setOpen] = useState(false)
   useEffect(() => {}, [value]);
   if (!user?.phone || !user?.email) {
     navigate("/firstEditProfile");
@@ -30,25 +30,35 @@ const AdminHome = () => {
   return (
     <div className={s.containerAll}>
       <div className={s.container}>
-        <div className={s.divSettings}>
+        {/* <div className={s.divSettings}> */}
           <div className={s.settings}>
             <p>
               {user?.firstname} {user?.lastname}
             </p>
-            <img
-              onClick={() => dispatch(putHome("editProfile"))}
-              src={value === "editProfile" ? selectSetting : setting}
+            {/* 59b4b4 9283bd*/}
+            <FaUserAlt color={value==="editProfile"?"#9283bd":"#59b4b4"}
+              // onClick={() => dispatch(putHome("editProfile"))}
+              onClick={()=>setOpen(!open)}
               className={`${s.iconSettings} ${
                 value === "editProfile" ? s.selectedProfile : null
-              }`}
-            />
+              }`}/>
           </div>
-          <p>{user?.username}</p>
-        </div>
+          <div className={open?s.menuProfileContainer:s.menuProfileContainerClose}>
+            <div>
+              <p onClick={() => {dispatch(putHome("editProfile"));setOpen(false)}}>Mi Perfil</p>
+              <div style={{
+                borderRight: ".1rem solid #9283bd",
+                height: "1.3rem", marginBottom: ".6rem"}}/>
+              <p onClick={() => {
+                  dispatch(logOut());
+                  navigate("/")}}>Cerrar Sesión</p>
+            </div>
+          </div>
+        {/* </div> */}
 
         <div className={s.divBtnsOptions}>
           <div
-            onClick={() => dispatch(putHome("users"))}
+            onClick={() => {dispatch(putHome("users"));setOpen(false)}}
             className={value === "users" ? s.borderGr : s.borderDefault}
           >
             <FaUser
@@ -63,7 +73,7 @@ const AdminHome = () => {
           </div>
 
           <div
-            onClick={() => dispatch(putHome("courses"))}
+            onClick={() => {dispatch(putHome("courses"));setOpen(false)}}
             className={value === "courses" ? s.borderGr : s.borderDefault}
           >
             <FaFileAlt
@@ -75,9 +85,9 @@ const AdminHome = () => {
                 className={s.icons}
                 color={value === "courses" ? "#9283BD" : "#868AA5"}
               />
-            </div>
-            <div
-              onClick={() => dispatch(putHome("changeDomain"))}
+          </div>
+          <div
+              onClick={() => {dispatch(putHome("changeDomain"));setOpen(false)}}
               className={value === "changeDomain" ? s.borderGr : s.borderDefault}
             >
               <TfiExchangeVertical
@@ -89,15 +99,15 @@ const AdminHome = () => {
                   value === "changeDomain" ? s.selected : null
                 }`}
               >
-                Cambiar URL del Moodle activo
+                Cambiar Moodle
               </p>
               <CgMenu
                 className={s.icons}
                 color={value === "changeDomain" ? "#9283BD" : "#868AA5"}
               />
-            </div>
+          </div>
   
-            <div onClick={() => dispatch(putHome("roles"))}
+          <div onClick={() => {dispatch(putHome("roles"));setOpen(false)}}
               className={value === "roles" ? s.borderGr : s.borderDefault}
               >
               <MdAdminPanelSettings
@@ -113,27 +123,11 @@ const AdminHome = () => {
                 className={s.icons}
                 color={value === "roles" ? "#9283BD" : "#868AA5"}
               />
-            </div>
-            
-            <div onClick={() => {
-                  dispatch(logOut());
-                  navigate("/");
-                }}
-            >
-              <CiLogout className={s.icons}
-                color={"#868AA5"}/>
-              <p>
-                Logout
-              </p>
-              <CgMenu
-                className={s.icons}
-                color={value === "roles" ? "#9283BD" : "#868AA5"}
-              />
-            </div>
-            
           </div>
+            
         </div>
-        <div className={s.right}>
+      </div>
+      <div className={s.right}>
         {value === "editProfile" ? <EditProfile /> : null}
         {value === "courses" ? <AdminCourses /> : null}
 

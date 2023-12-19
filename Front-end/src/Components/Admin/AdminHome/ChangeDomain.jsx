@@ -50,6 +50,7 @@ const ChangeDomain = () => {
   };
   return (
     <div className={s.container}>
+      <ToastInfo/>
       <div>
 
         <div>
