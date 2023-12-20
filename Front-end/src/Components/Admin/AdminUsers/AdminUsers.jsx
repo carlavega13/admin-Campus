@@ -8,6 +8,8 @@ import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
 import { ToastInfo, notifyError } from "../../../functions/toast";
+import {  ThemeProvider } from '@mui/material/styles';
+import customTheme from "../../../functions/tableTheme";
 const AdminUsers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -86,31 +88,33 @@ const AdminUsers = () => {
 
   return (
     <div className={s.box}>
-      <ToastInfo/>
+      <ToastInfo />
       <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
         Crear usuario
       </button>
       <div style={{ height: 500, width: "100%" }}>
-        <DataGrid
-          rows={rows}
-          columns={columns}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 6 },
-            },
-          }}
-          pageSizeOptions={[6, 10, 40, 50]}
-          checkboxSelection
-          onRowSelectionModelChange={(user) => {
-            setUsers(user);
-          }}
-          onCellClick={(params, e) => {
-            console.log(params, e);
-            if (params.field === "fullname") {
-              navigate(`/adminHome/users/${params.id}`);
-            }
-          }}
-        />
+        <ThemeProvider theme={customTheme}>
+          <DataGrid
+            rows={rows}
+            columns={columns}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 6 },
+              },
+            }}
+            pageSizeOptions={[6, 10, 40, 50]}
+            checkboxSelection
+            onRowSelectionModelChange={(user) => {
+              setUsers(user);
+            }}
+            onCellClick={(params, e) => {
+              console.log(params, e);
+              if (params.field === "fullname") {
+                navigate(`/adminHome/users/${params.id}`);
+              }
+            }}
+          />
+        </ThemeProvider>
       </div>
       <button
         onClick={handlerSendSelected}

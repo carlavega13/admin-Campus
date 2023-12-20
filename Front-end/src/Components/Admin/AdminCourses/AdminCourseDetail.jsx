@@ -9,9 +9,10 @@ import EmailPopOut from "../../EmailPopOut";
 import { getGrades } from "../../../Redux/actions";
 import { DataGrid } from "@mui/x-data-grid";
 import EnrolUser from "./EnrolUser";
-import { notifyError ,ToastInfo} from "../../../functions/toast";
-import loading from "../../../public/images/AdminHome/loading-loading-gif.gif"
-
+import { notifyError, ToastInfo } from "../../../functions/toast";
+import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
+import customTheme from "../../../functions/tableTheme";
+import {  ThemeProvider } from '@mui/material/styles';
 const AdminCourseDetail = () => {
   const navigate = useNavigate();
   const [flag, setFlag] = useState({
@@ -41,12 +42,14 @@ const AdminCourseDetail = () => {
 
     return (
       <div className={s.containerLoading}>
-        <button onClick={() => navigate("/adminHome")}
+        <button
+          onClick={() => navigate("/adminHome")}
           className={s.btn}
-          style={{marginLeft: ".5rem"}}>
+          style={{ marginLeft: ".5rem" }}
+        >
           HOME
         </button>
-        <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
+        <img src={loading} alt="Cargando..." className={s.loadingIcon} />
       </div>
     );
   }
@@ -140,7 +143,7 @@ const AdminCourseDetail = () => {
   });
   const handleSendMail = () => {
     if (users.length === 0) {
-     notifyError("Debes selecionar al menos un usuario");
+      notifyError("Debes selecionar al menos un usuario");
     } else {
       setFlag({
         state: true,
@@ -152,7 +155,7 @@ const AdminCourseDetail = () => {
   };
   return (
     <div className={s.box}>
-      <ToastInfo/>
+      <ToastInfo />
       <button onClick={() => navigate("/adminHome")} className={s.btn}>
         HOME
       </button>
@@ -160,21 +163,23 @@ const AdminCourseDetail = () => {
         {`Matricular usuario al curso: ${course?.fullname}`}
       </button>
       <div className={s.dataGridContainer}>
-        <DataGrid
-          columns={columns}
-          rows={rows}
-          style={{ width: "95vw"}}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 6 },
-            },
-          }}
-          pageSizeOptions={[6, 10, 40, 50]}
-          checkboxSelection
-          onRowSelectionModelChange={(user) => {
-            setUsers(user);
-          }}
-        />
+        <ThemeProvider theme={customTheme}>
+          <DataGrid
+            columns={columns}
+            rows={rows}
+            style={{ width: "95vw" }}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 6 },
+              },
+            }}
+            pageSizeOptions={[6, 10, 40, 50]}
+            checkboxSelection
+            onRowSelectionModelChange={(user) => {
+              setUsers(user);
+            }}
+          />
+        </ThemeProvider>
       </div>
       <button onClick={handlerDownloadCsv} className={s.btn}>
         Descargar CSV

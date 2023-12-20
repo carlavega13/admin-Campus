@@ -9,6 +9,8 @@ import EmailPopOut from "../../EmailPopOut";
 import { DataGrid } from "@mui/x-data-grid";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
 import { ToastInfo ,notifyError} from "../../../functions/toast";
+import {  ThemeProvider } from '@mui/material/styles';
+import customTheme from "../../../functions/tableTheme";
 
 const AdminCourses = () => {
   const dispatch = useDispatch();
@@ -134,7 +136,8 @@ const AdminCourses = () => {
         Crear curso
       </button>
       <div>
-        <DataGrid
+        <ThemeProvider theme={customTheme}>
+          <DataGrid
           className={s.containerDataGrid}
           rows={rows}
           columns={columns}
@@ -156,6 +159,8 @@ const AdminCourses = () => {
             }
           }}
         />
+        </ThemeProvider>
+ 
       </div>
       <button onClick={handlerSendSelected} className={s.btnEmails}>
         {`Enviar email a todos los usuarios seleccionados (${teacher.length})`}

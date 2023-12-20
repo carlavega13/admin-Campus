@@ -8,6 +8,8 @@ import { GrMailOption } from "react-icons/gr";
 import { BsWhatsapp } from "react-icons/bs";
 import EmailPopOut from "../../EmailPopOut";
 import { DataGrid } from "@mui/x-data-grid";
+import {  ThemeProvider } from '@mui/material/styles';
+import customTheme from "../../../functions/tableTheme";
 
 export const dateTransfer = (timeStamp) => {
   const fecha = new Date(timeStamp * 1000);
@@ -136,7 +138,8 @@ const AdminUserDetail = () => {
         height: "fit-content",
         width: "100%"
         }}>
-        <DataGrid
+          <ThemeProvider theme={customTheme}>
+                    <DataGrid
           columns={columns}
           style={{width: "99%"}}
           rows={rows}
@@ -147,6 +150,8 @@ const AdminUserDetail = () => {
           }}
           pageSizeOptions={[10, 40, 50]}
         />
+          </ThemeProvider>
+
       </div>
 
       {flag?.state && (
