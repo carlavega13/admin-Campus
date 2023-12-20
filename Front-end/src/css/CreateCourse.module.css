@@ -27,7 +27,7 @@
   letter-spacing: 1px;
   border-radius: 1rem;
   border: 2px solid #868aa5;
-  border: 2px solid #535aac;
+  border: 2px solid #9283bd;
   font-weight: bold;
   color: #424242;
   z-index: 1;
@@ -48,7 +48,7 @@
 }
 
 .btns {
-  background: #2f3367;
+  background: #9283bd;
   height: 1.6rem;
   width: 12rem;
   max-width: 28rem;
@@ -65,7 +65,7 @@
 }
 
 .btns:hover {
-  background: #535aac;
+  background: #59b4b4;
 }
 
 @media (max-width: 800px) {

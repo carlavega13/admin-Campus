@@ -8,9 +8,10 @@ import { GrMailOption } from "react-icons/gr";
 import { BsWhatsapp } from "react-icons/bs";
 import EmailPopOut from "../../EmailPopOut";
 import { DataGrid } from "@mui/x-data-grid";
-import {  ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material/styles";
 import customTheme from "../../../functions/tableTheme";
-
+import { ToastInfo } from "../../../functions/toast";
+import profileimg from "../../../public/images/Login/Profile.png";
 export const dateTransfer = (timeStamp) => {
   const fecha = new Date(timeStamp * 1000);
   const opciones = { year: "numeric", month: "long", day: "numeric" };
@@ -27,6 +28,7 @@ const AdminUserDetail = () => {
   const { token, domain } = useSelector((state) => state.user);
   const allUsers = useSelector((state) => state.allUsers);
   let user = allUsers?.find((u) => u.id == id);
+  console.log(user);
   let order = {};
   const handleEnvolope = (to) => {
     setFlag({
@@ -62,17 +64,14 @@ const AdminUserDetail = () => {
 
   let aux = 0;
 
-
   info?.forEach((i) => {
-
-    if(!i.grades){
-      return
+    if (!i.grades) {
+      return;
     }
     if (i.grades.length > aux) {
       aux = i.grades.length;
     }
   });
-
 
   const columns = [
     { field: "course", headerName: "CURSOS", width: 300 },
@@ -97,17 +96,17 @@ const AdminUserDetail = () => {
       course: i.course.fullname,
       lastaccess: i.course.lastaccess && `${dateTransfer(i.course.lastaccess)}`,
     };
-    if(i.grades){
-          i.grades.forEach((element) => {
-      if (element.itemname) {
-        a[`activity${e}`] = `${element.itemname}/${
-          element.graderaw ? element.graderaw : ""
-        }`;
-        e++;
-      } else {
-        a.finalactivity = element.graderaw && element.graderaw;
-      }
-    });
+    if (i.grades) {
+      i.grades.forEach((element) => {
+        if (element.itemname) {
+          a[`activity${e}`] = `${element.itemname}/${
+            element.graderaw ? element.graderaw : ""
+          }`;
+          e++;
+        } else {
+          a.finalactivity = element.graderaw && element.graderaw;
+        }
+      });
     }
 
     return a;
@@ -115,43 +114,47 @@ const AdminUserDetail = () => {
 
   return (
     <div className={s.box}>
-      <button onClick={() => navigate("/adminHome")}
-        className={s.btn}>
+      <ToastInfo />
+      <button onClick={() => navigate("/adminHome")} className={s.btn}>
         HOME
       </button>
+      <div className={s.name}>
       <h1>{user?.fullname}</h1>
-      <div onClick={() => handleEnvolope(user?.email)}
-        className={s.divEmail}>
+        <img className={s.photo} src={user?.profileimageurl} alt="Not found" />
+      </div>
+      <div onClick={() => handleEnvolope(user?.email)} className={s.divEmail}>
         <p>{user?.email}</p>
         <GrMailOption />
       </div>
-    {user.phone1 && (
-      <h5>
-        {user?.phone1}
-        <a href={`https://wa.me/${user?.phone1}`}>
-          <BsWhatsapp />
-        </a>
-      </h5>
-    )}
-      <p>Primer acceso: {dateTransfer(user.firstaccess)}</p>
-      <div style={{ 
-        height: "fit-content",
-        width: "100%"
-        }}>
-          <ThemeProvider theme={customTheme}>
-                    <DataGrid
-          columns={columns}
-          style={{width: "99%"}}
-          rows={rows}
-          initialState={{
-            pagination: {
-              paginationModel: { page: 0, pageSize: 10 },
-            },
-          }}
-          pageSizeOptions={[10, 40, 50]}
-        />
-          </ThemeProvider>
 
+      {user.phone1 && (
+        <h5>
+          {user?.phone1}
+          <a href={`https://wa.me/${user?.phone1}`} className={s.phone}>
+            <BsWhatsapp />
+          </a>
+        </h5>
+      )}
+      <p>Primer acceso: {dateTransfer(user.firstaccess)}</p>
+      <div
+        style={{
+          height: "fit-content",
+          width: "100%",
+        }}
+      >
+        <ThemeProvider theme={customTheme}>
+          <DataGrid
+            columns={columns}
+            style={{ width: "99%" }}
+            rows={rows}
+            initialState={{
+              pagination: {
+                paginationModel: { page: 0, pageSize: 10 },
+              },
+            }}
+            pageSizeOptions={[10, 40, 50]}
+          />
+        </ThemeProvider>
       </div>
 
       {flag?.state && (

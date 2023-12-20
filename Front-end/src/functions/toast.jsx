@@ -42,3 +42,5 @@ export const ToastInfo = () => {
     </div>
   );
 };
+// #9283bd
+// #59b4b4

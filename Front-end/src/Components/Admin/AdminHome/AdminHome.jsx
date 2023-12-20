@@ -16,6 +16,7 @@ import EditProfile from "../../EditProfile/EditProfile.jsx";
 import { logOut, putHome } from "../../../Redux/actions.js";
 import ChangeRoles from "../AdminRoles/ChangeRoles.jsx";
 import {FaUserAlt}from "react-icons/fa"
+import { ToastInfo } from "../../../functions/toast.jsx";
 
 const AdminHome = () => {
   const navigate = useNavigate();
@@ -30,6 +31,7 @@ const AdminHome = () => {
   }
   return (
     <div className={s.containerAll}>
+      <ToastInfo/>
       <div className={s.container}>
         {/* <div className={s.divSettings}> */}
           <div className={s.settings}>
