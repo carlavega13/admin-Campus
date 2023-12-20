@@ -21,6 +21,7 @@ const AdminHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
+  console.log(user);
   const value = useSelector((state) => state.homeValue);
   const [open, setOpen] = useState(false)
   useEffect(() => {}, [value]);
@@ -86,7 +87,8 @@ const AdminHome = () => {
                 color={value === "courses" ? "#9283BD" : "#868AA5"}
               />
           </div>
-          <div
+          {
+           user?.isSuperAdmin?      <div
               onClick={() => {dispatch(putHome("changeDomain"));setOpen(false)}}
               className={value === "changeDomain" ? s.borderGr : s.borderDefault}
             >
@@ -105,7 +107,9 @@ const AdminHome = () => {
                 className={s.icons}
                 color={value === "changeDomain" ? "#9283BD" : "#868AA5"}
               />
-          </div>
+          </div>:""
+          }
+    
   
           <div onClick={() => {dispatch(putHome("roles"));setOpen(false)}}
               className={value === "roles" ? s.borderGr : s.borderDefault}

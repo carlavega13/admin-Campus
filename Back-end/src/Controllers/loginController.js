@@ -33,6 +33,7 @@ const loginController = async (user) => {
         rol: response.rol,
         token: token.data.token,
         domain: findUrl.url,
+        isSuperAdmin:response.isSuperAdmin
       };
     }
     if (find.token !== token.data.token) {
@@ -57,6 +58,7 @@ if(!find.email){
       rol: find.rol,
       token: token.data.token,
       domain: findUrl.url,
+      isSuperAdmin:find.isSuperAdmin
     };
   } catch (error) {
     throw new Error(error.message);
