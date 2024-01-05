@@ -3,7 +3,7 @@ const getTeacherCourses = require("../../Controllers/teacherControllers/getTeach
 const teacherCourses=async(req,res)=>{
 try {
     const response=await getTeacherCourses(req.body)
-    console.log(response);
+
   res.status(200).json(response)  
 } catch (error) {
   res.status(400).json(error.message)  

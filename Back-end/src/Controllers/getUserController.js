@@ -8,7 +8,7 @@ const getUserController = async (user) => {
         where: { rol: "administrador", isSuperAdmin: true, domain: domain },
       });
       
-      console.log(domain)
+   
       username = admin.username;
       password = admin.password;
     }

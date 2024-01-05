@@ -1,7 +1,7 @@
 const {User}=require("../../db")
 const changeRol=async(userInfo)=>{
 try {
-    console.log(userInfo);
+
     const user=await User.findOrCreate({
         where:{id:userInfo.userid},
         defaults:{username:userInfo.username,
