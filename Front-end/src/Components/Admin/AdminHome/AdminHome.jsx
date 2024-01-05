@@ -23,7 +23,7 @@ const AdminHome = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
-  console.log(user);
+
   const value = useSelector((state) => state.homeValue);
   const [open, setOpen] = useState(false);
   useEffect(() => {}, [value]);

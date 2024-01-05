@@ -58,7 +58,7 @@
   letter-spacing: 0.075rem;
   cursor: pointer;
   transition: 0.3s;
-  margin: .5rem 0 1rem 0;
+  margin: .5rem 0 1rem 1rem;
 }
 
 .btnCreate:hover {
@@ -83,4 +83,8 @@
 
 .btnEmails:hover {
   background: #59b4b4;
+}
+.createUserBox{
+  display: flex;
+  justify-content: center;
 }

@@ -28,7 +28,7 @@ const AdminUserDetail = () => {
   const { token, domain } = useSelector((state) => state.user);
   const allUsers = useSelector((state) => state.allUsers);
   let user = allUsers?.find((u) => u.id == id);
-  console.log(user);
+
   let order = {};
   const handleEnvolope = (to) => {
     setFlag({

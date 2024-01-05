@@ -9,8 +9,7 @@ import selectSetting from "../../public/images/AdminHome/select_setting.png";
 import s from "../../css/StudentHome.module.css";
 import StudentCourses from "./StudentCourses";
 import { CiLogout } from "react-icons/ci";
-import {FaUserAlt}from "react-icons/fa"
-import {VscDebugDisconnect}from "react-icons/vsc"
+import { VscDebugDisconnect } from "react-icons/vsc";
 import { useState } from "react";
 
 const StudentHome = () => {
@@ -18,7 +17,7 @@ const StudentHome = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user);
   const value = useSelector((state) => state.homeValue);
-  const [open, setOpen] = useState(false)
+  const [open, setOpen] = useState(false);
   if (!user.firstname || !user.phone) {
     return <div>LOADING...</div>;
   }
@@ -32,12 +31,12 @@ const StudentHome = () => {
               ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}
           </p>
           <img
-              onClick={() => dispatch(putHome("editProfile"))}
-              src={value === "editProfile" ? selectSetting : setting}
-              className={`${s.iconSettings} ${
-                value === "editProfile" ? s.selectedProfile : null
-              }`}
-            />
+            onClick={() => dispatch(putHome("editProfile"))}
+            src={value === "editProfile" ? selectSetting : setting}
+            className={`${s.iconSettings} ${
+              value === "editProfile" ? s.selectedProfile : null
+            }`}
+          />
         </div>
 
         <div className={s.divBtnsOptions}>
@@ -58,16 +57,14 @@ const StudentHome = () => {
               color={value === "courses" ? "#9283BD" : "#868AA5"}
             />
           </div>
-          <div onClick={() => {
-                dispatch(logOut());
-                navigate("/");
-              }}
+          <div
+            onClick={() => {
+              dispatch(logOut());
+              navigate("/");
+            }}
           >
-            <CiLogout className={s.icons}
-              color={"#868AA5"}/>
-            <p>
-              Logout
-            </p>
+            <CiLogout className={s.icons} color={"#868AA5"} />
+            <p>Logout</p>
             <VscDebugDisconnect
               className={s.icons}
               color={value === "roles" ? "#9283BD" : "#868AA5"}

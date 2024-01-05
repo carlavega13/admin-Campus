@@ -90,11 +90,11 @@ const AdminUsers = () => {
       });
     }
   };
-console.log(flagSuper.state);
+
   return (
     <div className={s.box}>
       <ToastInfo />
-      <div>
+      <div className={s.createUserBox}>
               <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
         Crear usuario
       </button>
@@ -117,7 +117,7 @@ console.log(flagSuper.state);
               setUsers(user);
             }}
             onCellClick={(params, e) => {
-              console.log(params, e);
+
               if (params.field === "fullname") {
                 navigate(`/adminHome/users/${params.id}`);
               }

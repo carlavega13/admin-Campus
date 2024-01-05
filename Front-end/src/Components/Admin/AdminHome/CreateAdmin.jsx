@@ -25,36 +25,17 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
           "La contraseña debería tener al menos 8 caracter(es), al menos 1 dígito(s), al menos 1 minúscula(s), al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #"
         );
       } else {
-        const token = await axios.get(
-          `${domain}login/token.php?username=${info?.username}&password=${info?.password}&service=moodle_mobile_app`
-        );
-   
-        if (token.data.token) {
-          if (isSuperAdmin) {
-            const res = await axios.post(`${HOST}postUser`, {
-              username: info?.username,
-              password: info?.password,
-              rol: "administrador",
-              isSuperAdmin: true,
-            });
 
-            if (res.data.id) {
-              notify(
-                `El usuario superAdmin: ${res.data.username} se creó exitosamente para el Moodle de URL: ${domain}`
-              );
-              if (setFlags && flags) {
-                setFlags({
-                  ...flags,
-                  componentFlag: false,
-                  warningFlag: false,
-                });
-              }
-            }
-          }
-        }
+  const res=await axios.post(`${HOST}createSuperAdmin`,{
+    username:info?.username,
+    password:info?.password,
+    domain:domain,
+    isSuperAdmin:isSuperAdmin
+  })
+  notify(res.data)
       }
     } catch (error) {
-      notifyError(error.message);
+      notifyError(error.response.data);
     }
   };
 
@@ -62,6 +43,10 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
     return (
       <div className={s.container}>
         <ToastInfo/>
+        <div className={s.closeBox}>
+
+        <button className={s.close} onClick={()=>setFlags({...flags,state:false})}>X</button>
+        </div>
         <div>
           <label>Nombre de usuario</label>
           <input

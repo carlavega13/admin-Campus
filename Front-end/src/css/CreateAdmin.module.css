@@ -46,3 +46,24 @@
 .btnCreate:hover {
   background: #59b4b4;
 }
+.close{
+  background: transparent;
+  border: 1px solid #2525256b;
+  border-radius: 3px;
+  color: #252525;
+  font-weight: bold;
+  cursor: pointer;
+  font-family: Montserrat;
+  letter-spacing: .075rem;
+width: fit-content;
+transition: 0.5s;
+}
+.close:hover{
+  background: #e23f3f;
+  color: #000;
+}
+.closeBox{
+display: flex;
+align-items: end;
+
+}
