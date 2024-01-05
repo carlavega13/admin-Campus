@@ -18,7 +18,7 @@ const getTeacherCourse = require("./studentRoutes/getTeacherCourse");
 const postReloadUser = require("./postreloadUser");
 const postChangeRol = require("./postChangeRol");
 const teacherCourses = require("./teacherRoutes/teacherCourses");
-
+const createSuperAdmin=require("./dbRoutes/createSuperAdmin")
 const router = Router();
 
 router.post("/postDomain", createDomain);
@@ -40,6 +40,7 @@ router.post("/getTeacher", getTeacherCourse);
 router.post("/reloadUser", postReloadUser);
 router.post("/changeRol", postChangeRol);
 router.post("/teacherCourse", teacherCourses);
+router.post("/createSuperAdmin", createSuperAdmin);
 router.get("/", (req, res) => {
   const html = `
 <!DOCTYPE html>
