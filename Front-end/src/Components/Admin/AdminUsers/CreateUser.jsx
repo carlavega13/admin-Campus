@@ -70,6 +70,7 @@ const CreateUser = () => {
     <div className={s.container}>
       <ToastInfo/>
       <div className={s.formContainer}>
+        <p>Crear un usuario</p>
         <button onClick={() => navigate("/adminHome")} className={s.btns}>
           Home
         </button>

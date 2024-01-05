@@ -19,11 +19,6 @@ const StudentCourses = ({ user }) => {
     );
     return (
       <div className={s.containerLoading}>
-        <button onClick={() => navigate("/adminHome")}
-          className={s.btn}
-          style={{marginLeft: ".5rem"}}>
-          HOME
-        </button>
         <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
       </div>
     );
@@ -34,16 +29,32 @@ const StudentCourses = ({ user }) => {
       {courses.map((course) => {
         return (
           <div>
-            <button className={s.btn} onClick={() => navigate(`/grades/${course.id}`)}>
-              Calificaciones
-            </button>
-            <div className={s.info}><label>Nombre:</label>{course.fullname}</div>
-            <div className={s.info}><label>Progreso: </label> {course.progress ? course.progress : 0}</div>
-
-            <div className={s.info}>
-              <label>Ultimo acceso:</label>{" "}
-              {course.lastaccess ? dateTransfer(course.lastaccess) : "Nunca"}
+            <div className={s.courseName}>
+              <p>
+                {course.fullname}
+              </p>
             </div>
+
+            <div style={{borderRadius: ".2rem .2rem 0 0"}}>
+              <label>Progreso: </label>
+              <p>
+                {course.progress ? course.progress : 0}
+              </p>
+            </div>
+
+            <div>
+              <label>Ultimo acceso:</label>{" "}
+              <p>
+                {course.lastaccess ? dateTransfer(course.lastaccess) : "Nunca"}
+              </p>
+            </div>
+
+            <div style={{borderRadius: " 0 0 .2rem .2rem"}}>
+              <button className={s.btn} onClick={() => navigate(`/grades/${course.id}`)}>
+                Calificaciones
+              </button>
+            </div>
+
           </div>
         );
       })}

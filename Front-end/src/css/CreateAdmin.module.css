@@ -24,10 +24,10 @@
   border-radius: 1rem;
   padding: 0 10px 0 10px;
   letter-spacing: 1px;
-  border: 2px solid #535aac;
+  border: 2px solid #9283bd;
 }
 .btnCreate {
-  background: #2f3367;
+  background: #9283bd;
   height: auto;
   border-radius: 4px;
   border: none;
@@ -44,5 +44,5 @@
 }
 
 .btnCreate:hover {
-  background: #535aac;
+  background: #59b4b4;
 }

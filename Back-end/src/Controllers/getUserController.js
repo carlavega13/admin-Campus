@@ -7,17 +7,18 @@ const getUserController = async (user) => {
       const admin = await User.findOne({
         where: { rol: "administrador", isSuperAdmin: true, domain: domain },
       });
-
+      
+      console.log(domain)
       username = admin.username;
       password = admin.password;
     }
     const token = await axios(
       `${domain}login/token.php?username=${username}&password=${password}&service=prueba`
-    );
-    const response = await axios(
-      `${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${user.username}`
-    );
-    const res = {
+      );
+      const response = await axios(
+        `${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${user.username}`
+        );
+        const res = {
       id: response.data.users[0].id,
       username: response.data.users[0].username,
       email: response.data.users[0].email,

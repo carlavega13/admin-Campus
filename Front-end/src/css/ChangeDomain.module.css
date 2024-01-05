@@ -1,14 +1,16 @@
 .container {
   padding: 10vh 0 2rem 2rem;
 }
-.container > div {
+.containerDiv {
   background: #fff;
+  /* background: #333; */
   padding: 2rem 3rem 2rem 3rem;
   max-width: 36rem;
   border-radius: .2rem;
   border: solid .1rem #9283bd;
   box-shadow: .1rem .1rem .2rem .1rem rgb(0, 0, 0, 0.25);
 }
+
 .container > div > div {
   width: 18rem;
   display: flex;

@@ -2,7 +2,7 @@
     display: flex;
     padding: 10vh 0 2rem 2rem;
 }
-.container >div {
+.containerDiv {
     border: solid .1rem #9283bd;
     border-radius: .2rem;
     background: #fff;

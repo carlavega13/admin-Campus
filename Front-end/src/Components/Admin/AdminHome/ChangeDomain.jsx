@@ -51,7 +51,7 @@ const ChangeDomain = () => {
   return (
     <div className={s.container}>
       <ToastInfo/>
-      <div>
+      <div className={s.containerDiv}>
 
         <div>
           <label>Cambiar dominio de Moodle:</label>

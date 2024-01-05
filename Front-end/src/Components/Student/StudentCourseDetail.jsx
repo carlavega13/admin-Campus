@@ -25,14 +25,14 @@ const StudentCourseDetail = () => {
  
 
   return (
-    <div>
+    <div className={s.container}>
       <button className={s.btn} onClick={() => navigate("/studentHome")}>HOME</button>
       <h1>Calificaciones del curso: {`${course?.fullname}`}</h1>
       {course?.grades?.map((act) => {
         return (
           <div
             key={act.id}
-            style={{ display: "flex", justifyContent: "space-between" }}
+            className={s.info}
           >
             <p>{act.itemname ? act.itemname : "Calificación final"}</p>
             <p>{act.graderaw ? act.graderaw : "No realizado"}</p>

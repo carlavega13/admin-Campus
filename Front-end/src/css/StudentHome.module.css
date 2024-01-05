@@ -1,57 +1,50 @@
 p {
-  letter-spacing: .1rem;
-  font-weight: bold;
   font-family: Montserrat;
+  letter-spacing: .075rem;
+  font-weight: bold;
   color: #868aa5;
   transition: 0.3s;
 }
-
+.userName {
+  /* background: red; */
+  width: 9rem;
+  word-wrap: break-word;
+}
 .containerAll {
   width: 100%;
   display: flex;
   /* background: green; */
-  flex-direction: column;
 }
 
 .container {
-  background: linear-gradient(180deg, #d7d7d8 85%, #fff 100%);
   /* background: #d7d7d8; */
-  /* background: green; */
-  background: #9283bd;
+  background: linear-gradient(180deg, #d7d7d8 85%, #fff 100%);
   padding: .6rem;
   display: flex;
   flex-direction: column;
   position: relative;
-  top: -8px;
-  left: -8px;
-  width: 99.5%;
-  /* height: 100%; */
-  box-shadow: .1rem .1rem .15rem .2rem #25252562;
-  margin-bottom: 1rem;
-  overflow: hidden;
+  top: -.4rem;
+  left: -.4rem;
+  width: 12rem;
+  height: 100%;
 }
 
 .settings {
-  /* padding: 0 12px 0 12px; */
   display: flex;
-  height: 3rem;
-  /* background: blueviolet; */
   align-items: center;
-  justify-content: flex-end;
-  padding-right: 1rem;
+  justify-content: space-between;
+  /* background: red; */
+  align-items: flex-start;
+
 }
-.settings > p {
-  color: #404040;
-}
+
 .iconSettings {
-  width: 1.8rem;
-  height: 1.8rem;
-  border-radius: 2rem;
-  border: 3px solid #59b4b4;
+  width: 2rem;
+  height: 2rem;
+  border-radius: .3rem;
+  border: .15rem solid#868AA5;
   cursor: pointer;
   transition: 0.3s;
-  margin-left: 1rem;
-  z-index: 10;
 }
 
 .iconSettings:hover {
@@ -61,7 +54,7 @@ p {
 }
 
 .selectedProfile {
-  border-radius: 2rem;
+  border-radius: 8px;
   border: 3px solid transparent;
   box-shadow: 2px 2px 3px 1px #b3b3b3;
   background: linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
@@ -70,17 +63,12 @@ p {
 
 .divBtnsOptions {
   display: flex;
-  /* flex-direction: column; */
-  /* background: green; */
-  justify-content: space-around;
-  align-items: center;
-
+  flex-direction: column;
 }
 
 .divBtnsOptions div {
   border-radius: 8px;
-  height: 2.2rem;
-  background: #d7d7d8;
+  height: 3rem;
   display: flex;
   padding: 0 8px 0 8px;
   justify-content: space-between;
@@ -90,7 +78,6 @@ p {
   font-family: Helvetica Narrow, sans-serif;
   cursor: pointer;
   transition: 0.3s;
-  width: 12rem;
 }
 
 .divBtnsOptions div:hover {
@@ -109,7 +96,6 @@ p {
   height: 1.2rem;
   transition: 0.3s;
 }
-
 .iconOptions {
   width: 1.5rem;
   height: 1.5rem;
@@ -124,9 +110,7 @@ p {
 }
 
 .right {
-  width: 100%;
-  /* background: lightblue; */
-
+  width: 90%;
 }
 
 .selected {
@@ -152,61 +136,6 @@ p {
   background: linear-gradient(to right, #d7d7d8 30%, #d7d7d8 100%) padding-box,
     linear-gradient(to right, #59b4b4 20%, #9283bd 70%) border-box;
   box-shadow: 2px 2px 3px 1px #b3b3b3;
-}
-
-.menuProfileContainer {
-  background: #fff;
-  width: 16rem;
-  height: 7.1rem;
-  position: absolute;
-  right: 0;
-  top: 0;
-  border-radius: 0 0 0 1rem;
-  border-bottom: .1rem solid #59b4b4;
-  border-left: .1rem solid #59b4b4;
-  transition: .3s;
-  box-shadow: 0 .1rem .15rem .1rem #25252562;
-}
-
-.menuProfileContainerClose {
-  background: #59b4b4;
-  background: #fff;
-  width: 16rem;
-  height: 7.1rem;
-  position: absolute;
-  top: 0;
-  border-radius: 0 0 0 1rem;
-  border-bottom: .1rem solid #59b4b4;
-  border-left: .1rem solid #59b4b4;
-  transition: .3s;
-  box-shadow: 0 .1rem .15rem .1rem #25252562;
-  right: -100%;
-  transition: .3s;
-}
-
-.menuProfileContainer>div {
-  /* background: orange; */
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-}
-
-.menuProfileContainerClose>div {
-  /* background: red; */
-  height: 100%;
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
-}
-
-.menuProfileContainer>div>p {
-  /* background-color: blue; */
-  font-size: .85rem;
-  cursor: pointer;
-  color: #9283bd;
-  font-weight: bold;
-
 }
 
 @media (max-width: 1080px) {

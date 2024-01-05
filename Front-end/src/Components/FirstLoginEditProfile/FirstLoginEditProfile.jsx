@@ -14,14 +14,12 @@ const FirstLoginEditProfile = ({ rol }) => {
     lastName: "",
     dni: "",
     phone: "",
-
   });
   const [error, setError] = useState({
     firstName: "",
     lastName: "",
     dni: "",
     phone: "",
-
   });
   useEffect(() => {
     setError(validator(profile));
@@ -56,6 +54,7 @@ const FirstLoginEditProfile = ({ rol }) => {
   return (
     <div className={s.container}>
       <button
+        className={s.btnLogOut}
         onClick={() => {
           dispatch(logOut());
           navigate("/");
@@ -98,7 +97,6 @@ const FirstLoginEditProfile = ({ rol }) => {
             type="number"
             placeholder="DNI"
           />
-
         </div>
 
         <div>
@@ -112,8 +110,6 @@ const FirstLoginEditProfile = ({ rol }) => {
           />
           {error?.phone ? <p>{error.phone}</p> : <p></p>}
         </div>
-
-
 
         <button onClick={handlerSubmit} className={s.btnSubmit}>
           Enviar

@@ -8,60 +8,63 @@
 
 .formContainer {
   /* background: red; */
-  max-width: 800px;
-  /* width: 800px; */
+  /* max-width: 100px; */
+  width: 40rem;
+  border-radius: .2rem;
+  padding: 1rem;
+  border: .1rem solid #9283bd;
 }
 
-.formContainer > div {
+.formContainer>p {
+  /* background: green; */
+
+}
+
+.formContainer>div {
   /* background: green; */
   display: flex;
   flex-direction: column;
-  width: 600px;
-  margin-top: 12px;
+  width: 40rem;
+  margin-top: .6rem;
 }
 
-.formContainer > div > input {
+.formContainer>div>input {
   /* background: orange; */
   border-radius: 1rem;
   font-family: Montserrat;
-  letter-spacing: 1px;
+  letter-spacing: .075rem;
   border-radius: 1rem;
-  border: 2px solid #868aa5;
-  border: 2px solid #9283bd;
+  border: .1rem solid #9283bd;
   font-weight: bold;
   color: #424242;
   z-index: 1;
-  padding-left: 10px;
+  padding-left: .5rem;
   height: 1.5rem;
   margin-top: 0.2rem;
 }
 
-.formContainer > div > label {
+.formContainer>div>label {
   font-family: Montserrat;
-  letter-spacing: 1px;
+  letter-spacing: .075rem;
   font-size: 1.1rem;
   font-weight: bold;
-  color: #868aa5;
-  color: #535aac;
-  color: #555555;
+  color: #9283bd;
   padding-left: 10px;
 }
 
 .btns {
   background: #9283bd;
-  height: 1.6rem;
-  width: 12rem;
-  max-width: 28rem;
+  width: 10rem;
   color: #fff;
-  padding: 4px 16px 4px 16px;
-  border-radius: 4px;
+  padding: .2rem .8rem .2rem .8rem;
+  border-radius: .2rem;
   border: none;
   font-weight: bold;
-  font-size: 1rem;
-  letter-spacing: 2px;
+  font-size: .9rem;
+  letter-spacing: 0.075rem;
   cursor: pointer;
   transition: 0.3s;
-  margin: 0.5rem 0 1rem 0;
+  margin: .5rem 0 1rem 0;
 }
 
 .btns:hover {

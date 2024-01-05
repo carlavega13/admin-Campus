@@ -10,7 +10,7 @@ import TeacherCourse from "./TeacherCourse";
 import s from "../../css/TeacherHome.module.css";
 import { ToastInfo } from "../../functions/toast";
 import { CiLogout } from "react-icons/ci";
-import {FaUserAlt}from "react-icons/fa"
+import {VscDebugDisconnect}from "react-icons/vsc"
 const TeacherHome = () => {
 
   const dispatch = useDispatch();
@@ -32,44 +32,13 @@ const TeacherHome = () => {
             {`${user?.firstname[0].toUpperCase()}${user?.firstname.slice(1)} 
               ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}
           </p>
-          <FaUserAlt
-            color={value === "editProfile" ? "#9283bd" : "#59b4b4"}
-            onClick={() => setOpen(!open)}
-            className={`${s.iconSettings} ${
-              value === "editProfile" ? s.selectedProfile : null
-            }`}
-          />
-          <div
-            className={
-              open ? s.menuProfileContainer : s.menuProfileContainerClose
-            }
-          >
-            <div>
-              <p
-                onClick={() => {
-                  dispatch(putHome("editProfile"));
-                  setOpen(false);
-                }}
-              >
-                Mi Perfil
-              </p>
-              <div
-                style={{
-                  borderRight: ".1rem solid #9283bd",
-                  height: "1.3rem",
-                  marginBottom: ".6rem",
-                }}
-              />
-              <p
-                onClick={() => {
-                  dispatch(logOut());
-                  navigate("/");
-                }}
-              >
-                Cerrar Sesión
-              </p>
-            </div>
-          </div>
+          <img
+              onClick={() => dispatch(putHome("editProfile"))}
+              src={value === "editProfile" ? selectSetting : setting}
+              className={`${s.iconSettings} ${
+                value === "editProfile" ? s.selectedProfile : null
+              }`}
+            />
         </div>
 
         <div className={s.divBtnsOptions}>
@@ -86,6 +55,21 @@ const TeacherHome = () => {
               className={s.icons}
               color={value === "courses" ? "#9283BD" : "#868AA5"}
             />{" "}
+          </div>
+          <div onClick={() => {
+                dispatch(logOut());
+                navigate("/");
+              }}
+          >
+            <CiLogout className={s.icons}
+              color={"#868AA5"}/>
+            <p>
+              Logout
+            </p>
+            <VscDebugDisconnect
+              className={s.icons}
+              color={value === "roles" ? "#9283BD" : "#868AA5"}
+            />
           </div>
         </div>
       </div>

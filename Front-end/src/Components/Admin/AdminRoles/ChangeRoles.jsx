@@ -37,7 +37,7 @@ if(res.status>=200&&res.status<300){
     return(
       <div className={s.container}>
         <ToastInfo/>
-        <div>
+        <div className={s.containerDiv}>
           <p>Aquí puedes cambiar el rol de un usuario</p>
           
           <label>Nuevo rol: </label>
@@ -59,6 +59,6 @@ if(res.status>=200&&res.status<300){
           <button onClick={handleSend}>Cambiar rol</button>
         </div>
       </div>
-  )
+    )
   }
   export default ChangeRoles

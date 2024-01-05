@@ -10,6 +10,7 @@ import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
 import { ToastInfo, notifyError } from "../../../functions/toast";
 import {  ThemeProvider } from '@mui/material/styles';
 import customTheme from "../../../functions/tableTheme";
+import CreateAdmin from "../AdminHome/CreateAdmin"
 const AdminUsers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -18,6 +19,10 @@ const AdminUsers = () => {
   const [flag, setFlag] = useState({
     state: false,
     to: [],
+  });
+  const [flagSuper, setFlagSuper] = useState({
+    state: false,
+
   });
 
   if (allUsers?.length === 0) {
@@ -85,13 +90,17 @@ const AdminUsers = () => {
       });
     }
   };
-
+console.log(flagSuper.state);
   return (
     <div className={s.box}>
       <ToastInfo />
-      <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
+      <div>
+              <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
         Crear usuario
       </button>
+      <button onClick={()=>setFlagSuper({...flagSuper,state:!flagSuper.state})} className={s.btnCreate}>Crear Super Administrador</button>
+      </div>
+
       <div style={{ height: 500, width: "100%" }}>
         <ThemeProvider theme={customTheme}>
           <DataGrid
@@ -125,6 +134,12 @@ const AdminUsers = () => {
       ) : (
         ""
       )}
+      {
+        flagSuper.state?<CreateAdmin
+        domain={user?.domain}setFlags={setFlagSuper}flags={flagSuper} isSuperAdmin={true}
+        />:""
+      }
+    
     </div>
   );
 };
