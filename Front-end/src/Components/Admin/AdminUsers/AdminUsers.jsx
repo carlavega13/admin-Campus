@@ -8,9 +8,9 @@ import { useNavigate } from "react-router-dom";
 import { DataGrid } from "@mui/x-data-grid";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
 import { ToastInfo, notifyError } from "../../../functions/toast";
-import {  ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material/styles";
 import customTheme from "../../../functions/tableTheme";
-import CreateAdmin from "../AdminHome/CreateAdmin"
+import CreateAdmin from "../AdminHome/CreateAdmin";
 const AdminUsers = () => {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -22,7 +22,6 @@ const AdminUsers = () => {
   });
   const [flagSuper, setFlagSuper] = useState({
     state: false,
-
   });
 
   if (allUsers?.length === 0) {
@@ -95,10 +94,19 @@ const AdminUsers = () => {
     <div className={s.box}>
       <ToastInfo />
       <div className={s.createUserBox}>
-              <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
-        Crear usuario
-      </button>
-      <button onClick={()=>setFlagSuper({...flagSuper,state:!flagSuper.state})} className={s.btnCreate}>Crear Super Administrador</button>
+        <button onClick={() => navigate("/createUser")} className={s.btnCreate}>
+          Crear usuario
+        </button>
+        {user.isSuperAdmin && (
+          <button
+            onClick={() =>
+              setFlagSuper({ ...flagSuper, state: !flagSuper.state })
+            }
+            className={s.btnCreate}
+          >
+            Crear Super Administrador
+          </button>
+        )}
       </div>
 
       <div style={{ height: 500, width: "100%" }}>
@@ -117,7 +125,6 @@ const AdminUsers = () => {
               setUsers(user);
             }}
             onCellClick={(params, e) => {
-
               if (params.field === "fullname") {
                 navigate(`/adminHome/users/${params.id}`);
               }
@@ -134,12 +141,16 @@ const AdminUsers = () => {
       ) : (
         ""
       )}
-      {
-        flagSuper.state?<CreateAdmin
-        domain={user?.domain}setFlags={setFlagSuper}flags={flagSuper} isSuperAdmin={true}
-        />:""
-      }
-    
+      {flagSuper.state ? (
+        <CreateAdmin
+          domain={user?.domain}
+          setFlags={setFlagSuper}
+          flags={flagSuper}
+          isSuperAdmin={true}
+        />
+      ) : (
+        ""
+      )}
     </div>
   );
 };

@@ -10,6 +10,18 @@ p {
   width: 9rem;
   word-wrap: break-word;
 }
+.containerLoading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 2rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+}
 .containerAll {
   width: 100%;
   display: flex;

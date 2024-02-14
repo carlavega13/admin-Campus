@@ -131,10 +131,13 @@ const AdminCourses = () => {
   return (
     <div className={s.container}>
       <ToastInfo/>
-      <button className={s.btnCreate}
+      <div className={s.btnContainer}>
+             <button className={s.btnCreate}
         onClick={() => navigate("/createCourse")}>
         Crear curso
       </button>
+      </div>
+ 
       <div>
         <ThemeProvider theme={customTheme}>
           <DataGrid

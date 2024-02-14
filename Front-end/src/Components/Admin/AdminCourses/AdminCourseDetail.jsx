@@ -6,15 +6,18 @@ import downloadCsv from "../../../downloadCsv";
 import { BsWhatsapp } from "react-icons/bs";
 import { useEffect, useState } from "react";
 import EmailPopOut from "../../EmailPopOut";
-import { getGrades } from "../../../Redux/actions";
+import { getCourses, getGrades, getTeacherCourse, reloadUser } from "../../../Redux/actions";
 import { DataGrid } from "@mui/x-data-grid";
 import EnrolUser from "./EnrolUser";
 import { notifyError, ToastInfo } from "../../../functions/toast";
 import loading from "../../../public/images/AdminHome/loading-loading-gif.gif";
 import customTheme from "../../../functions/tableTheme";
-import {  ThemeProvider } from '@mui/material/styles';
+import { ThemeProvider } from "@mui/material/styles";
+
 const AdminCourseDetail = () => {
   const navigate = useNavigate();
+  let user = useSelector((state) => state.user);
+  const dispatch = useDispatch();
   const [flag, setFlag] = useState({
     state: false,
     to: "",
@@ -22,10 +25,13 @@ const AdminCourseDetail = () => {
   const [users, setUsers] = useState([]);
   const [enrolUser, setEnrolUser] = useState(false);
   const { id } = useParams();
-  let user = useSelector((state) => state.user);
   let courses = useSelector((state) => state.courses);
   let course = courses?.find((co) => co.id == id);
-  const [promise, setPromise] = useState(false);
+  const [promise, setPromise] = useState(false);   
+   if (user?.username?.length==0) {
+      console.log("No hay usuario o curso, redirigiendo a /");
+      navigate("/");
+    }
 
   course.enrolledPeople = course.enrolledPeople?.filter(
     (student) =>
@@ -34,12 +40,11 @@ const AdminCourseDetail = () => {
       student?.roles &&
       student.roles[0]?.shortname !== "editingteacher"
   );
-  const dispatch = useDispatch();
+
   if (!course.enrolledPeople.find((pe) => pe.grades)) {
     dispatch(
       getGrades(course.enrolledPeople, user.token, user.domain, id)
     ).then((res) => setPromise(true));
-
     return (
       <div className={s.containerLoading}>
         <button
@@ -61,10 +66,6 @@ const AdminCourseDetail = () => {
     };
   });
   csvInfo = Papa.unparse(csvInfo);
-
-  const handlerDownloadCsv = () => {
-    downloadCsv(csvInfo, `${course.name} alumnos.csv`);
-  };
 
   const columns = [
     { field: "fullname", headerName: "NOMBRE", width: 200 },
@@ -141,6 +142,10 @@ const AdminCourseDetail = () => {
     }
     return aux;
   });
+  const handlerDownloadCsv = () => {
+    downloadCsv(csvInfo, `${course.name} alumnos.csv`);
+  };
+
   const handleSendMail = () => {
     if (users.length === 0) {
       notifyError("Debes selecionar al menos un usuario");
@@ -156,7 +161,16 @@ const AdminCourseDetail = () => {
   return (
     <div className={s.box}>
       <ToastInfo />
-      <button onClick={() => navigate("/adminHome")} className={s.btn}>
+      <button
+        onClick={() => {
+          if (user?.rol === "administrador") {
+            navigate("/adminHome");
+          } else {
+            navigate("/teacherHome");
+          }
+        }}
+        className={s.btn}
+      >
         HOME
       </button>
       <button onClick={() => setEnrolUser(!enrolUser)} className={s.btn}>

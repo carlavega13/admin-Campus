@@ -11,6 +11,8 @@ import s from "../../css/TeacherHome.module.css";
 import { ToastInfo } from "../../functions/toast";
 import { CiLogout } from "react-icons/ci";
 import {VscDebugDisconnect}from "react-icons/vsc"
+import { useState } from "react";
+
 const TeacherHome = () => {
 
   const dispatch = useDispatch();
@@ -21,7 +23,7 @@ const TeacherHome = () => {
   if (!user.firstname || !user.phone) {
     return <div>LOADING...</div>;
   }
-
+console.log(user);
   return (
     <div className={s.containerAll}>
       <ToastInfo />

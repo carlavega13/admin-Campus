@@ -4,16 +4,17 @@ const getUserController = require("../getUserController");
 
 
 const postSuperAdmin = async ({ username, password, domain, isSuperAdmin }) => {
+
   try {
     const token = await axios.get(
       `${domain}login/token.php?username=${username}&password=${password}&service=moodle_mobile_app`
     );
-    
-    // return info
+    // console.log(token.data.token);
     if (token.data.token) {
       const existingUser = await User.findOne({
-        where: { username: username },
+        where: {username:username,password:password},
       });
+      console.log(existingUser);
       if (existingUser) {
         await existingUser.update({
           isSuperAdmin: isSuperAdmin,
@@ -27,6 +28,7 @@ const postSuperAdmin = async ({ username, password, domain, isSuperAdmin }) => {
           username: username,
           password: password,
           rol: "estudiante",
+          isSuperAdmin:isSuperAdmin
         });
         await User.create({
           ...info,
@@ -35,6 +37,7 @@ const postSuperAdmin = async ({ username, password, domain, isSuperAdmin }) => {
           password: password,
           isSuperAdmin: isSuperAdmin,
           rol: "administrador",
+          domain:domain
         });
         return "Se creo el Super Administrador";
       }

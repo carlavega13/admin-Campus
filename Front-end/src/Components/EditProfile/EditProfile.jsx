@@ -74,6 +74,7 @@ const EditProfile = () => {
           info.city = profile.city;
         }
         info.id = user.id;
+        console.log("dadadsds");
         const res = await axios.put(`${HOST}putUserMoodle`, {
           username: user?.username,
           domain: user?.domain,

@@ -3,6 +3,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import { getStudentGrades } from "../../Redux/actions";
 import { useEffect, useState } from "react";
 import s from "../../css/StudentCourseDetail.module.css"
+import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 const StudentCourseDetail = () => {
   const { id } = useParams();
   const dispatch = useDispatch();
@@ -20,7 +21,9 @@ const StudentCourseDetail = () => {
         userid: user.id,
       })
     ).then((res) => setPromise(true));
-    return <div>LOADING...</div>;
+    return <div className={s.containerLoading}>
+    <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
+  </div>
   }
  
 

@@ -11,6 +11,18 @@ p {
   letter-spacing: .075rem;
   color: #404040;
 }
+.containerLoading {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  height: 100%;
+  padding-top: 2rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+}
 .container {
   /* background: lightskyblue; */
   width: 100%;

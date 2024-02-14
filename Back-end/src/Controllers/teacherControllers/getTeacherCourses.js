@@ -2,6 +2,7 @@ const getCoursesController = require("../coursesControllers/getCoursesController
 
 const getTeacherCourses=async(user)=>{
 try {
+  console.log("dassa",user);
   let course =await getCoursesController(user)
   course=course.map(c=>{
    let find= c.teacher.find(t=>t.id===user.userid)
@@ -15,7 +16,7 @@ course=course.map(c => {
 });
     return course
 } catch (error) {
-    
+  throw new Error(error.message)
 }
 }
 module.exports=getTeacherCourses

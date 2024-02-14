@@ -1,5 +1,4 @@
 const axios = require("axios");
-const { User } = require("../../db");
 const getAllUsersController = async (info) => {
   try {
     const { domain, token } = info;

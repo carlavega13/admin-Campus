@@ -31,8 +31,6 @@ router.post("/getAllUsers", getAllUsers);
 router.post("/getGrades", getGrades);
 router.post("/postCourse", postCourse);
 router.post("/postUserMoodle", postUserMoodle);
-router.put("/putUser", putUser);
-router.put("/putUserMoodle", putUserMoodle);
 router.post("/enrolUser", postEnrolUser);
 router.post("/getStudentCourses", getEnrolledCourses);
 router.post("/getStudentGrades", studentGrades);
@@ -41,6 +39,8 @@ router.post("/reloadUser", postReloadUser);
 router.post("/changeRol", postChangeRol);
 router.post("/teacherCourse", teacherCourses);
 router.post("/createSuperAdmin", createSuperAdmin);
+router.put("/putUser", putUser);
+router.put("/putUserMoodle", putUserMoodle);
 router.get("/", (req, res) => {
   const html = `
 <!DOCTYPE html>

@@ -6,6 +6,7 @@ import s from "../../css/Login.module.css";
 import userIcon from "../../public/images/Login/Profile.png";
 import passIcon from "../../public/images/Login/mdi_password.png";
 import { ToastInfo,notify, notifyError } from "../../functions/toast";
+import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 
 const Login = () => {
   const navigate = useNavigate();
@@ -23,13 +24,18 @@ const Login = () => {
       [e.target.name]: e.target.value,
     });
   };
-  const handlerLogin = () => {
-    try {
-      dispatch(login(user));
-    } catch (error) {
-     notifyError(error.message);
-    }
-  };
+   const [searchingUser, setSearchingUser] = useState(false)
+    const handlerLogin = async () => {
+      try {
+        if(!searchingUser) {
+          setSearchingUser(true)
+          await dispatch(login(user));
+          setSearchingUser(false)
+        }
+      } catch (error) {
+       notifyError(error.message);
+      }
+    };
   useEffect(() => {}, [userLogged]);
 
   if (userLogged?.username && !userLogged?.phone) {
@@ -70,12 +76,12 @@ const Login = () => {
             onChange={handlerChange}
             name="password"
             value={user.password}
-            type="text"
+            type="password"
             placeholder="Contraseña"
           />
         </div>
         <button onClick={handlerLogin} className={s.btnLogin}>
-          Ingresar
+       Ingresar
         </button>
       </div>
     </div>

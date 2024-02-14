@@ -43,6 +43,7 @@ const CreateUser = () => {
           `Estas seguro que quieres crear el usuario: ${info?.firstname} ${info?.lastname}`
         )
       ) {
+        console.log({username,domain, info});
         const res = await axios.post(`${HOST}postUserMoodle`, {
           username,
           domain,
@@ -57,7 +58,7 @@ const CreateUser = () => {
             lastname: "",
             email: "",
           });
-          return notify(
+          notify(
             `El usuario: ${info?.firstname} ${info?.lastname}, se creo correctamente`
           );
         }
@@ -90,7 +91,7 @@ const CreateUser = () => {
             onChange={handleOnChange}
             name="password"
             value={info.password}
-            type="text"
+            type="password"
             placeholder="Contraseña"
           />
         </div>

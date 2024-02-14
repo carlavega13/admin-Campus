@@ -11,6 +11,7 @@ import StudentCourses from "./StudentCourses";
 import { CiLogout } from "react-icons/ci";
 import { VscDebugDisconnect } from "react-icons/vsc";
 import { useState } from "react";
+import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 
 const StudentHome = () => {
   const navigate = useNavigate();
@@ -19,7 +20,9 @@ const StudentHome = () => {
   const value = useSelector((state) => state.homeValue);
   const [open, setOpen] = useState(false);
   if (!user.firstname || !user.phone) {
-    return <div>LOADING...</div>;
+    return       <div className={s.containerLoading}>
+    <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
+  </div>
   }
 
   return (

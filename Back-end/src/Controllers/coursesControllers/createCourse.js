@@ -5,7 +5,7 @@ const createCourse = async ({ domain, username, info }) => {
     const user = await User.findOne({ where: { username: username } });
 
     const token = await axios(
-      `${domain}login/token.php?username=${user.username}&password=${user.password}&service=prueba`
+      `${domain}login/token.php?username=${user.username}&password=${user.password}&service=admin-functions`
     );
 
     const res = await axios(

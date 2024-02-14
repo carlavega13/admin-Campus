@@ -3,7 +3,7 @@ import axios from "axios";
 import { HOST } from "../../../../HOST";
 import CreateAdmin from "./CreateAdmin";
 import { useDispatch } from "react-redux";
-import { deleteAll } from "../../../Redux/actions";
+import { deleteAll, logOut } from "../../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import s from "../../../css/ChangeDomain.module.css";
 import { ToastInfo, notify, notifyError } from "../../../functions/toast";
@@ -35,7 +35,8 @@ const ChangeDomain = () => {
         notify(
           `La URL activa ahora es: ${res.data.url}. Por favor ingrese denuevo con un usuario para este dominio`
         );
-        dispatch(deleteAll());
+        console.log("dsdadsd");
+        dispatch(logOut());
         navigate("/");
       }
     }

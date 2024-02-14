@@ -11,6 +11,7 @@ const putUserController = async ({
   token,
 }) => {
   try {
+    console.log(firstName,lastName,dni,phone,email,id,domain,token);
     const userToEdit = await User.findOne({ where: { id: id } });
     const editMoodle = await editUserMoodle({
       domain: domain,

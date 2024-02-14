@@ -25,14 +25,17 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
           "La contraseña debería tener al menos 8 caracter(es), al menos 1 dígito(s), al menos 1 minúscula(s), al menos 1 mayúscula(s), al menos 1 caracter(es) no alfanuméricos como *,-, o #"
         );
       } else {
-
-  const res=await axios.post(`${HOST}createSuperAdmin`,{
+if(confirm(`Estas seguro que quieres crear el usuario ${info?.username}?`)){
+    const res=await axios.post(`${HOST}createSuperAdmin`,{
     username:info?.username,
     password:info?.password,
     domain:domain,
     isSuperAdmin:isSuperAdmin
   })
   notify(res.data)
+  setInfo({username:"",password:""})
+}
+
       }
     } catch (error) {
       notifyError(error.response.data);
@@ -63,7 +66,7 @@ const CreateAdmin = ({ domain, isSuperAdmin, setFlags, flags }) => {
             name="password"
             onChange={handleOnChange}
             value={info?.password}
-            type="text"
+            type="password"
           />
         </div>
 

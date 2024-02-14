@@ -36,7 +36,12 @@
   color: transparent;/* Hace que el texto sea transparente */
   text-shadow: 0 0 5px rgba(0, 0, 0, 0.752);
 }
+.btnContainer{
+  display: flex;
+  justify-content: center;
+}
 .btnCreate {
+
   background: #9283bd;
   /* max-width: 28rem; */
   width: 10rem;

@@ -37,7 +37,6 @@ const CreateCourse = () => {
         if (res.data[0].id) {
           dispatch(getCourses({ domain, token }));
           notify("Su curso se creo correctamente");
-          // navigate("/adminHome");
           return;
         }
       }
