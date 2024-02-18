@@ -37,7 +37,7 @@ const FirstLoginEditProfile = ({ rol }) => {
       dispatch(
         putUser({
           ...profile,
-          id: user.id,
+          idMoodle: user.idMoodle,
           domain: user.domain,
           token: user.token,
         })

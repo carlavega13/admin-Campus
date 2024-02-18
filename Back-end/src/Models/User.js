@@ -11,7 +11,7 @@ module.exports = (sequelize) => {
 
       },
       idMoodle: {
-        type: DataTypes.STRING,
+        type: DataTypes.INTEGER,
    
   
       },

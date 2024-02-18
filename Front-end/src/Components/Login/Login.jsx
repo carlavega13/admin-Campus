@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { login } from "../../Redux/actions";
+import { logOut, login } from "../../Redux/actions";
 import { useNavigate } from "react-router-dom";
 import s from "../../css/Login.module.css";
 import userIcon from "../../public/images/Login/Profile.png";
@@ -9,6 +9,7 @@ import { ToastInfo,notify, notifyError } from "../../functions/toast";
 import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 
 const Login = () => {
+  console.log("en barra (login)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.user);
@@ -27,6 +28,10 @@ const Login = () => {
    const [searchingUser, setSearchingUser] = useState(false)
     const handlerLogin = async () => {
       try {
+        if(userLogged?.username?.length>1){
+          dispatch(logOut())
+          return
+        }
         if(!searchingUser) {
           setSearchingUser(true)
           await dispatch(login(user));
@@ -37,12 +42,12 @@ const Login = () => {
       }
     };
   useEffect(() => {}, [userLogged]);
-
   if (userLogged?.username && !userLogged?.phone) {
     navigate("firstEditProfile");
-    return;
+
   }
   if (userLogged?.username && userLogged?.rol === "administrador") {
+    console.log("va a admin home desde login");
     navigate("/adminHome");
   }
   if (userLogged?.username && userLogged?.rol === "estudiante") {
@@ -81,7 +86,7 @@ const Login = () => {
           />
         </div>
         <button onClick={handlerLogin} className={s.btnLogin}>
-       Ingresar
+        {searchingUser?<img src={loading} className={s.loadingIcon}/>:"Ingresar"}
         </button>
       </div>
     </div>

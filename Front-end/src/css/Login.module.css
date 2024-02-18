@@ -1,3 +1,11 @@
+.loadingIcon {
+  mix-blend-mode: multiply;
+  width: 2.8rem;
+  height: 2.8rem;
+  align-self: center;
+  position: relative;
+  bottom: .45rem;
+}
 .containerLogin {
   background-color: #fff;
   width: 500px;

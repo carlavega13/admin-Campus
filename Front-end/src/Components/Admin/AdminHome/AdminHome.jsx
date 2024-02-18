@@ -28,6 +28,7 @@ const AdminHome = () => {
   const [open, setOpen] = useState(false);
   useEffect(() => {}, [value]);
   if (!user?.phone || !user?.email) {
+    console.log("va a editprofile desde admin-home");
     navigate("/firstEditProfile");
   }
   return (

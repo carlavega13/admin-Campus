@@ -4,8 +4,8 @@ const postUser = require("./dbControllers/postUser");
 const getUserController = require("./getUserController");
 const loginController = async (user) => {
   try {
-    const find = await User.findOne({ where: { username: user.username } });
-   
+    console.log(user);
+    const find = await User.findOne({ where: { username: user.username,password:user.password } });
     const findUrl = await Domain.findOne({ where: { isActive: true } });
     const token = await axios.get(
       `${findUrl.url}login/token.php?username=${user?.username}&password=${user?.password}&service=moodle_mobile_app`
@@ -25,7 +25,7 @@ const loginController = async (user) => {
 
       const response = await postUser({
         ...user,
-        id: info.id,
+        idMoodle: info.idMoodle,
         token: token.data.token,
         domain: findUrl.url,
       });
@@ -51,9 +51,11 @@ await find.update({password:user.password,domain:user.doamin})
       rol: find.rol,
       isSuperAdmin: find.isSuperAdmin,
     });
+    console.log(info);
 if(!find.email){
   await find.update({email:info.email})
 }
+
     return {
       ...info,
       phone: find.phone,

@@ -13,7 +13,7 @@ const createUserMoodle = async ({ domain, username, info }) => {
     );
 
     if (res.data[0].id) {
-      await postUser(info);
+      await postUser({...info,idMoodle:info.id});
     }
     return res.data;
   } catch (error) {

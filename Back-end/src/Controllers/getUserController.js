@@ -14,11 +14,13 @@ const getUserController = async (user) => {
       `${domain}login/token.php?username=${username}&password=${password}&service=admin-functions`
       );
 
+      console.log(token.data);
       const response = await axios(
         `${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${user.username}`
         );
+
         const res = {
-      id: response.data.users[0].id,
+      idMoodle: response.data.users[0].id,
       username: response.data.users[0].username,
       email: response.data.users[0].email,
       firstname: response.data.users[0].firstname,

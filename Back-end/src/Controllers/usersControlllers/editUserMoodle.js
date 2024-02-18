@@ -2,13 +2,14 @@ const axios = require("axios");
 const { User } = require("../../db");
 const editUserMoodle = async (body) => {
   try {
-    console.log(body);
     const { info } = body;
+    console.log(info);
     const admin = await User.findOne({ where: { rol: "administrador",isSuperAdmin:true,domain:body.domain } });
     const token = await axios(
       `${body.domain}login/token.php?username=${admin.username}&password=${admin.password}&service=admin-functions`
-    );
-    let url = `${body.domain}/webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_update_users&moodlewsrestformat=json&users[0][id]=${info.id}`;
+      );
+
+    let url = `${body.domain}/webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_update_users&moodlewsrestformat=json&users[0][id]=${info.idMoodle}`;
     if (info.username) {
       url += `&users[0][username]=${info.username}`;
     }
@@ -33,11 +34,11 @@ const editUserMoodle = async (body) => {
       url += `&users[0][city]=${info.city}`;
     }
     const res = await axios(`${url}`);
-
+console.log(res.data);
     if (!res.data) {
       return "Se actualizo su información";
     } else {
-      return "No se pudo actualizar la información";
+      throw new Error("No se pudo actualizar la información");
     }
   } catch (error) {
     throw new Error(error.message);

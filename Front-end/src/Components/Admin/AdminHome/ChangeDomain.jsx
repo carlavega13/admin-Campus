@@ -35,9 +35,10 @@ const ChangeDomain = () => {
         notify(
           `La URL activa ahora es: ${res.data.url}. Por favor ingrese denuevo con un usuario para este dominio`
         );
-        console.log("dsdadsd");
-        dispatch(logOut());
+
+     
         navigate("/");
+     
       }
     }
   };

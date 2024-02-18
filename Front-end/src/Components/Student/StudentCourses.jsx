@@ -14,7 +14,7 @@ const StudentCourses = ({ user }) => {
       getStudentCourses({
         domain: user.domain,
         token: user.token,
-        userId: user.id,
+        userId: user.idMoodle,
       })
     );
     return (

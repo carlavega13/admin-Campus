@@ -6,18 +6,20 @@ const putUserController = async ({
   dni,
   phone,
   email,
-  id,
+  idMoodle,
   domain,
   token,
 }) => {
   try {
-    console.log(firstName,lastName,dni,phone,email,id,domain,token);
-    const userToEdit = await User.findOne({ where: { id: id } });
+    const userToEdit = await User.findOne({
+      where: { idMoodle:idMoodle },
+    });
+
     const editMoodle = await editUserMoodle({
       domain: domain,
       token: token,
       info: {
-        id: id,
+        idMoodle: idMoodle,
         firstname: firstName,
         lastname: lastName,
         phone1: phone,
@@ -28,17 +30,16 @@ const putUserController = async ({
       lastname: lastName,
       fullname: `${firstName} ${lastName}`,
       phone: phone,
- 
     };
-    if(email){
-      info.email=email
+    if (email) {
+      info.email = email;
     }
-    let res
+    let res;
     if (dni && dni.toString().length > 5) {
       // info.dni = dni.toString();
-   res = await userToEdit.update({
+      res = await userToEdit.update({
         ...info,
-      dni:dni.toString()
+        dni: dni.toString(),
       });
       return {
         id: res.id,
@@ -71,7 +72,7 @@ const putUserController = async ({
       };
     }
   } catch (error) {
-console.log(error.message);
+    console.log(error.message);
     throw new Error(error.message);
   }
 };

@@ -16,6 +16,7 @@ import {
 const initialState = {
   user: {
     id: 0,
+    idMoodler:"",
     username: "",
     domain: "",
     token: "",
