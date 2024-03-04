@@ -43,7 +43,6 @@ const CreateUser = () => {
           `Estas seguro que quieres crear el usuario: ${info?.firstname} ${info?.lastname}`
         )
       ) {
-        console.log({username,domain, info});
         const res = await axios.post(`${HOST}postUserMoodle`, {
           username,
           domain,

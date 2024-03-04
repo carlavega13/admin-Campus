@@ -29,7 +29,6 @@ export const login = (user) => {
       );
       return dispatch({ type: LOGIN, payload: response.data });
     } catch (error) {
-      console.log(error);
       notifyError(error.response.data);
     }
   };
@@ -38,7 +37,6 @@ export const login = (user) => {
 export const reloadUser = (userLogged) => {
   return async (dispatch) => {
     try {
-      console.log(userLogged);
       const response = await axios.post(`${HOST}reloadUser`, userLogged);
       return dispatch({ type: RELOAD_USER, payload: response.data });
     } catch (error) {}
@@ -84,7 +82,6 @@ export const getAllUsers = (info) => {
 };
 
 export const getGrades = (people, token, domain, id) => {
-  console.log(people,token,domain,id);
   return async (dispatch) => {
     try {
       const response = await axios.post(`${HOST}getGrades`, {

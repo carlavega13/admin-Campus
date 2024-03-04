@@ -69,6 +69,7 @@ const UserSelect = ({ info, setInfo }) => {
           {filteredUsers?.map((user, i) => {
             return (
               <div
+              key={user.id}
                 onClick={(e) => handleClick(e, user.fullname,user.username)}
                 id={user.id}
                 style={{ background: i % 2 === 0 ? "#EAEAEA" : "#D9D9D9" }}

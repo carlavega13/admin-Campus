@@ -26,11 +26,12 @@ const AdminHome = () => {
 
   const value = useSelector((state) => state.homeValue);
   const [open, setOpen] = useState(false);
-  useEffect(() => {}, [value]);
-  if (!user?.phone || !user?.email) {
-    console.log("va a editprofile desde admin-home");
-    navigate("/firstEditProfile");
-  }
+  useEffect(() => {
+
+    if (!user?.phone || !user?.email) {
+      navigate("/firstEditProfile");
+    }
+  }, [value]);
   return (
     <div className={s.containerAll}>
       <ToastInfo />

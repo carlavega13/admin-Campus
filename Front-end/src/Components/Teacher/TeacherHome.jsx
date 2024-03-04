@@ -10,20 +10,21 @@ import TeacherCourse from "./TeacherCourse";
 import s from "../../css/TeacherHome.module.css";
 import { ToastInfo } from "../../functions/toast";
 import { CiLogout } from "react-icons/ci";
-import {VscDebugDisconnect}from "react-icons/vsc"
-import { useState } from "react";
-
+import { VscDebugDisconnect } from "react-icons/vsc";
+import { useEffect, useState } from "react";
+import loading from "../../public/images/AdminHome/loading-loading-gif.gif";
 const TeacherHome = () => {
-
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const user = useSelector((state) => state.user);
   const value = useSelector((state) => state.homeValue);
-  const [open, setOpen] = useState(false)
-  if (!user.firstname || !user.phone) {
-    return <div>LOADING...</div>;
-  }
-console.log(user);
+  const [open, setOpen] = useState(false);
+  useEffect(()=>{
+
+    if (!user.firstname || !user.phone) {
+ navigate("/firstEditProfile")
+    }
+  },[user])
   return (
     <div className={s.containerAll}>
       <ToastInfo />
@@ -35,12 +36,12 @@ console.log(user);
               ${user?.lastname[0].toUpperCase()}${user?.lastname.slice(1)} `}
           </p>
           <img
-              onClick={() => dispatch(putHome("editProfile"))}
-              src={value === "editProfile" ? selectSetting : setting}
-              className={`${s.iconSettings} ${
-                value === "editProfile" ? s.selectedProfile : null
-              }`}
-            />
+            onClick={() => dispatch(putHome("editProfile"))}
+            src={value === "editProfile" ? selectSetting : setting}
+            className={`${s.iconSettings} ${
+              value === "editProfile" ? s.selectedProfile : null
+            }`}
+          />
         </div>
 
         <div className={s.divBtnsOptions}>
@@ -58,16 +59,14 @@ console.log(user);
               color={value === "courses" ? "#9283BD" : "#868AA5"}
             />{" "}
           </div>
-          <div onClick={() => {
-                dispatch(logOut());
-                navigate("/");
-              }}
+          <div
+            onClick={() => {
+              dispatch(logOut());
+              navigate("/");
+            }}
           >
-            <CiLogout className={s.icons}
-              color={"#868AA5"}/>
-            <p>
-              Logout
-            </p>
+            <CiLogout className={s.icons} color={"#868AA5"} />
+            <p>Logout</p>
             <VscDebugDisconnect
               className={s.icons}
               color={value === "roles" ? "#9283BD" : "#868AA5"}

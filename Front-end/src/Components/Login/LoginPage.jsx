@@ -4,7 +4,6 @@ import background from "../../public/images/Login/unsplash_E2i7Hftb_rI.png";
 import logo from "../../public/images/Login/Edutechpng.png";
 
 export default function LoginPage() {
-  console.log("en loginpage");
   return (
     <div className={s.divContainer}>
       <div className={s.container}>

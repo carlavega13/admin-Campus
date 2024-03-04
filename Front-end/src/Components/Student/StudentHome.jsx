@@ -10,7 +10,7 @@ import s from "../../css/StudentHome.module.css";
 import StudentCourses from "./StudentCourses";
 import { CiLogout } from "react-icons/ci";
 import { VscDebugDisconnect } from "react-icons/vsc";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 
 const StudentHome = () => {
@@ -19,7 +19,14 @@ const StudentHome = () => {
   const user = useSelector((state) => state.user);
   const value = useSelector((state) => state.homeValue);
   const [open, setOpen] = useState(false);
+  useEffect(()=>{
+    if (!user.firstname || !user.phone) {
+      navigate("/firstEditProfile")
+
+    }
+  },[user])
   if (!user.firstname || !user.phone) {
+    navigate("/firstEditProfile")
     return       <div className={s.containerLoading}>
     <img src={loading} alt="Cargando..."className={s.loadingIcon}/>
   </div>

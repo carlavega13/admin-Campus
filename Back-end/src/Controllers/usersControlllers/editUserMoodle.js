@@ -3,7 +3,8 @@ const { User } = require("../../db");
 const editUserMoodle = async (body) => {
   try {
     const { info } = body;
-    console.log(info);
+
+
     const admin = await User.findOne({ where: { rol: "administrador",isSuperAdmin:true,domain:body.domain } });
     const token = await axios(
       `${body.domain}login/token.php?username=${admin.username}&password=${admin.password}&service=admin-functions`
@@ -34,7 +35,7 @@ const editUserMoodle = async (body) => {
       url += `&users[0][city]=${info.city}`;
     }
     const res = await axios(`${url}`);
-console.log(res.data);
+
     if (!res.data) {
       return "Se actualizo su información";
     } else {

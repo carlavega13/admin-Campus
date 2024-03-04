@@ -11,6 +11,7 @@ const putUserController = async ({
   token,
 }) => {
   try {
+
     const userToEdit = await User.findOne({
       where: { idMoodle:idMoodle },
     });
@@ -25,6 +26,8 @@ const putUserController = async ({
         phone1: phone,
       },
     });
+
+
     let info = {
       firstname: firstName,
       lastname: lastName,
@@ -59,6 +62,7 @@ const putUserController = async ({
 
       return {
         id: res.id,
+        idMoodle:res.idMoodle,
         username: res.username,
         token: res.token,
         rol: res.rol,

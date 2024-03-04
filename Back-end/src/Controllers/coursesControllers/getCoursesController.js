@@ -1,10 +1,12 @@
 const axios = require("axios");
+const {User}=require("../../db")
 const getPeopleInCourse = require("./getPeopleInCourse");
 const getCoursesController = async (user) => {
   try {
+    const admin=await User.findOne({where:{rol:"administrador",isSuperAdmin:true}})
     let courses = await axios.get(`${user.domain}webservice/rest/server.php`, {
       params: {
-        wstoken: user.token,
+        wstoken: admin.token,
         wsfunction: "core_course_get_courses",
         moodlewsrestformat: "json",
       },
@@ -14,10 +16,11 @@ const getCoursesController = async (user) => {
 
     courses.data.shift();
     courses = courses.data.map((course) => {
+
       promises.push(
         getPeopleInCourse({
           domain: user.domain,
-          token: user.token,
+          token: admin.token,
           courseId: course.id,
         })
       );
@@ -43,6 +46,7 @@ const getCoursesController = async (user) => {
         enrolledPeople: promisesUsers[i],
       };
     }
+
     if (courses.length === 0) {
       return "No hay cursos";
     }

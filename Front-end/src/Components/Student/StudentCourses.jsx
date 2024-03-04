@@ -6,15 +6,17 @@ import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 import s from "../../css/StudentCourses.module.css"
 
 const StudentCourses = ({ user }) => {
+
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const courses = useSelector((state) => state.courses);
   if (courses.length === 0) {
+    console.log(user.idMoodle);
     dispatch(
       getStudentCourses({
-        domain: user.domain,
-        token: user.token,
-        userId: user.idMoodle,
+        domain: user?.domain,
+        token: user?.token,
+        userId: user?.idMoodle,
       })
     );
     return (

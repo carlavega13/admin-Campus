@@ -5,7 +5,33 @@ p {
   color: #868aa5;
   transition: 0.3s;
 }
-
+.btn {
+  background: #9283bd;
+  width: fit-content;
+  color: #fff;
+  padding: 4px 16px 4px 16px;
+  border-radius: 4px;
+  border: none;
+  font-weight: bold;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin: 0.5rem 0 0.5rem 0rem;
+  font-family: Montserrat;
+}
+.containerLoading {
+  display: flex;
+  width: 100%;
+  flex-direction: column;
+  padding-top: 1rem;
+}
+.loadingIcon {
+  width: 8rem;
+  height: 8rem;
+  align-self: center;
+  padding: 3rem 0 0 0;
+}
 .containerAll {
   width: 100%;
   display: flex;

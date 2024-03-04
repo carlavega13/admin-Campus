@@ -23,7 +23,14 @@ const FirstLoginEditProfile = ({ rol }) => {
   });
   useEffect(() => {
     setError(validator(profile));
-  }, [profile]);
+    if (user?.phone && user?.email) {
+      if (user?.rol === "estudiante") {
+        navigate("/studentHome");
+      } else {
+        navigate("/adminHome");
+      }
+    }
+  }, [profile,user]);
   const handlerChange = (e) => {
     setProfile({
       ...profile,
@@ -34,20 +41,17 @@ const FirstLoginEditProfile = ({ rol }) => {
     setError(validator(profile));
 
     if (!error.firstName && !error.lastName && !error.phone && !error.email) {
+
       dispatch(
         putUser({
           ...profile,
-          idMoodle: user.idMoodle,
-          domain: user.domain,
-          token: user.token,
+          idMoodle: user?.idMoodle,
+          domain: user?.domain,
+          token: user?.token,
         })
       );
       notify("Se actualizo su informacion");
-      if (user.rol === "estudiante") {
-        navigate("/studentHome");
-      } else {
-        navigate("/adminHome");
-      }
+
     }
   };
 

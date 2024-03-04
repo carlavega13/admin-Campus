@@ -18,7 +18,7 @@ const StudentCourseDetail = () => {
         domain: user.domain,
         token: user.token,
         courseid: course.id,
-        userid: user.id,
+        userid: user.idMoodle,
       })
     ).then((res) => setPromise(true));
     return <div className={s.containerLoading}>

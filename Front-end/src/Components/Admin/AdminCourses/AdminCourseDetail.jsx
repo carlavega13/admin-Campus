@@ -29,7 +29,6 @@ const AdminCourseDetail = () => {
   let course = courses?.find((co) => co.id == id);
   const [promise, setPromise] = useState(false);   
    if (user?.username?.length==0) {
-      console.log("No hay usuario o curso, redirigiendo a /");
       navigate("/");
     }
 

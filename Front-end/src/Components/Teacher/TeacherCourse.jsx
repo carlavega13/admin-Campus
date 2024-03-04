@@ -9,7 +9,8 @@ const navigate=useNavigate()
     const dispatch=useDispatch()
     const courses=useSelector(state=>state.courses)
     if(courses.length===0){
-        dispatch(getTeacherCourse({domain:user.domain,token:user.token,userid:user.id}))
+      console.log("pedi cursos");
+        dispatch(getTeacherCourse({domain:user.domain,token:user.token,userid:user.idMoodle}))
     }
     const columns=[
         {

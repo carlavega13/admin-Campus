@@ -17,7 +17,7 @@ const getPeopleInCourse = async (payload) => {
         let findDb = await User.findOne({
           where: { username: people.data[i].username },
         });
-
+        
         if (findDb && findDb.phone) {
           people.data[i].phone1 = findDb.phone;
         }

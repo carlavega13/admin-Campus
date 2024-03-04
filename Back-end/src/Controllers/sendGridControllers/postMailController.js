@@ -8,7 +8,7 @@ const postMailController = async (info) => {
       subject:info.subject,
       to:info.to,
      html:mailToSend,
-      from: "ad.campus.13@gmail.com",
+      from: "capacitaciones@edutech.education",
     };
     const response = await sgMail.send(msg);
     return response;

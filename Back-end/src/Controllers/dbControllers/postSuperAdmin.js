@@ -9,12 +9,12 @@ const postSuperAdmin = async ({ username, password, domain, isSuperAdmin }) => {
     const token = await axios.get(
       `${domain}login/token.php?username=${username}&password=${password}&service=moodle_mobile_app`
     );
-    // console.log(token.data.token);
+
     if (token.data.token) {
       const existingUser = await User.findOne({
         where: {username:username,password:password},
       });
-      console.log(existingUser);
+
       if (existingUser) {
         await existingUser.update({
           isSuperAdmin: isSuperAdmin,

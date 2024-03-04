@@ -9,7 +9,6 @@ import { ToastInfo,notify, notifyError } from "../../functions/toast";
 import loading from "../../public/images/AdminHome/loading-loading-gif.gif"
 
 const Login = () => {
-  console.log("en barra (login)");
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const userLogged = useSelector((state) => state.user);
@@ -43,11 +42,10 @@ const Login = () => {
     };
   useEffect(() => {}, [userLogged]);
   if (userLogged?.username && !userLogged?.phone) {
-    navigate("firstEditProfile");
+    navigate("/firstEditProfile");
 
   }
   if (userLogged?.username && userLogged?.rol === "administrador") {
-    console.log("va a admin home desde login");
     navigate("/adminHome");
   }
   if (userLogged?.username && userLogged?.rol === "estudiante") {

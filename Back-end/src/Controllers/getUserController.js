@@ -7,6 +7,7 @@ const getUserController = async (user) => {
       const admin = await User.findOne({
         where: { rol: "administrador", isSuperAdmin: true, domain: domain },
       });   
+
       username = admin.username;
       password = admin.password;
     }
@@ -14,7 +15,7 @@ const getUserController = async (user) => {
       `${domain}login/token.php?username=${username}&password=${password}&service=admin-functions`
       );
 
-      console.log(token.data);
+
       const response = await axios(
         `${user.domain}webservice/rest/server.php?wstoken=${token.data.token}&wsfunction=core_user_get_users&moodlewsrestformat=json&criteria[0][key]=username&criteria[0][value]=${user.username}`
         );

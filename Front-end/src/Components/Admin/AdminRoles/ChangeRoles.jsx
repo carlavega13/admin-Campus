@@ -8,9 +8,9 @@ import { ToastInfo, notify, notifyError } from "../../../functions/toast";
 import s from "../../../css/ChangeRoles.module.css";
 
 const ChangeRoles = (props) => {
-  console.log(props);
   const dispatch = useDispatch();
   const allUsers = useSelector((state) => state.allUsers);
+  const domain = useSelector((state) => state.user.domain);
   const [info, setInfo] = useState({
     userid: null,
     userfullname: null,
@@ -46,12 +46,12 @@ const ChangeRoles = (props) => {
       return notifyError("debes seleccionar todos los campos");
     }
 
-    const res = await axios.post(`${HOST}changeRol`, info);
+    const res = await axios.post(`${HOST}changeRol`, {...info,domain});
     if (res.status >= 200 && res.status < 300) {
       notify("se cambio el rol del usuario");
     }
   };
-  // console.log(info)
+
   return (
     <div className={s.container}>
       <ToastInfo />
